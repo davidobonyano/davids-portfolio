@@ -29,42 +29,83 @@ import {
 const seriousProjects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "A full-stack e-commerce solution with payment integration, inventory management, and admin dashboard. Built with Next.js, TypeScript, and Stripe API.",
-    image: "gradient", // Uses gradient background
-    technologies: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Tailwind CSS"],
-    liveUrl: "https://ecommerce-demo.vercel.app",
-    githubUrl: "https://github.com/david/ecommerce-platform",
+    title: "Yano School",
+    description: "A Nigerian  school platform (KG1–SS3) with admin, teacher, and student dashboards. Students can view payments, timetables, results, and upcoming exams. Admin has full CRUD across sessions, terms, classes, subjects, fees, and more; teachers upload results and manage class records.",
+    image: "/projects/yanoschool.png",
+    technologies: [
+      "Next.js 15",
+      "TypeScript",
+      "Supabase (DB/Auth/Storage)",
+      "PostgreSQL",
+      "Radix UI",
+      "React Hook Form + Zod",
+      "PDF-Lib"
+    ],
+    liveUrl: "https://yanoschoool.vercel.app/",
+    githubUrl: "https://github.com/davidobonyano/yanoschool-next",
     featured: true
   },
   {
     id: 2,
-    title: "Task Management System",
-    description: "A collaborative project management tool with real-time updates, team collaboration features, and advanced analytics dashboard.",
-    image: "https://picsum.photos/600/400?random=1", // Random placeholder image
-    technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Express"],
-    liveUrl: "https://taskmanager-demo.vercel.app",
-    githubUrl: "https://github.com/david/task-manager",
+    title: "CareerPilot – Job Tracker",
+    description: "A job application tracker with drag & drop Kanban board (Applied → Interviewing → Offer → Rejected), contacts manager, and tasks. Features intuitive drag-and-drop functionality for moving applications between stages. Fully client-side with offline persistence.",
+    image: "/projects/careerpilot.png",
+    technologies: [
+      "TypeScript",
+      "Tailwind CSS",
+      "LocalForage (IndexedDB)",
+      "@hello-pangea/dnd",
+      "Framer Motion",
+    ],
+    liveUrl: "https://career-pilot-liard.vercel.app",
+    githubUrl: "https://github.com/davidobonyano/Career-pilot",
     featured: true
   },
   {
     id: 3,
-    title: "Real Estate Platform",
-    description: "A comprehensive real estate platform with property listings, virtual tours, mortgage calculator, and agent management system.",
-    image: "", // No image - shows default icon
-    technologies: ["Next.js", "Prisma", "PostgreSQL", "Mapbox", "Framer Motion"],
-    liveUrl: "https://realestate-demo.vercel.app",
-    githubUrl: "https://github.com/david/real-estate-platform",
-    featured: false
+    title: "NSDC Nigeria Website",
+    description: "Official website for the National Sugar Development Council (NSDC) Nigeria - a government agency established to catalyze sugar industry development and achieve 70% self-sufficiency in sugar production. Features comprehensive sugar industry data, pricing information, company directories, and policy documentation.",
+    image: "/projects/nscdc.png",
+    technologies: [
+      "PHP",
+      "MySQL",
+      "Bootstrap",
+      "jQuery"
+    ],
+    liveUrl: "https://www.nsdcnigeria.org/",
+    githubUrl: "#", // No GitHub repo available
+    featured: true
   },
   {
     id: 4,
-    title: "Healthcare Management System",
-    description: "A secure healthcare platform for patient management, appointment scheduling, and medical records with HIPAA compliance.",
-    image: "https://via.placeholder.com/600x400/1f2937/ffffff?text=Healthcare+App", // Custom placeholder
-    technologies: ["React", "Node.js", "PostgreSQL", "JWT", "Crypto"],
-    liveUrl: "https://healthcare-demo.vercel.app",
-    githubUrl: "https://github.com/david/healthcare-system",
+    title: "FixFinder - Local Services Directory",
+    description: "A comprehensive service marketplace connecting users with verified local professionals across 13+ categories (electricians, plumbers, tailors, hair stylists, etc.). Features geo-location filtering, professional profiles with ratings, advanced search functionality, service categories, and responsive design. Built as a modern MVP with 26+ professional profiles and plans for full backend integration.",
+    image: "/projects/fixfinder.png",
+    technologies: [
+      "React Router",
+      "Context API",
+      "Geo-location API",
+      "Local Storage",
+      "React Icons",
+     
+    ],
+    liveUrl: "https://fixfinder-cyan.vercel.app/",
+    githubUrl: "https://github.com/davidobonyano/fixfinder",
+    featured: true
+  },
+  {
+    id: 5,
+    title: "Medilabs",
+    description: "A modern hospital website featuring appointment booking system, medical services showcase, doctor profiles, and responsive design. Includes image sliders, contact forms, and professional healthcare presentation.",
+    image: "/projects/medihospital.png",
+    technologies: [
+      "HTML5",
+      "CSS3",
+      "Javascript",
+      "Font Awesome5"
+    ],
+    liveUrl: "https://davidobonyano.github.io/medicare-/",
+    githubUrl: "https://github.com/davidobonyano/medicare-",
     featured: false
   }
 ];
@@ -78,7 +119,8 @@ const funProjects = [
     color: "from-green-500 to-emerald-500",
     description: "Precise stopwatch with lap times",
     tech: "JavaScript",
-    url: "https://stopwatch-demo.vercel.app"
+    url: "https://stopwatch-demo.vercel.app",
+    githubUrl: "https://github.com/davidobonyano/stopwatch"
   },
   {
     id: 2,
@@ -87,7 +129,8 @@ const funProjects = [
     color: "from-gray-600 to-gray-800",
     description: "Advanced calculator with history",
     tech: "React",
-    url: "https://calculator-demo.vercel.app"
+    url: "https://davidobonyano.github.io/calculatorr-assignment/   ",
+    githubUrl: "https://github.com/davidobonyano/calculatorr-assignment "
   },
   {
     id: 3,
@@ -95,8 +138,9 @@ const funProjects = [
     icon: faCloudSun,
     color: "from-yellow-400 to-orange-500",
     description: "Real-time weather updates",
-    tech: "React",
-    url: "https://weather-app-demo.vercel.app"
+    tech: "JavaScript",
+    url: "https://davidobonyano.github.io/weather-app/",
+    githubUrl: "https://github.com/davidobonyano/weather-app"
   },
   {
     id: 4,
@@ -105,7 +149,8 @@ const funProjects = [
     color: "from-red-500 to-pink-500",
     description: "Browse and watch movie trailers",
     tech: "React Native",
-    url: "https://movie-app-demo.vercel.app"
+    url: "https://movie-app-demo.vercel.app",
+    githubUrl: "https://github.com/davidobonyano/movie-app"
   },
   {
     id: 5,
@@ -167,6 +212,10 @@ export default function Projects() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeTab, setActiveTab] = useState("serious");
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const [selectedApp, setSelectedApp] = useState<any>(null);
+  const [showContextMenu, setShowContextMenu] = useState(false);
+  const [contextMenuApp, setContextMenuApp] = useState<any>(null);
+  const [contextMenuPosition, setContextMenuPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -185,6 +234,30 @@ export default function Projects() {
 
     return () => observer.disconnect();
   }, []);
+
+  // Handle context menu
+  const handleAppClick = (app: any, event: React.MouseEvent) => {
+    event.preventDefault();
+    const rect = event.currentTarget.getBoundingClientRect();
+    setContextMenuPosition({
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2
+    });
+    setContextMenuApp(app);
+    setShowContextMenu(true);
+  };
+
+  // Close context menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => {
+      setShowContextMenu(false);
+    };
+    
+    if (showContextMenu) {
+      document.addEventListener('click', handleClickOutside);
+      return () => document.removeEventListener('click', handleClickOutside);
+    }
+  }, [showContextMenu]);
 
   return (
     <section id="projects" className="py-20 px-4 relative bg-black">
@@ -383,55 +456,108 @@ export default function Projects() {
                     </div>
                   </div>
                   
-                  {/* App Grid */}
-                  <div className="px-6 py-4">
-                    <h3 className="text-white text-lg font-semibold mb-6 text-center">My Apps</h3>
-                    <div className="grid grid-cols-4 gap-8">
-                      {funProjects.map((app, index) => (
-                        <motion.div
-                          key={app.id}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={isVisible ? { opacity: 1, scale: 1 } : {}}
-                          transition={{ duration: 0.4, delay: 0.1 * index }}
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="relative group cursor-pointer"
-                        >
-                          {/* Main App Icon - Click goes to live demo */}
-                          <a
-                            href={app.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block"
+                  {/* App Grid or Selected App */}
+                  {!selectedApp ? (
+                    <div className="px-6 py-4">
+                      <h3 className="text-white text-lg font-semibold mb-6 text-center">My Apps</h3>
+                      <div className="grid grid-cols-4 gap-8">
+                        {funProjects.map((app, index) => (
+                          <motion.div
+                            key={app.id}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+                            transition={{ duration: 0.4, delay: 0.1 * index }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="relative group cursor-pointer"
                           >
-                            <div className={`w-14 h-14 bg-gradient-to-br ${app.color} rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 relative`}>
-                              <FontAwesomeIcon icon={app.icon} className="text-white text-xl" />
-                            </div>
-                            <p className="text-white text-xs text-center mt-2 font-medium leading-tight">
-                              {app.name}
-                            </p>
-                          </a>
-                          
-                          {/* GitHub Button - Top Right Corner of App Icon */}
-                          <a
-                            href={`https://github.com/david/${app.name.toLowerCase().replace(/\s+/g, '-')}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="absolute -top-1 -right-1 w-5 h-5 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 opacity-100 md:opacity-0 md:group-hover:opacity-100"
-                            onClick={(e) => e.stopPropagation()}
-                            title="View on GitHub"
-                          >
-                            <FontAwesomeIcon icon={faGithub} className="text-white text-xs" />
-                          </a>
-                        </motion.div>
-                      ))}
+                            {/* Main App Icon - Click shows context menu */}
+                            <button
+                              onClick={(e) => handleAppClick(app, e)}
+                              className="block w-full"
+                            >
+                              <div className={`w-14 h-14 bg-gradient-to-br ${app.color} rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 relative`}>
+                                <FontAwesomeIcon icon={app.icon} className="text-white text-xl" />
+                              </div>
+                              <p className="text-white text-xs text-center mt-2 font-medium leading-tight">
+                                {app.name}
+                              </p>
+                            </button>
+                          </motion.div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  ) : (
+                    <div className="w-full h-full relative">
+                      {/* Back Button */}
+                      <button
+                        onClick={() => setSelectedApp(null)}
+                        className="absolute top-4 left-4 z-10 w-8 h-8 bg-gray-600 hover:bg-gray-500 rounded-full flex items-center justify-center text-white text-sm font-bold transition-colors"
+                      >
+                        ←
+                      </button>
+                      
+                      {/* App iframe with scrollable content */}
+                      <div className="w-full h-full overflow-auto rounded-b-[2rem] pt-12">
+                        <iframe
+                          src={selectedApp.url}
+                          className="w-full h-full border-0 min-h-[500px]"
+                          title={selectedApp.name}
+                          allow="geolocation; camera; microphone"
+                          scrolling="yes"
+                        />
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
           </motion.div>
         )}
+
+        {/* Context Menu for App Options */}
+        {showContextMenu && contextMenuApp && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="fixed z-50 bg-gray-800 rounded-lg shadow-2xl border border-gray-600 py-2 min-w-[200px]"
+            style={{
+              left: `${Math.min(contextMenuPosition.x - 100, window.innerWidth - 220)}px`,
+              top: `${Math.min(contextMenuPosition.y - 50, window.innerHeight - 120)}px`
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Open App Option */}
+            <button
+              onClick={() => {
+                setSelectedApp(contextMenuApp);
+                setShowContextMenu(false);
+              }}
+              className="w-full px-4 py-3 text-left text-white hover:bg-gray-700 transition-colors flex items-center gap-3"
+            >
+              <FontAwesomeIcon icon={faPlay} className="text-green-400" />
+              <span>Open App</span>
+            </button>
+            
+            {/* View GitHub Option */}
+            <button
+              onClick={() => {
+                window.open(
+                  contextMenuApp.githubUrl || `https://github.com/davidobonyano/${contextMenuApp.name.toLowerCase().replace(/\s+/g, '-')}`,
+                  '_blank',
+                  'noopener,noreferrer'
+                );
+                setShowContextMenu(false);
+              }}
+              className="w-full px-4 py-3 text-left text-white hover:bg-gray-700 transition-colors flex items-center gap-3"
+            >
+              <FontAwesomeIcon icon={faGithub} className="text-gray-400" />
+              <span>View GitHub</span>
+            </button>
+          </motion.div>
+        )}
+
       </div>
     </section>
   );

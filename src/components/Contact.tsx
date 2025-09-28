@@ -68,9 +68,9 @@ export default function Contact() {
 
     try {
       // EmailJS configuration - you'll need to replace these with your actual values
-      const serviceId = 'YOUR_SERVICE_ID';
-      const templateId = 'YOUR_TEMPLATE_ID';
-      const publicKey = 'YOUR_PUBLIC_KEY';
+      const serviceId = 'service_wqnlyzs';
+      const templateId = 'template_2qsawal';
+      const publicKey = '6Q4DdR03xq4twi3Nj';
 
       const result = await emailjs.send(
         serviceId,

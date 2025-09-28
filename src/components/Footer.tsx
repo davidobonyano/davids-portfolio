@@ -54,8 +54,8 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-2xl font-bold text-white">David Obonyano</h3>
             <p className="text-gray-400 leading-relaxed">
-              Full-stack developer who turns coffee into code and dreams into digital reality. 
-              I build things that actually work (most of the time).
+              Full-stack developer, bugs hate to see me coming. 
+              I make websites that don't break when you click them (most of the time).
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
