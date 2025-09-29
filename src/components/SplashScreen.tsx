@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 export default function SplashScreen({ onFinish }: { onFinish: () => void }) {
   const [show, setShow] = useState(true);
-  const [progress, setProgress] = useState(0);
+  const [, setProgress] = useState(0);
   const [starPositions, setStarPositions] = useState<Array<{x: number, y: number}>>([]);
 
   const name = "David Obonyano";
@@ -21,13 +21,14 @@ export default function SplashScreen({ onFinish }: { onFinish: () => void }) {
   }, []);
 
   useEffect(() => {
-    // Calculate total animation time: 0.8s (dot delay) + 14 letters * 0.15s + 0.4s (last letter duration) + 0.5s buffer + 1s extra
-    const totalAnimationTime = 0.8 + (letters.length * 0.15) + 0.4 + 0.5 + 1;
+    // Speed up by ~2x: halve each component of timing
+    // Original: 0.8 + (letters.length * 0.15) + 0.4 + 0.5 + 1
+    const totalAnimationTime = 0.4 + (letters.length * 0.075) + 0.2 + 0.25 + 0.5;
     
     const timer = setTimeout(() => {
+      // Start exit animation by hiding the splash; onFinish will be called after exit completes
       setShow(false);
-      onFinish();
-    }, totalAnimationTime * 1000); // Dynamic splash time based on animation + 1s extra
+    }, totalAnimationTime * 1000);
 
     // Progress animation
     const progressInterval = setInterval(() => {
@@ -44,16 +45,17 @@ export default function SplashScreen({ onFinish }: { onFinish: () => void }) {
       clearTimeout(timer);
       clearInterval(progressInterval);
     };
-  }, [onFinish, letters.length]);
+  }, [letters.length]);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={onFinish}>
       {show && (
         <motion.div
           className="fixed inset-0 flex items-center justify-center z-50 bg-black"
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0, y: -100 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          initial={{ y: 0 }}
+          animate={{ y: 0 }}
+          exit={{ y: "-100%" }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
         >
           {/* Animated background stars */}
           <div className="absolute inset-0 overflow-hidden">
@@ -72,10 +74,10 @@ export default function SplashScreen({ onFinish }: { onFinish: () => void }) {
                   scale: [0.5, 1, 0.5]
                 }}
                 transition={{
-                  duration: 4 + Math.random() * 2,
-                  delay: Math.random() * 2,
+                  duration: 2 + Math.random(),
+                  delay: Math.random(),
                   repeat: Infinity,
-                  repeatDelay: Math.random() * 3
+                  repeatDelay: Math.random() * 1.5
                 }}
               />
             ))}
@@ -95,10 +97,10 @@ export default function SplashScreen({ onFinish }: { onFinish: () => void }) {
                   scale: [0.3, 0.8, 0.3]
                 }}
                 transition={{
-                  duration: 3 + Math.random() * 2,
-                  delay: Math.random() * 2,
+                  duration: 1.5 + Math.random(),
+                  delay: Math.random(),
                   repeat: Infinity,
-                  repeatDelay: Math.random() * 4
+                  repeatDelay: Math.random() * 2
                 }}
               />
             ))}
@@ -122,11 +124,11 @@ export default function SplashScreen({ onFinish }: { onFinish: () => void }) {
                   x: 250 // Move further to the end of the text with more space
                 }}
                 transition={{ 
-                  duration: 0.5,
-                  delay: 0.2,
+                  duration: 0.25,
+                  delay: 0.1,
                   x: {
-                    duration: 3.5, // Longer duration to match letter animation
-                    delay: 0.8,
+                    duration: 1.75, // ~2x faster
+                    delay: 0.4,
                     ease: "easeOut"
                   }
                 }}
@@ -153,8 +155,8 @@ export default function SplashScreen({ onFinish }: { onFinish: () => void }) {
                         scale: 1
                       }}
                       transition={{ 
-                        delay: 0.8 + (index * 0.15), // Start after dot appears
-                        duration: 0.4,
+                        delay: 0.4 + (index * 0.075), // ~2x faster
+                        duration: 0.2,
                         ease: "easeOut"
                       }}
                       className="text-white text-3xl sm:text-4xl md:text-5xl font-black"

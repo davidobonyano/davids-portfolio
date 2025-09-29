@@ -37,3 +37,26 @@ body {
     linear-gradient(90deg, #1a1a1a 1px, transparent 1px);
   background-size: 40px 40px; /* size of blocks */
 }
+
+/* Gradient text utility matching reference style */
+.text-gradient-primary {
+  background-image: linear-gradient(90deg, rgba(128,177,255,0.7) 0%, rgba(104,142,255,0.7) 35%, rgba(167,139,250,0.7) 70%, rgba(216,180,254,0.7) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent; /* Safari support */
+}
+
+/* Light bluish "ice" gradient for headings and highlights */
+.text-gradient-ice {
+  background-image: linear-gradient(90deg,
+    rgba(186, 230, 253, 0.95) 0%,   /* sky-200 */
+    rgba(147, 197, 253, 0.95) 35%,  /* blue-300 */
+    rgba(96, 165, 250, 0.95) 65%,   /* blue-400 */
+    rgba(129, 140, 248, 0.95) 100%  /* indigo-400 */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}

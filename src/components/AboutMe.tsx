@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
   faGamepad, 
@@ -80,10 +81,12 @@ export default function AboutMe() {
                 <div className="relative w-full h-full rounded-full bg-gray-800 p-1">
                   <div className="w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden">
                     {/* Your actual photo */}
-                    <img 
+                    <Image 
                       src="/david-photo.jpeg" 
                       alt="David Obonyano"
-                      className="w-full h-full object-cover rounded-full"
+                      fill
+                      sizes="200px"
+                      className="object-cover rounded-full"
                       onError={(e) => {
                         // Fallback to initials if image doesn't exist
                         const target = e.target as HTMLImageElement;
@@ -167,7 +170,7 @@ export default function AboutMe() {
                 <h3 className="text-2xl md:text-3xl font-bold mb-4">
                   David Obonyano
                 </h3>
-                <p className="text-xl text-blue-400 font-semibold mb-2">
+                <p className="text-xl font-semibold mb-2 text-gradient-primary">
                   Full-Stack Developer
                 </p>
                 <p className="text-gray-400 text-lg">
@@ -198,10 +201,10 @@ export default function AboutMe() {
           >
             <div className="text-center mb-8">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                Current <span className="text-blue-500">Technologies</span>
+                Current <span className="text-gradient-ice">Technologies</span>
               </h3>
               <p className="text-gray-400 text-lg mb-4">
-                I'm proficient in a range of modern technologies that empower me to create exceptional digital experiences. From frontend frameworks to backend systems, I leverage cutting-edge tools to build scalable, performant applications that meet the highest standards of quality and user experience.
+                I&apos;m proficient in a range of modern technologies that empower me to create exceptional digital experiences. From frontend frameworks to backend systems, I leverage cutting-edge tools to build scalable, performant applications that meet the highest standards of quality and user experience.
               </p>
             </div>
 
@@ -228,17 +231,22 @@ export default function AboutMe() {
                     hoveredTech === tech.name ? 'shadow-2xl border-blue-500' : ''
                   }`}>
                     <div className="flex flex-col items-center space-y-2">
-                      <img 
+                      <Image 
                         src={tech.logo} 
                         alt={tech.name}
-                        className="w-8 h-8 object-contain"
+                        width={32}
+                        height={32}
+                        className="object-contain"
                         onError={(e) => {
                           // Fallback to a simple text if image fails to load
                           const target = e.target as HTMLImageElement;
                           target.style.display = 'none';
                           const parent = target.parentElement;
                           if (parent) {
-                            const fallbackText = (tech as any).fallback || tech.name.split(' ').map(word => word.charAt(0)).join('');
+                            const fallbackText = tech.name
+                              .split(' ')
+                              .map(word => word.charAt(0))
+                              .join('');
                             parent.innerHTML = `<div class="w-8 h-8 bg-gray-600 rounded flex items-center justify-center text-white text-xs font-bold">${fallbackText}</div>`;
                           }
                         }}
@@ -271,19 +279,19 @@ export default function AboutMe() {
               className="grid grid-cols-2 gap-6 mt-12"
             >
               <div className="text-center bg-gray-800 p-6 rounded-xl border border-gray-700">
-                <div className="text-3xl font-bold text-blue-400 mb-2">4+</div>
+                <div className="text-3xl font-bold text-gradient-ice mb-2">4+</div>
                 <div className="text-gray-400">Years Experience</div>
               </div>
               <div className="text-center bg-gray-800 p-6 rounded-xl border border-gray-700">
-                <div className="text-3xl font-bold text-blue-400 mb-2">50+</div>
+                <div className="text-3xl font-bold text-gradient-ice mb-2">50+</div>
                 <div className="text-gray-400">Projects Completed</div>
               </div>
               <div className="text-center bg-gray-800 p-6 rounded-xl border border-gray-700">
-                <div className="text-3xl font-bold text-blue-400 mb-2">100%</div>
+                <div className="text-3xl font-bold text-gradient-ice mb-2">100%</div>
                 <div className="text-gray-400">Client Satisfaction</div>
               </div>
               <div className="text-center bg-gray-800 p-6 rounded-xl border border-gray-700">
-                <div className="text-3xl font-bold text-blue-400 mb-2">24/7</div>
+                <div className="text-3xl font-bold text-gradient-ice mb-2">24/7</div>
                 <div className="text-gray-400">Available</div>
               </div>
             </motion.div>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>David Obonyano — Software Engineer CV</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<style>
+		:root { --text:#0f172a; --muted:#475569; --accent:#0ea5e9; }
+		html,body { margin:0; padding:0; }
+		body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; color:var(--text); }
+		.page { max-width: 800px; margin: 32px auto; padding: 0 24px 32px; }
+		.header { display:flex; justify-content:space-between; gap:24px; align-items:flex-start; border-bottom:2px solid #e2e8f0; padding-bottom:16px; }
+		.name { margin:0 0 4px; font-size:32px; line-height:1.1; }
+		.role { margin:0; color:var(--muted); font-weight:500; }
+		.contacts { list-style:none; margin:0; padding:0; font-size:14px; text-align:right; }
+		.contacts li { margin:2px 0; }
+		.contacts a { color:var(--text); text-decoration:none; }
+		.section { margin-top:20px; }
+		.section__title { margin:0 0 8px; font-size:15px; letter-spacing:.08em; text-transform:uppercase; color:#0f172a; }
+		.summary { margin:0; color:var(--text); }
+		.two-col { display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+		.pill-list { list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px; }
+		.pill-list li { border:1px solid #e2e8f0; padding:6px 10px; border-radius:999px; font-size:13px; }
+		.bullets { margin:8px 0 0; padding-left:18px; }
+		.bullets li { margin:6px 0; }
+		.bullets.tight li { margin:4px 0; }
+		.item { margin-top:12px; }
+		.item__head { display:flex; justify-content:space-between; gap:12px; align-items:baseline; }
+		.item__title { margin:0; font-size:16px; }
+		.item__meta { color:var(--muted); font-size:13px; }
+		.muted { color:var(--muted); margin:6px 0 0; }
+		.footer { border-top:1px solid #e2e8f0; margin-top:16px; padding-top:10px; }
+		.small { font-size:13px; }
+		@media print {
+			.page { max-width: 210mm; margin: 0; padding: 12mm; }
+			.header { padding-bottom:8px; }
+		}
+	</style>
+</head>
+<body>
+	<main class="page">
+		<header class="header">
+			<div>
+				<h1 class="name">David Obonyano</h1>
+				<p class="role">Software Engineer — Full‑Stack (React / Next.js / TypeScript)</p>
+			</div>
+			<ul class="contacts">
+				<li><a href="mailto:davidobonyanoefe@gmail.com">davidobonyanoefe@gmail.com</a></li>
+				<li><a href="tel:+2349035526146">+234 903 552 6146</a></li>
+				<li><a href="https://linkedin.com/in/david-obonyano" target="_blank" rel="noreferrer">linkedin.com/in/david-obonyano</a></li>
+				<li>Lagos, Nigeria</li>
+			</ul>
+		</header>
+
+		<section class="section">
+			<h2 class="section__title">Profile</h2>
+			<p class="summary">Product‑driven full‑stack engineer with a track record of shipping performant web apps, teaching, and collaborating with small teams. I move fast with high quality, communicate clearly, and focus on business impact. Background in Geology with strong analytical thinking and resilience proven through self‑funded studies and entrepreneurial projects.</p>
+		</section>
+
+		<section class="section two-col">
+			<div>
+				<h2 class="section__title">Core Skills</h2>
+				<ul class="pill-list">
+					<li>React</li>
+					<li>Next.js</li>
+					<li>TypeScript</li>
+					<li>Node.js</li>
+					<li>Tailwind CSS</li>
+					<li>Supabase</li>
+					<li>PostgreSQL</li>
+					<li>REST APIs</li>
+					<li>Auth & RBAC</li>
+					<li>Testing</li>
+					<li>CI/CD</li>
+				</ul>
+			</div>
+			<div>
+				<h2 class="section__title">Strengths</h2>
+				<ul class="bullets tight">
+					<li>Rapid delivery with clean, maintainable code</li>
+					<li>Clear communication and teaching ability</li>
+					<li>Ownership mindset and product sense</li>
+					<li>Adaptable and resilient under constraints</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section">
+			<h2 class="section__title">Experience</h2>
+			<div class="item">
+				<div class="item__head">
+					<h3 class="item__title">Founder / Full‑Stack Engineer — Yano School Site</h3>
+					<div class="item__meta">Remote • 2023 — Present</div>
+				</div>
+				<ul class="bullets">
+					<li>Designed and built a modern school portal for enrollment, content, and announcements.</li>
+					<li>Implemented responsive UI with Next.js and Tailwind; improved page performance scores to 90+.</li>
+					<li>Integrated Supabase for auth, storage, and relational data with role‑based access.</li>
+				</ul>
+			</div>
+
+			<div class="item">
+				<div class="item__head">
+					<h3 class="item__title">Junior Full‑Stack Developer — Nigeria Sugar Development Council (NSDC)</h3>
+					<div class="item__meta">Abuja • May 2022 (1 month)</div>
+				</div>
+				<ul class="bullets">
+					<li>Contributed to the official NSDC site across frontend and backend features.</li>
+					<li>Collaborated in a small team to deliver secure forms, content tooling, and deploys.</li>
+				</ul>
+			</div>
+
+			<div class="item">
+				<div class="item__head">
+					<h3 class="item__title">Frontend Engineer — Deluxe Store (E‑commerce)</h3>
+					<div class="item__meta">Remote • 2025</div>
+				</div>
+				<ul class="bullets">
+					<li>Implemented product listing, cart, and checkout UX; elevated conversion through improved performance.</li>
+					<li>Built testimonial section and merchandising pages with reusable components.</li>
+				</ul>
+			</div>
+
+			<div class="item">
+				<div class="item__head">
+					<h3 class="item__title">Full‑Stack Engineer — Driven (Startup)</h3>
+					<div class="item__meta">Remote • 2024</div>
+				</div>
+				<ul class="bullets">
+					<li>Early‑stage product work on a startup that later wound down; delivered MVP features and learned from rapid iteration.</li>
+				</ul>
+			</div>
+
+			<div class="item">
+				<div class="item__head">
+					<h3 class="item__title">Freelance & Teaching</h3>
+					<div class="item__meta">Delta State • 2022 — Present</div>
+				</div>
+				<ul class="bullets">
+					<li>Built and maintained React/Next.js apps for schools, small businesses, and blogs.</li>
+					<li>English & Geography Teacher (2023): strengthened communication and mentorship skills.</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section two-col">
+			<div>
+				<h2 class="section__title">Selected Projects</h2>
+				<ul class="bullets">
+					<li><strong>Online Exam Portal</strong> — role‑based exams, analytics, and secure proctoring adopted by schools.</li>
+					<li><strong>Condo</strong> — personal tech blog project; sunset after learnings on product‑market fit.</li>
+				</ul>
+			</div>
+			<div>
+				<h2 class="section__title">Education</h2>
+				<div class="item">
+					<div class="item__head">
+						<h3 class="item__title">FUPRE — B.Sc. Geology</h3>
+						<div class="item__meta">Effurun, Delta State • Graduated 2024</div>
+					</div>
+					<p class="muted">Thesis: Study of Lignite Deposits in Obomkpa, Asaba</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section">
+			<h2 class="section__title">Leadership & Impact</h2>
+			<ul class="bullets">
+				<li>Self‑funded education through entrepreneurship (Uber) while completing research and studies.</li>
+				<li>Mentored peers on balancing academics with work; led small teams to ship.</li>
+			</ul>
+		</section>
+
+		<footer class="footer">
+			<ul class="contacts small">
+				<li><a href="mailto:davidobonyanoefe@gmail.com">davidobonyanoefe@gmail.com</a></li>
+				<li><a href="https://linkedin.com/in/david-obonyano" target="_blank" rel="noreferrer">LinkedIn</a></li>
+				<li>@david_efe6</li>
+			</ul>
+		</footer>
+	</main>
+</body>
+</html>

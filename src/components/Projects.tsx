@@ -2,27 +2,23 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import Link from "next/link";
+// import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
 import { 
   faExternalLinkAlt, 
   faPlay,
   faCode,
   faGamepad,
   faFilm,
-  faTv,
   faPuzzlePiece,
-  faMobile,
   faDesktop,
   faStopwatch,
   faCalculator,
-  faCloudSun,
-  faCloudRain
+  faCloudSun
 } from "@fortawesome/free-solid-svg-icons";
 import { 
-  faGithub,
-  faTwitter,
-  faYoutube
+  faGithub
 } from "@fortawesome/free-brands-svg-icons";
 
 // Serious Projects Data
@@ -114,13 +110,13 @@ const seriousProjects = [
 const funProjects = [
   {
     id: 1,
-    name: "Stopwatch",
-    icon: faStopwatch,
-    color: "from-green-500 to-emerald-500",
-    description: "Precise stopwatch with lap times",
+    name: "Tic Tac Toe",
+    icon: faPuzzlePiece,
+    color: "from-blue-500 to-cyan-500",
+    description: "Classic game with AI opponent",
     tech: "JavaScript",
-    url: "https://stopwatch-demo.vercel.app",
-    githubUrl: "https://github.com/davidobonyano/stopwatch"
+    url: "https://davidobonyano.github.io/tik-tak-toe/",
+    githubUrl: "https://github.com/davidobonyano/tik-tak-toe"
   },
   {
     id: 2,
@@ -134,6 +130,16 @@ const funProjects = [
   },
   {
     id: 3,
+    name: "Movie Trailer App",
+    icon: faFilm,
+    color: "from-red-500 to-pink-500",
+    description: "Browse and watch movie trailers",
+    tech: "javascript",
+    url: "https://davidobonyano.github.io/movie-trailers-",
+    githubUrl: "https://github.com/davidobonyano/movie-trailers-"
+  },
+  {
+    id: 4,
     name: "Weather App",
     icon: faCloudSun,
     color: "from-yellow-400 to-orange-500",
@@ -143,79 +149,45 @@ const funProjects = [
     githubUrl: "https://github.com/davidobonyano/weather-app"
   },
   {
-    id: 4,
-    name: "Movie Trailer App",
-    icon: faFilm,
-    color: "from-red-500 to-pink-500",
-    description: "Browse and watch movie trailers",
-    tech: "React Native",
-    url: "https://movie-app-demo.vercel.app",
-    githubUrl: "https://github.com/davidobonyano/movie-app"
-  },
-  {
     id: 5,
-    name: "Tic Tac Toe",
-    icon: faPuzzlePiece,
-    color: "from-blue-500 to-cyan-500",
-    description: "Classic game with AI opponent",
+    name: "Stopwatch",
+    icon: faStopwatch,
+    color: "from-green-500 to-emerald-500",
+    description: "Precise stopwatch with lap times",
     tech: "JavaScript",
-    url: "https://tictactoe-demo.vercel.app"
+    url: "https://davidobonyano.github.io/clock-js",
+    githubUrl: "https://github.com/davidobonyano/clock-js"
   },
   {
     id: 6,
-    name: "Twitter Clone",
-    icon: faTwitter,
-    color: "from-sky-500 to-blue-500",
-    description: "Social media platform clone",
-    tech: "Next.js",
-    url: "https://twitter-clone-demo.vercel.app"
+    name: "Rock Paper Scissors",
+    icon: faGamepad,
+    color: "from-fuchsia-500 to-violet-600",
+    description: "Play RPS with live score",
+    tech: "JavaScript",
+    url: "http://davidobonyano.github.io/rock-paper-scissors-game",
+    githubUrl: "https://github.com/davidobonyano/rock-paper-scissors-game"
   },
   {
     id: 7,
-    name: "YouTube Clone",
-    icon: faYoutube,
-    color: "from-red-600 to-red-500",
-    description: "Video sharing platform",
-    tech: "React",
-    url: "https://youtube-clone-demo.vercel.app"
-  },
-  {
-    id: 8,
-    name: "Netflix Clone",
-    icon: faTv,
-    color: "from-gray-800 to-red-600",
-    description: "Streaming service interface",
-    tech: "Next.js",
-    url: "https://netflix-clone-demo.vercel.app"
-  },
-  {
-    id: 9,
-    name: "Gaming Hub",
-    icon: faGamepad,
-    color: "from-purple-500 to-pink-500",
-    description: "Collection of mini games",
-    tech: "JavaScript",
-    url: "https://gaming-hub-demo.vercel.app"
-  },
-  {
-    id: 10,
     name: "Portfolio Site",
     icon: faDesktop,
     color: "from-indigo-500 to-purple-600",
     description: "Personal portfolio website",
     tech: "Next.js",
     url: "https://portfolio-demo.vercel.app"
+    
   }
 ];
 
 export default function Projects() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeTab, setActiveTab] = useState("serious");
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
-  const [selectedApp, setSelectedApp] = useState<any>(null);
+  // const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const [selectedApp, setSelectedApp] = useState<{ id: number; name: string; url: string; githubUrl?: string } | null>(null);
   const [showContextMenu, setShowContextMenu] = useState(false);
-  const [contextMenuApp, setContextMenuApp] = useState<any>(null);
-  const [contextMenuPosition, setContextMenuPosition] = useState({ x: 0, y: 0 });
+  const [contextMenuApp, setContextMenuApp] = useState<{ id: number; name: string; url: string; githubUrl?: string } | null>(null);
+  const [contextMenuPosition, setContextMenuPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -236,7 +208,7 @@ export default function Projects() {
   }, []);
 
   // Handle context menu
-  const handleAppClick = (app: any, event: React.MouseEvent) => {
+  const handleAppClick = (app: { id: number; name: string; url: string; githubUrl?: string }, event: React.MouseEvent) => {
     event.preventDefault();
     const rect = event.currentTarget.getBoundingClientRect();
     setContextMenuPosition({
@@ -340,10 +312,12 @@ export default function Projects() {
                         <FontAwesomeIcon icon={faCode} className="text-6xl text-white/80" />
                       </div>
                     ) : (
-                      <img 
-                        src={project.image} 
+                      <Image 
+                        src={project.image}
                         alt={project.title}
-                        className="w-full h-full object-cover"
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-cover"
                         onError={(e) => {
                           // Fallback to icon if image fails to load
                           const target = e.target as HTMLImageElement;
@@ -447,15 +421,17 @@ export default function Projects() {
               <div className="w-80 h-[600px] bg-gray-900 rounded-[3rem] p-4 shadow-2xl border-4 border-gray-700">
                 {/* Phone Screen */}
                 <div className="w-full h-full bg-black rounded-[2rem] overflow-hidden relative">
-                  {/* Status Bar */}
-                  <div className="flex justify-between items-center px-6 py-3 text-white text-sm">
-                    <span>9:41</span>
-                    <div className="flex items-center gap-1">
-                      <div className="w-4 h-2 bg-white rounded-sm"></div>
-                      <div className="w-6 h-3 border border-white rounded-sm"></div>
+                  {/* Status Bar shows only on app grid */}
+                  {!selectedApp && (
+                    <div className="flex justify-between items-center px-6 py-3 text-white text-sm">
+                      <span>9:41</span>
+                      <div className="flex items-center gap-1">
+                        <div className="w-4 h-2 bg-white rounded-sm"></div>
+                        <div className="w-6 h-3 border border-white rounded-sm"></div>
+                      </div>
                     </div>
-                  </div>
-                  
+                  )}
+
                   {/* App Grid or Selected App */}
                   {!selectedApp ? (
                     <div className="px-6 py-4">
@@ -492,13 +468,13 @@ export default function Projects() {
                       {/* Back Button */}
                       <button
                         onClick={() => setSelectedApp(null)}
-                        className="absolute top-4 left-4 z-10 w-8 h-8 bg-gray-600 hover:bg-gray-500 rounded-full flex items-center justify-center text-white text-sm font-bold transition-colors"
+                        className="absolute top-2 left-2 z-10 w-8 h-8 flex items-center justify-center text-white text-sm font-bold"
                       >
                         ←
                       </button>
                       
                       {/* App iframe with scrollable content */}
-                      <div className="w-full h-full overflow-auto rounded-b-[2rem] pt-12">
+                      <div className="w-full h-full overflow-auto rounded-b-[2rem]">
                         <iframe
                           src={selectedApp.url}
                           className="w-full h-full border-0 min-h-[500px]"

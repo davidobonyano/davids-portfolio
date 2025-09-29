@@ -7,11 +7,11 @@ import Footer from "./Footer";
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faFolderOpen, faUser, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 export default function MainPortfolio() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [activeTestimonial, setActiveTestimonial] = useState<number | null>(null);
 
@@ -73,8 +73,8 @@ export default function MainPortfolio() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-4xl md:text-6xl font-bold leading-tight"
         >
-          Quality <span className="text-blue-500">Design</span> &{" "}
-          <span className="text-blue-500">Web Development</span> Synergy
+          Quality <span className="text-gradient-ice">Design</span> &{" "}
+          <span className="text-gradient-ice">Web Development</span> Synergy
         </motion.h1>
 
         <motion.p
@@ -83,7 +83,7 @@ export default function MainPortfolio() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-8 max-w-4xl text-gray-200 text-xl md:text-2xl leading-relaxed font-medium"
         >
-          Hi, I'm David. A full-stack developer with expertise in <span className="text-blue-400 font-semibold">Next.js</span>, <span className="text-blue-400 font-semibold">React</span>, <span className="text-blue-400 font-semibold">Node.js</span>, and <span className="text-blue-400 font-semibold">TypeScript</span>. I create intuitive, visually stunning and highly functional web applications that deliver exceptional user experiences.
+          Hi, I&apos;m David. A full-stack developer with expertise in <span className="font-semibold">Next.js</span>, <span className="font-semibold">React</span>, <span className="font-semibold">Node.js</span>, and <span className="font-semibold">TypeScript</span>. I create intuitive, visually stunning and highly functional web applications that deliver exceptional user experiences.
         </motion.p>
 
         {/* Action Buttons */}
@@ -129,11 +129,36 @@ export default function MainPortfolio() {
           {/* Profile Pictures */}
           <div className="relative flex items-center justify-center mb-8">
             {[
-              { name: "Sarah Johnson", role: "Product Manager", testimonial: "David delivered an exceptional e-commerce platform that increased our sales by 40%. His attention to detail and technical expertise is unmatched.", avatar: "SJ" },
-              { name: "Michael Chen", role: "Startup Founder", testimonial: "Working with David was a game-changer. He built our MVP in record time with clean, scalable code that we still use today.", avatar: "MC" },
-              { name: "Emily Rodriguez", role: "Design Director", testimonial: "David's frontend skills are incredible. He brought our designs to life with smooth animations and perfect responsiveness.", avatar: "ER" },
-              { name: "Alex Thompson", role: "CTO", testimonial: "The full-stack solution David provided exceeded our expectations. His Node.js backend is rock solid and performs flawlessly.", avatar: "AT" },
-              { name: "Lisa Wang", role: "Marketing Lead", testimonial: "David's Next.js implementation improved our site speed by 60%. Our SEO rankings and user engagement have never been better.", avatar: "LW" }
+              { 
+                name: "Wale", 
+                role: "Senior Developer, NSDC", 
+                testimonial: "I led the NSDC website build and David, as a young dev then, consistently delivered clean, reliable features. His hunger to learn and speed of iteration made a real impact on our timelines.",
+                image: "/testimonials/wale.jpg"
+              },
+              { 
+                name: "Alhaja", 
+                role: "Staff, Yano School", 
+                testimonial: "Our school portal became so much easier to use. Payments, timetables and results are clear and fast. David listened to our needs and shipped exactly what helped the team.",
+                image: "/testimonials/alaha.jpg"
+              },
+              { 
+                name: "Mrs Diamond", 
+                role: "Proprietor & Head of School, Yano School", 
+                testimonial: "From stability to usability, David delivered a system we trust every day. Parents, teachers and students all found it intuitive and it truly elevated our operations.",
+                image: "/testimonials/mrsdiamond.jpg"
+              },
+              { 
+                name: "Joy", 
+                role: "Owner, Deluxe Store (E‑commerce)", 
+                testimonial: "David built our online store with great attention to speed and conversion. The checkout is smooth, and our catalog management is a breeze now.",
+                image: "/testimonials/joy.jpg"
+              },
+              { 
+                name: "Driven", 
+                role: "Tech Startup", 
+                testimonial: "We shipped a solid MVP fast. David combines product sense with strong engineering, setting us up with a codebase that’s scalable and easy to extend.",
+                image: "/testimonials/koyin.jpg"
+              }
             ].map((client, index) => (
               <motion.div
                 key={client.name}
@@ -153,9 +178,27 @@ export default function MainPortfolio() {
                 transition={{ delay: 0.9 + index * 0.1 }}
                 onClick={() => setActiveTestimonial(activeTestimonial === index ? null : index)}
               >
-                {/* Profile Circle */}
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg border-2 border-white/20 transition-all duration-300">
-                  {client.avatar}
+                {/* Profile Image with fallback to initials */}
+                <div className="relative w-12 h-12 rounded-full overflow-hidden shadow-lg border-2 border-white/20">
+                  <Image 
+                    src={client.image}
+                    alt={client.name}
+                    fill
+                    sizes="48px"
+                    className="object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      const parent = target.parentElement;
+                      if (parent) {
+                        const initials = client.name.split(' ').map(n => n.charAt(0)).join('').slice(0,2).toUpperCase();
+                        parent.innerHTML = `
+                          <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                            ${initials}
+                          </div>
+                        `;
+                      }
+                    }}
+                  />
                 </div>
                 
                 {/* Individual Testimonial Card */}
@@ -167,7 +210,7 @@ export default function MainPortfolio() {
                   <div className="text-white text-center">
                     <p className="font-medium text-blue-400 mb-1 text-sm">{client.name}</p>
                     <p className="text-gray-400 text-xs mb-2">{client.role}</p>
-                    <p className="text-gray-200 leading-relaxed text-xs">"{client.testimonial}"</p>
+                    <p className="text-gray-200 leading-relaxed text-xs">&quot;{client.testimonial}&quot;</p>
                   </div>
                   {/* Arrow */}
                   <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black/90"></div>

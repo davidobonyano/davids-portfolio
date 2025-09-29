@@ -10,8 +10,7 @@ import {
 import { 
   faLinkedin as faLinkedinBrand,
   faGithub as faGithubBrand,
-  faTwitter as faTwitterBrand,
-  faInstagram as faInstagramBrand
+  faTwitter as faTwitterBrand
 } from "@fortawesome/free-brands-svg-icons";
 import emailjs from '@emailjs/browser';
 
@@ -30,26 +29,20 @@ export default function Contact() {
     {
       icon: faLinkedinBrand,
       label: "LinkedIn",
-      url: "https://linkedin.com/in/david-obonyano",
+      url: "https://www.linkedin.com/in/david-obonyano-bb3478256?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
       color: "hover:text-blue-400"
     },
     {
       icon: faGithubBrand,
       label: "GitHub",
-      url: "https://github.com/david-obonyano",
+      url: "https://github.com/davidobonyano",
       color: "hover:text-gray-300"
     },
     {
       icon: faTwitterBrand,
-      label: "Twitter",
-      url: "https://twitter.com/david_obonyano",
+      label: "X (Twitter)",
+      url: "https://x.com/davidalocaefe?s=21",
       color: "hover:text-blue-400"
-    },
-    {
-      icon: faInstagramBrand,
-      label: "Instagram",
-      url: "https://instagram.com/david_obonyano",
-      color: "hover:text-pink-400"
     }
   ];
 
@@ -114,7 +107,7 @@ export default function Contact() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-            Let's Connect
+            Let&apos;s Connect
           </h2>
         </div>
 
@@ -124,7 +117,7 @@ export default function Contact() {
             <div className="text-center lg:text-left">
               <h3 className="text-2xl font-bold text-white mb-8">Get in Touch</h3>
               <p className="text-gray-400 text-lg mb-8">
-                Have a project in mind? Let's discuss how we can bring your ideas to life.
+                Have a project in mind? Let&apos;s discuss how we can bring your ideas to life.
               </p>
             </div>
 
@@ -168,7 +161,7 @@ export default function Contact() {
               <div className="text-center py-12">
                 <FontAwesomeIcon icon={faCheckCircle} className="text-green-400 text-6xl mb-4" />
                 <h4 className="text-2xl font-bold text-white mb-2">Message Sent!</h4>
-                <p className="text-gray-400">Thank you for reaching out. I'll get back to you soon!</p>
+                <p className="text-gray-400">Thank you for reaching out. I&apos;ll get back to you soon!</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">

@@ -7,8 +7,7 @@ import {
 import { 
   faLinkedin as faLinkedinBrand,
   faGithub as faGithubBrand,
-  faTwitter as faTwitterBrand,
-  faInstagram as faInstagramBrand
+  faTwitter as faTwitterBrand
 } from "@fortawesome/free-brands-svg-icons";
 
 export default function Footer() {
@@ -22,19 +21,19 @@ export default function Footer() {
     {
       icon: faLinkedinBrand,
       label: "LinkedIn",
-      url: "https://linkedin.com/in/david-obonyano",
+      url: "https://www.linkedin.com/in/david-obonyano-bb3478256?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
       color: "hover:text-blue-400"
     },
     {
       icon: faGithubBrand,
       label: "GitHub",
-      url: "https://github.com/david-obonyano",
+      url: "https://github.com/davidobonyano",
       color: "hover:text-gray-300"
     },
     {
       icon: faTwitterBrand,
-      label: "Twitter",
-      url: "https://twitter.com/david_obonyano",
+      label: "X (Twitter)",
+      url: "https://x.com/davidalocaefe?s=21",
       color: "hover:text-blue-400"
     }
   ];
@@ -55,7 +54,7 @@ export default function Footer() {
             <h3 className="text-2xl font-bold text-white">David Obonyano</h3>
             <p className="text-gray-400 leading-relaxed">
               Full-stack developer, bugs hate to see me coming. 
-              I make websites that don't break when you click them (most of the time).
+              I make websites that don&apos;t break when you click them (most of the time).
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (

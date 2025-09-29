@@ -22,7 +22,7 @@ export default class ErrorBoundary extends Component<Props, State> {
     return { hasError: true, error };
   }
 
-  componentDidCatch(error: Error, errorInfo: any) {
+  componentDidCatch(error: Error, errorInfo: { componentStack?: string }) {
     console.error("Error caught by boundary:", error, errorInfo);
   }
 
@@ -37,7 +37,7 @@ export default class ErrorBoundary extends Component<Props, State> {
               </svg>
             </div>
             <h1 className="text-2xl font-bold text-white mb-4">Something went wrong</h1>
-            <p className="text-gray-400 mb-6">We're working to fix this issue. Please try refreshing the page.</p>
+            <p className="text-gray-400 mb-6">We&apos;re working to fix this issue. Please try refreshing the page.</p>
             <button
               onClick={() => window.location.reload()}
               className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
