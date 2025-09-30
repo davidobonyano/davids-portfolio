@@ -238,13 +238,20 @@ export default function Projects() {
 
                   <div className="p-6">
                     <h3 className="text-2xl font-bold mb-3 group-hover:text-blue-400 transition-colors">{project.title}</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.slice(0, 3).map((tech) => (
-                        <span key={tech} className="px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-sm">
-                          {tech}
-                        </span>
-                      ))}
+                    {/* CTA Row */}
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex items-center text-blue-400 group-hover:text-blue-300 font-medium">
+                        <span>See details</span>
+                        <FontAwesomeIcon
+                          icon={faExternalLinkAlt}
+                          className="ml-2 transition-transform duration-200 group-hover:translate-x-1"
+                        />
+                      </span>
                     </div>
+                    {/* Technologies as italic text */}
+                    <p className="mt-3 text-sm italic text-gray-400">
+                      {project.technologies.slice(0, 3).join(", ")}
+                    </p>
                   </div>
                 </motion.div>
               </Link>
