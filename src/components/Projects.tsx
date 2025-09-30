@@ -2,11 +2,11 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-// import Link from "next/link";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
-import { 
-  faExternalLinkAlt, 
+import {
+  faExternalLinkAlt,
   faPlay,
   faCode,
   faGamepad,
@@ -15,96 +15,10 @@ import {
   faDesktop,
   faStopwatch,
   faCalculator,
-  faCloudSun
+  faCloudSun,
 } from "@fortawesome/free-solid-svg-icons";
-import { 
-  faGithub
-} from "@fortawesome/free-brands-svg-icons";
-
-// Serious Projects Data
-const seriousProjects = [
-  {
-    id: 1,
-    title: "Yano School",
-    description: "A Nigerian  school platform (KG1–SS3) with admin, teacher, and student dashboards. Students can view payments, timetables, results, and upcoming exams. Admin has full CRUD across sessions, terms, classes, subjects, fees, and more; teachers upload results and manage class records.",
-    image: "/projects/yanoschool.png",
-    technologies: [
-      "Next.js 15",
-      "TypeScript",
-      "Supabase (DB/Auth/Storage)",
-      "PostgreSQL",
-      "Radix UI",
-      "React Hook Form + Zod",
-      "PDF-Lib"
-    ],
-    liveUrl: "https://yanoschoool.vercel.app/",
-    githubUrl: "https://github.com/davidobonyano/yanoschool-next",
-    featured: true
-  },
-  {
-    id: 2,
-    title: "CareerPilot – Job Tracker",
-    description: "A job application tracker with drag & drop Kanban board (Applied → Interviewing → Offer → Rejected), contacts manager, and tasks. Features intuitive drag-and-drop functionality for moving applications between stages. Fully client-side with offline persistence.",
-    image: "/projects/careerpilot.png",
-    technologies: [
-      "TypeScript",
-      "Tailwind CSS",
-      "LocalForage (IndexedDB)",
-      "@hello-pangea/dnd",
-      "Framer Motion",
-    ],
-    liveUrl: "https://career-pilot-liard.vercel.app",
-    githubUrl: "https://github.com/davidobonyano/Career-pilot",
-    featured: true
-  },
-  {
-    id: 3,
-    title: "NSDC Nigeria Website",
-    description: "Official website for the National Sugar Development Council (NSDC) Nigeria - a government agency established to catalyze sugar industry development and achieve 70% self-sufficiency in sugar production. Features comprehensive sugar industry data, pricing information, company directories, and policy documentation.",
-    image: "/projects/nscdc.png",
-    technologies: [
-      "PHP",
-      "MySQL",
-      "Bootstrap",
-      "jQuery"
-    ],
-    liveUrl: "https://www.nsdcnigeria.org/",
-    githubUrl: "#", // No GitHub repo available
-    featured: true
-  },
-  {
-    id: 4,
-    title: "FixFinder - Local Services Directory",
-    description: "A comprehensive service marketplace connecting users with verified local professionals across 13+ categories (electricians, plumbers, tailors, hair stylists, etc.). Features geo-location filtering, professional profiles with ratings, advanced search functionality, service categories, and responsive design. Built as a modern MVP with 26+ professional profiles and plans for full backend integration.",
-    image: "/projects/fixfinder.png",
-    technologies: [
-      "React Router",
-      "Context API",
-      "Geo-location API",
-      "Local Storage",
-      "React Icons",
-     
-    ],
-    liveUrl: "https://fixfinder-cyan.vercel.app/",
-    githubUrl: "https://github.com/davidobonyano/fixfinder",
-    featured: true
-  },
-  {
-    id: 5,
-    title: "Medilabs",
-    description: "A modern hospital website featuring appointment booking system, medical services showcase, doctor profiles, and responsive design. Includes image sliders, contact forms, and professional healthcare presentation.",
-    image: "/projects/medihospital.png",
-    technologies: [
-      "HTML5",
-      "CSS3",
-      "Javascript",
-      "Font Awesome5"
-    ],
-    liveUrl: "https://davidobonyano.github.io/medicare-/",
-    githubUrl: "https://github.com/davidobonyano/medicare-",
-    featured: false
-  }
-];
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { seriousProjects } from "@/app/projects/data";
 
 // Fun Projects Data (Phone App Style)
 const funProjects = [
@@ -116,7 +30,7 @@ const funProjects = [
     description: "Classic game with AI opponent",
     tech: "JavaScript",
     url: "https://davidobonyano.github.io/tik-tak-toe/",
-    githubUrl: "https://github.com/davidobonyano/tik-tak-toe"
+    githubUrl: "https://github.com/davidobonyano/tik-tak-toe",
   },
   {
     id: 2,
@@ -126,7 +40,7 @@ const funProjects = [
     description: "Advanced calculator with history",
     tech: "React",
     url: "https://davidobonyano.github.io/calculatorr-assignment/   ",
-    githubUrl: "https://github.com/davidobonyano/calculatorr-assignment "
+    githubUrl: "https://github.com/davidobonyano/calculatorr-assignment ",
   },
   {
     id: 3,
@@ -136,7 +50,7 @@ const funProjects = [
     description: "Browse and watch movie trailers",
     tech: "javascript",
     url: "https://davidobonyano.github.io/movie-trailers-",
-    githubUrl: "https://github.com/davidobonyano/movie-trailers-"
+    githubUrl: "https://github.com/davidobonyano/movie-trailers-",
   },
   {
     id: 4,
@@ -146,7 +60,7 @@ const funProjects = [
     description: "Real-time weather updates",
     tech: "JavaScript",
     url: "https://davidobonyano.github.io/weather-app/",
-    githubUrl: "https://github.com/davidobonyano/weather-app"
+    githubUrl: "https://github.com/davidobonyano/weather-app",
   },
   {
     id: 5,
@@ -156,7 +70,7 @@ const funProjects = [
     description: "Precise stopwatch with lap times",
     tech: "JavaScript",
     url: "https://davidobonyano.github.io/clock-js",
-    githubUrl: "https://github.com/davidobonyano/clock-js"
+    githubUrl: "https://github.com/davidobonyano/clock-js",
   },
   {
     id: 6,
@@ -166,7 +80,7 @@ const funProjects = [
     description: "Play RPS with live score",
     tech: "JavaScript",
     url: "http://davidobonyano.github.io/rock-paper-scissors-game",
-    githubUrl: "https://github.com/davidobonyano/rock-paper-scissors-game"
+    githubUrl: "https://github.com/davidobonyano/rock-paper-scissors-game",
   },
   {
     id: 7,
@@ -175,29 +89,25 @@ const funProjects = [
     color: "from-indigo-500 to-purple-600",
     description: "Personal portfolio website",
     tech: "Next.js",
-    url: "https://portfolio-demo.vercel.app"
-    
-  }
+    url: "https://david-obonyano.vercel.app/",
+    githubUrl: "https://github.com/davidobonyano/davids-portfolio",
+    },
 ];
 
 export default function Projects() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeTab, setActiveTab] = useState("serious");
-  // const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [selectedApp, setSelectedApp] = useState<{ id: number; name: string; url: string; githubUrl?: string } | null>(null);
   const [showContextMenu, setShowContextMenu] = useState(false);
   const [contextMenuApp, setContextMenuApp] = useState<{ id: number; name: string; url: string; githubUrl?: string } | null>(null);
   const [contextMenuPosition, setContextMenuPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+      }
+    }, { threshold: 0.1 });
 
     const element = document.getElementById('projects-section');
     if (element) {
@@ -207,24 +117,16 @@ export default function Projects() {
     return () => observer.disconnect();
   }, []);
 
-  // Handle context menu
   const handleAppClick = (app: { id: number; name: string; url: string; githubUrl?: string }, event: React.MouseEvent) => {
     event.preventDefault();
     const rect = event.currentTarget.getBoundingClientRect();
-    setContextMenuPosition({
-      x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2
-    });
+    setContextMenuPosition({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 });
     setContextMenuApp(app);
     setShowContextMenu(true);
   };
 
-  // Close context menu when clicking outside
   useEffect(() => {
-    const handleClickOutside = () => {
-      setShowContextMenu(false);
-    };
-    
+    const handleClickOutside = () => setShowContextMenu(false);
     if (showContextMenu) {
       document.addEventListener('click', handleClickOutside);
       return () => document.removeEventListener('click', handleClickOutside);
@@ -241,12 +143,8 @@ export default function Projects() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-            Selected Works
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Projects for brands and professional applications
-          </p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Selected Works</h2>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">Projects for brands and professional applications</p>
         </motion.div>
 
         {/* Tab Navigation */}
@@ -260,9 +158,7 @@ export default function Projects() {
             <button
               onClick={() => setActiveTab("serious")}
               className={`px-6 py-3 rounded-full transition-all duration-300 text-lg font-medium ${
-                activeTab === "serious"
-                  ? "bg-blue-500 text-white"
-                  : "text-gray-400 hover:text-white hover:bg-white/10"
+                activeTab === "serious" ? "bg-blue-500 text-white" : "text-gray-400 hover:text-white hover:bg-white/10"
               }`}
             >
               Projects
@@ -270,9 +166,7 @@ export default function Projects() {
             <button
               onClick={() => setActiveTab("fun")}
               className={`px-6 py-3 rounded-full transition-all duration-300 text-lg font-medium ${
-                activeTab === "fun"
-                  ? "bg-blue-500 text-white"
-                  : "text-gray-400 hover:text-white hover:bg-white/10"
+                activeTab === "fun" ? "bg-blue-500 text-white" : "text-gray-400 hover:text-white hover:bg-white/10"
               }`}
             >
               Side Projects
@@ -289,121 +183,69 @@ export default function Projects() {
             className="grid grid-cols-1 lg:grid-cols-2 gap-8"
           >
             {seriousProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.1 * index }}
-                whileHover={{ y: -5 }}
-                className="group relative bg-gray-800/50 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all duration-300"
-              >
-                {project.featured && (
-                  <div className="absolute top-4 right-4 z-10">
-                    <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                      Featured
-                    </span>
-                  </div>
-                )}
-                
-                <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 relative overflow-hidden">
-                  {project.image && project.image !== "" ? (
-                    project.image === "gradient" ? (
-                      <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                        <FontAwesomeIcon icon={faCode} className="text-6xl text-white/80" />
-                      </div>
-                    ) : (
-                      <Image 
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                        className="object-cover"
-                        onError={(e) => {
-                          // Fallback to icon if image fails to load
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
-                          const parent = target.parentElement;
-                          if (parent) {
-                            parent.innerHTML = `
-                              <div class="absolute inset-0 flex items-center justify-center">
-                                <svg class="w-16 h-16 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                  <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
-                                </svg>
-                              </div>
-                            `;
-                          }
-                        }}
-                      />
-                    )
-                  ) : (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <FontAwesomeIcon icon={faCode} className="text-6xl text-gray-600" />
+              <Link key={project.id} href={`/projects/${project.id}`} className="group">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.1 * index }}
+                  whileHover={{ y: -5 }}
+                  className="relative bg-gray-800/50 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all duration-300 cursor-pointer"
+                >
+                  {project.featured && (
+                    <div className="absolute top-4 right-4 z-10">
+                      <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Featured</span>
                     </div>
                   )}
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300"></div>
-                </div>
-                
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold mb-3 group-hover:text-blue-400 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-400 mb-4 leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <div className="flex gap-4">
-                    {project.liveUrl && project.liveUrl !== "#" ? (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all duration-300 transform hover:scale-105"
-                      >
-                        <FontAwesomeIcon icon={faExternalLinkAlt} />
-                        Live Demo
-                      </a>
+
+                  <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 relative overflow-hidden">
+                    {project.image && project.image !== "" ? (
+                      project.image === "gradient" ? (
+                        <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                          <FontAwesomeIcon icon={faCode} className="text-6xl text-white/80" />
+                        </div>
+                      ) : (
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 50vw"
+                          className="object-cover"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                            const parent = target.parentElement;
+                            if (parent) {
+                              parent.innerHTML = `
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                  <svg class="w-16 h-16 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+                                  </svg>
+                                </div>
+                              `;
+                            }
+                          }}
+                        />
+                      )
                     ) : (
-                      <button
-                        disabled
-                        className="flex items-center gap-2 px-4 py-2 bg-gray-600 text-gray-400 rounded-lg cursor-not-allowed"
-                      >
-                        <FontAwesomeIcon icon={faExternalLinkAlt} />
-                        Live Demo
-                      </button>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <FontAwesomeIcon icon={faCode} className="text-6xl text-gray-600" />
+                      </div>
                     )}
-                    {project.githubUrl && project.githubUrl !== "#" ? (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-all duration-300 transform hover:scale-105"
-                      >
-                        <FontAwesomeIcon icon={faGithub} />
-                        Code
-                      </a>
-                    ) : (
-                      <button
-                        disabled
-                        className="flex items-center gap-2 px-4 py-2 bg-gray-600 text-gray-400 rounded-lg cursor-not-allowed"
-                      >
-                        <FontAwesomeIcon icon={faGithub} />
-                        Code
-                      </button>
-                    )}
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300"></div>
                   </div>
-                </div>
-              </motion.div>
+
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold mb-3 group-hover:text-blue-400 transition-colors">{project.title}</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.slice(0, 3).map((tech) => (
+                        <span key={tech} className="px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-sm">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              </Link>
             ))}
           </motion.div>
         )}
@@ -448,16 +290,11 @@ export default function Projects() {
                             className="relative group cursor-pointer"
                           >
                             {/* Main App Icon - Click shows context menu */}
-                            <button
-                              onClick={(e) => handleAppClick(app, e)}
-                              className="block w-full"
-                            >
+                            <button onClick={(e) => handleAppClick(app, e)} className="block w-full">
                               <div className={`w-14 h-14 bg-gradient-to-br ${app.color} rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 relative`}>
                                 <FontAwesomeIcon icon={app.icon} className="text-white text-xl" />
                               </div>
-                              <p className="text-white text-xs text-center mt-2 font-medium leading-tight">
-                                {app.name}
-                              </p>
+                              <p className="text-white text-xs text-center mt-2 font-medium leading-tight">{app.name}</p>
                             </button>
                           </motion.div>
                         ))}
@@ -466,13 +303,10 @@ export default function Projects() {
                   ) : (
                     <div className="w-full h-full relative">
                       {/* Back Button */}
-                      <button
-                        onClick={() => setSelectedApp(null)}
-                        className="absolute top-2 left-2 z-10 w-8 h-8 flex items-center justify-center text-white text-sm font-bold"
-                      >
+                      <button onClick={() => setSelectedApp(null)} className="absolute top-2 left-2 z-10 w-8 h-8 flex items-center justify-center text-white text-sm font-bold">
                         ←
                       </button>
-                      
+
                       {/* App iframe with scrollable content */}
                       <div className="w-full h-full overflow-auto rounded-b-[2rem]">
                         <iframe
@@ -498,10 +332,7 @@ export default function Projects() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             className="fixed z-50 bg-gray-800 rounded-lg shadow-2xl border border-gray-600 py-2 min-w-[200px]"
-            style={{
-              left: `${Math.min(contextMenuPosition.x - 100, window.innerWidth - 220)}px`,
-              top: `${Math.min(contextMenuPosition.y - 50, window.innerHeight - 120)}px`
-            }}
+            style={{ left: `${Math.min(contextMenuPosition.x - 100, window.innerWidth - 220)}px`, top: `${Math.min(contextMenuPosition.y - 50, window.innerHeight - 120)}px` }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Open App Option */}
@@ -515,25 +346,36 @@ export default function Projects() {
               <FontAwesomeIcon icon={faPlay} className="text-green-400" />
               <span>Open App</span>
             </button>
-            
+
             {/* View GitHub Option */}
             <button
               onClick={() => {
-                window.open(
-                  contextMenuApp.githubUrl || `https://github.com/davidobonyano/${contextMenuApp.name.toLowerCase().replace(/\s+/g, '-')}`,
-                  '_blank',
-                  'noopener,noreferrer'
-                );
+                if (contextMenuApp?.githubUrl) {
+                  window.open(contextMenuApp.githubUrl, '_blank');
+                }
                 setShowContextMenu(false);
               }}
               className="w-full px-4 py-3 text-left text-white hover:bg-gray-700 transition-colors flex items-center gap-3"
             >
-              <FontAwesomeIcon icon={faGithub} className="text-gray-400" />
+              <FontAwesomeIcon icon={faGithub} className="text-white" />
               <span>View GitHub</span>
+            </button>
+
+            {/* Open in New Tab */}
+            <button
+              onClick={() => {
+                if (contextMenuApp) {
+                  window.open(contextMenuApp.url, '_blank');
+                }
+                setShowContextMenu(false);
+              }}
+              className="w-full px-4 py-3 text-left text-white hover:bg-gray-700 transition-colors flex items-center gap-3"
+            >
+              <FontAwesomeIcon icon={faExternalLinkAlt} className="text-blue-400" />
+              <span>Open in New Tab</span>
             </button>
           </motion.div>
         )}
-
       </div>
     </section>
   );

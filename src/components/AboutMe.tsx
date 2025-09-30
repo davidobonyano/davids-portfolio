@@ -170,7 +170,7 @@ export default function AboutMe() {
                 <h3 className="text-2xl md:text-3xl font-bold mb-4">
                   David Obonyano
                 </h3>
-                <p className="text-xl font-semibold mb-2 text-gradient-primary">
+                <p className="text-xl font-semibold mb-2 text-gradient-ice">
                   Full-Stack Developer
                 </p>
                 <p className="text-gray-400 text-lg">

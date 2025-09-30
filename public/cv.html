@@ -10,33 +10,47 @@
 	<style>
 		:root { --text:#0f172a; --muted:#475569; --accent:#0ea5e9; }
 		html,body { margin:0; padding:0; }
-		body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; color:var(--text); }
+		body { font-family: Segoe UI, system-ui, -apple-system, Inter, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; color:var(--text); font-weight:400; font-synthesis: none; font-variation-settings: "wght" 400; font-optical-sizing: none; }
+		b, strong { font-weight:600; }
+		a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+		a:visited { color: #0369a1; }
+		a:hover { text-decoration-thickness: 2px; }
 		.page { max-width: 800px; margin: 32px auto; padding: 0 24px 32px; }
 		.header { display:flex; justify-content:space-between; gap:24px; align-items:flex-start; border-bottom:2px solid #e2e8f0; padding-bottom:16px; }
-		.name { margin:0 0 4px; font-size:32px; line-height:1.1; }
-		.role { margin:0; color:var(--muted); font-weight:500; }
+		.name { margin:0 0 4px; font-size:32px; line-height:1.1; font-weight:700; font-variation-settings: "wght" 700; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
+		.role { margin:0; color:var(--muted); font-weight:500; font-variation-settings: "wght" 500; }
 		.contacts { list-style:none; margin:0; padding:0; font-size:14px; text-align:right; }
 		.contacts li { margin:2px 0; }
-		.contacts a { color:var(--text); text-decoration:none; }
+		.contacts a { color: var(--accent); text-decoration: underline; }
 		.section { margin-top:20px; }
-		.section__title { margin:0 0 8px; font-size:15px; letter-spacing:.08em; text-transform:uppercase; color:#0f172a; }
-		.summary { margin:0; color:var(--text); }
+		.section__title { margin:0 0 8px; font-size:15px; letter-spacing:.08em; text-transform:uppercase; color:#0f172a; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; font-weight:600; }
+		.summary { margin:0; color:var(--text); font-weight:400; font-variation-settings: "wght" 400; }
 		.two-col { display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
 		.pill-list { list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px; }
 		.pill-list li { border:1px solid #e2e8f0; padding:6px 10px; border-radius:999px; font-size:13px; }
 		.bullets { margin:8px 0 0; padding-left:18px; }
-		.bullets li { margin:6px 0; }
+		.bullets li { margin:6px 0; font-weight:400; font-variation-settings: "wght" 400; }
 		.bullets.tight li { margin:4px 0; }
 		.item { margin-top:12px; }
 		.item__head { display:flex; justify-content:space-between; gap:12px; align-items:baseline; }
-		.item__title { margin:0; font-size:16px; }
+		.item__title { margin:0; font-size:16px; font-weight:600; font-variation-settings: "wght" 600; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
 		.item__meta { color:var(--muted); font-size:13px; }
-		.muted { color:var(--muted); margin:6px 0 0; }
+		.muted { color:var(--muted); margin:6px 0 0; font-weight:400; font-variation-settings: "wght" 400; }
+		p { font-weight:400; font-variation-settings: "wght" 400; }
+		li { font-weight:400; font-variation-settings: "wght" 400; }
+		i { font-style:italic; font-weight:400; }
 		.footer { border-top:1px solid #e2e8f0; margin-top:16px; padding-top:10px; }
 		.small { font-size:13px; }
 		@media print {
 			.page { max-width: 210mm; margin: 0; padding: 12mm; }
 			.header { padding-bottom:8px; }
+			/* Ensure colors and link styles are preserved in PDF */
+			body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-synthesis: none; font-variation-settings: "wght" 400; font-optical-sizing: none; }
+			p, li, .summary, .muted { font-weight:400 !important; font-variation-settings: "wght" 400 !important; }
+			.name { font-weight:700 !important; font-variation-settings: "wght" 700 !important; }
+			.item__title { font-weight:600 !important; font-variation-settings: "wght" 600 !important; }
+			a { color: var(--accent); text-decoration: underline; }
+			.contacts a { color: var(--accent); text-decoration: underline; }
 		}
 	</style>
 </head>
@@ -50,7 +64,7 @@
 			<ul class="contacts">
 				<li><a href="mailto:davidobonyanoefe@gmail.com">davidobonyanoefe@gmail.com</a></li>
 				<li><a href="tel:+2349035526146">+234 903 552 6146</a></li>
-				<li><a href="https://linkedin.com/in/david-obonyano" target="_blank" rel="noreferrer">linkedin.com/in/david-obonyano</a></li>
+				<li><a href="https://www.linkedin.com/in/david-obonyano" target="_blank" rel="noreferrer">linkedin.com/in/david-obonyano</a></li>
 				<li>Lagos, Nigeria</li>
 			</ul>
 		</header>
@@ -75,6 +89,10 @@
 					<li>Auth & RBAC</li>
 					<li>Testing</li>
 					<li>CI/CD</li>
+					<li>MongoDB</li>
+					<li>MySQL</li>
+					<li>Python</li>
+					<li>Heroku</li>
 				</ul>
 			</div>
 			<div>
@@ -92,7 +110,7 @@
 			<h2 class="section__title">Experience</h2>
 			<div class="item">
 				<div class="item__head">
-					<h3 class="item__title">Founder / Full‑Stack Engineer — Yano School Site</h3>
+					<h3 class="item__title">Full‑Stack Engineer — Yano School Site</h3>
 					<div class="item__meta">Remote • 2023 — Present</div>
 				</div>
 				<ul class="bullets">
@@ -110,6 +128,17 @@
 				<ul class="bullets">
 					<li>Contributed to the official NSDC site across frontend and backend features.</li>
 					<li>Collaborated in a small team to deliver secure forms, content tooling, and deploys.</li>
+				</ul>
+			</div>
+
+			<div class="item">
+				<div class="item__head">
+					<h3 class="item__title">Frontend Engineer — G47 Hairs (Salon Site)</h3>
+					<div class="item__meta">Remote • 2022</div>
+				</div>
+				<ul class="bullets">
+					<li>Built a responsive salon website with service listings, photo gallery, and booking flow.</li>
+					<li>Implemented SEO basics and performance optimizations improving Core Web Vitals.</li>
 				</ul>
 			</div>
 
@@ -174,13 +203,7 @@
 			</ul>
 		</section>
 
-		<footer class="footer">
-			<ul class="contacts small">
-				<li><a href="mailto:davidobonyanoefe@gmail.com">davidobonyanoefe@gmail.com</a></li>
-				<li><a href="https://linkedin.com/in/david-obonyano" target="_blank" rel="noreferrer">LinkedIn</a></li>
-				<li>@david_efe6</li>
-			</ul>
-		</footer>
+		
 	</main>
 </body>
 </html>

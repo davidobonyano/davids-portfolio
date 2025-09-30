@@ -133,7 +133,7 @@ export default function MainPortfolio() {
                 name: "Wale", 
                 role: "Senior Developer, NSDC", 
                 testimonial: "I led the NSDC website build and David, as a young dev then, consistently delivered clean, reliable features. His hunger to learn and speed of iteration made a real impact on our timelines.",
-                image: "/testimonials/wale.jpg"
+                image: "/testimonials/wale.JPG"
               },
               { 
                 name: "Alhaja", 
