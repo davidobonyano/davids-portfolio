@@ -10,16 +10,19 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faFolderOpen, faUser, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 export default function MainPortfolio() {
+  const { t } = useLocale();
   const [activeSection, setActiveSection] = useState("home");
   const [activeTestimonial, setActiveTestimonial] = useState<number | null>(null);
 
   const navItems = [
-    { name: "home", href: "#home", icon: faHome },
-    { name: "about", href: "#about", icon: faUser },
-    { name: "projects", href: "#projects", icon: faFolderOpen },
-    { name: "contact", href: "#contact", icon: faEnvelope }
+    { key: "nav_home", href: "#home", icon: faHome },
+    { key: "nav_about", href: "#about", icon: faUser },
+    { key: "nav_projects", href: "#projects", icon: faFolderOpen },
+    { key: "nav_contact", href: "#contact", icon: faEnvelope }
   ];
 
   return (
@@ -35,11 +38,11 @@ export default function MainPortfolio() {
           <div className="flex items-center justify-center space-x-1 md:space-x-6">
             {navItems.map((item) => (
               <motion.a
-                key={item.name}
+                key={item.key}
                 href={item.href}
-                onClick={() => setActiveSection(item.name)}
+                onClick={() => setActiveSection(item.key)}
                 className={`flex items-center space-x-2 px-2 py-2 md:px-4 rounded-full transition-all duration-300 ${
-                  activeSection === item.name
+                  activeSection === item.key
                     ? "bg-white/10 text-white"
                     : "text-gray-400 hover:text-white hover:bg-white/5"
                 }`}
@@ -48,10 +51,13 @@ export default function MainPortfolio() {
               >
                 <FontAwesomeIcon icon={item.icon} className="w-4 h-4 md:w-5 md:h-5" />
                 <span className="hidden md:inline text-sm font-medium capitalize">
-                  {item.name}
+                  {t(item.key)}
                 </span>
               </motion.a>
             ))}
+            <div className="ml-2 hidden md:block">
+              <LanguageSwitcher />
+            </div>
           </div>
         </motion.div>
       </nav>
@@ -64,7 +70,7 @@ export default function MainPortfolio() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="uppercase tracking-widest text-gray-400 mt-8 mb-6 md:mt-0 text-xl md:text-2xl font-semibold"
         >
-          Based in Nigeria
+          {t("basedIn")}
         </motion.p>
 
         <motion.h1
@@ -73,8 +79,13 @@ export default function MainPortfolio() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-4xl md:text-6xl font-bold leading-tight"
         >
-          Quality <span className="text-gradient-ice">Design</span> &{" "}
-          <span className="text-gradient-ice">Web Development</span> Synergy
+          <span
+            dangerouslySetInnerHTML={{
+              __html: t("qualityHeadline")
+                .replace("{a}", `<span class=\\"text-gradient-ice\\">${t("design")}</span>`)
+                .replace("{b}", `<span class=\\"text-gradient-ice\\">${t("webDev")}</span>`),
+            }}
+          />
         </motion.h1>
 
         <motion.p
@@ -83,7 +94,7 @@ export default function MainPortfolio() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-8 max-w-4xl text-gray-200 text-xl md:text-2xl leading-relaxed font-medium"
         >
-          Hi, I&apos;m David. A full-stack developer with expertise in <span className="font-semibold">Next.js</span>, <span className="font-semibold">React</span>, <span className="font-semibold">Node.js</span>, and <span className="font-semibold">TypeScript</span>. I create intuitive, visually stunning and highly functional web applications that deliver exceptional user experiences.
+          {t("intro")}
         </motion.p>
 
         {/* Action Buttons */}
@@ -102,7 +113,7 @@ export default function MainPortfolio() {
             }}
             className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-lg rounded-lg transition-all duration-300 transform hover:scale-105"
           >
-            See My Work →
+            {t("seeMyWork")}
           </button>
           
           <button 
@@ -115,7 +126,7 @@ export default function MainPortfolio() {
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
-            View CV
+            {t("viewCv")}
           </button>
         </motion.div>
 

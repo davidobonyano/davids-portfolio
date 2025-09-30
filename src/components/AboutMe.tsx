@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLocale } from "@/i18n/LocaleProvider";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,6 +29,7 @@ const technologies = [
 ];
 
 export default function AboutMe() {
+  const { t } = useLocale();
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
 
@@ -174,7 +176,7 @@ export default function AboutMe() {
                   Full-Stack Developer
                 </p>
                 <p className="text-gray-400 text-lg">
-                  4+ Years of Experience
+                  4+ {t("yearsExperience")}
                 </p>
               </motion.div>
 
@@ -201,10 +203,10 @@ export default function AboutMe() {
           >
             <div className="text-center mb-8">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                Current <span className="text-gradient-ice">Technologies</span>
+                Current <span className="text-gradient-ice">{t("technologiesWord")}</span>
               </h3>
               <p className="text-gray-400 text-lg mb-4">
-                I&apos;m proficient in a range of modern technologies that empower me to create exceptional digital experiences. From frontend frameworks to backend systems, I leverage cutting-edge tools to build scalable, performant applications that meet the highest standards of quality and user experience.
+                {t("about_currentTechParagraph")}
               </p>
             </div>
 
@@ -280,19 +282,19 @@ export default function AboutMe() {
             >
               <div className="text-center bg-gray-800 p-6 rounded-xl border border-gray-700">
                 <div className="text-3xl font-bold text-gradient-ice mb-2">4+</div>
-                <div className="text-gray-400">Years Experience</div>
+                <div className="text-gray-400">{t("yearsExperience")}</div>
               </div>
               <div className="text-center bg-gray-800 p-6 rounded-xl border border-gray-700">
                 <div className="text-3xl font-bold text-gradient-ice mb-2">50+</div>
-                <div className="text-gray-400">Projects Completed</div>
+                <div className="text-gray-400">{t("projectsCompleted")}</div>
               </div>
               <div className="text-center bg-gray-800 p-6 rounded-xl border border-gray-700">
                 <div className="text-3xl font-bold text-gradient-ice mb-2">100%</div>
-                <div className="text-gray-400">Client Satisfaction</div>
+                <div className="text-gray-400">{t("clientSatisfaction")}</div>
               </div>
               <div className="text-center bg-gray-800 p-6 rounded-xl border border-gray-700">
                 <div className="text-3xl font-bold text-gradient-ice mb-2">24/7</div>
-                <div className="text-gray-400">Available</div>
+                <div className="text-gray-400">{t("available")}</div>
               </div>
             </motion.div>
           </motion.div>

@@ -3,6 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { seriousProjects } from "@/app/projects/data";
 import { use } from "react";
+import ActionAndDescription from "./ProjectClientSection";
+import type { Metadata } from "next";
+// keep
 
 export default function ProjectPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -21,7 +24,12 @@ export default function ProjectPage({ params }: { params: Promise<{ id: string }
             <Image src={project.image} alt={project.title} fill className="object-cover" />
           )}
         </div>
-        <p className="text-gray-300 mb-6 leading-relaxed">{project.description}</p>
+        <ActionAndDescription
+          description={project.description}
+          descriptionKey={project.descriptionKey}
+          liveUrl={project.liveUrl}
+          githubUrl={project.githubUrl}
+        />
         <div className="flex flex-wrap gap-2 mb-8">
           {project.technologies.map((tech) => (
             <span key={tech} className="px-3 py-1 bg-gray-800 text-gray-300 rounded-full text-sm">
@@ -29,19 +37,40 @@ export default function ProjectPage({ params }: { params: Promise<{ id: string }
             </span>
           ))}
         </div>
-        <div className="flex gap-4">
-          {project.liveUrl && project.liveUrl !== "#" && (
-            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg">
-              Live Demo
-            </a>
-          )}
-          {project.githubUrl && project.githubUrl !== "#" && (
-            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg">
-              Code
-            </a>
-          )}
-        </div>
+        {/* Buttons rendered above in client section */}
       </div>
     </div>
   );
 } 
+
+export async function generateMetadata(
+  { params }: { params: Promise<{ id: string }> }
+): Promise<Metadata> {
+  const { id } = await params;
+  const numericId = Number(id);
+  const project = seriousProjects.find((p) => p.id === numericId);
+  if (!project) return {};
+
+  const title = `${project.title} — Project by David Obonyano`;
+  const description = project.description.slice(0, 160);
+  const image = project.image || "/ddaave.jpg";
+  const url = `/projects/${id}`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "article",
+      images: [{ url: image, width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
+    },
+  };
+}

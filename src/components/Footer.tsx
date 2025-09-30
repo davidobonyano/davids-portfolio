@@ -9,8 +9,10 @@ import {
   faGithub as faGithubBrand,
   faTwitter as faTwitterBrand
 } from "@fortawesome/free-brands-svg-icons";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 export default function Footer() {
+  const { t: translate } = useLocale();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -39,10 +41,10 @@ export default function Footer() {
   ];
 
   const quickLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" }
+    { nameKey: "nav_home", href: "#home" },
+    { nameKey: "nav_about", href: "#about" },
+    { nameKey: "nav_projects", href: "#projects" },
+    { nameKey: "nav_contact", href: "#contact" }
   ];
 
   return (
@@ -74,7 +76,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">Quick Links</h4>
+            <h4 className="text-lg font-semibold text-white">{translate("quickLinks")}</h4>
             <ul className="space-y-2">
               {quickLinks.map((link, index) => (
                 <li key={index}>
@@ -89,7 +91,7 @@ export default function Footer() {
                       }
                     }}
                   >
-                    {link.name}
+                    {translate(link.nameKey)}
                   </a>
                 </li>
               ))}
@@ -98,17 +100,17 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">Get in Touch</h4>
+            <h4 className="text-lg font-semibold text-white">{translate("getInTouch")}</h4>
             <div className="space-y-2">
               <p className="text-gray-400">
-                <span className="text-white font-medium">Email:</span> davidobonyanoefe@gmail.com
+                <span className="text-white font-medium">{translate("email")}</span> davidobonyanoefe@gmail.com
               </p>
               <p className="text-gray-400">
-                <span className="text-white font-medium">Location:</span> Lagos, Nigeria
+                <span className="text-white font-medium">{translate("location")}</span> Lagos, Nigeria
               </p>
               <p className="text-gray-400">
-                <span className="text-white font-medium">Status:</span> 
-                <span className="text-green-400 ml-2">Available for Work</span>
+                <span className="text-white font-medium">{translate("status")}</span> 
+                <span className="text-green-400 ml-2">{translate("availableForWork")}</span>
               </p>
             </div>
           </div>
@@ -126,7 +128,7 @@ export default function Footer() {
               className="flex items-center space-x-2 bg-gray-800/50 hover:bg-gray-700/50 text-gray-400 hover:text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105"
             >
               <FontAwesomeIcon icon={faArrowUp} />
-              <span>Back to Top</span>
+              <span>{translate("backToTop")}</span>
             </button>
           </div>
         </div>

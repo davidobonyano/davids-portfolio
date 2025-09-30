@@ -19,6 +19,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { seriousProjects } from "@/app/projects/data";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 // Fun Projects Data (Phone App Style)
 const funProjects = [
@@ -95,6 +96,7 @@ const funProjects = [
 ];
 
 export default function Projects() {
+  const { t } = useLocale();
   const [isVisible, setIsVisible] = useState(false);
   const [activeTab, setActiveTab] = useState("serious");
   const [selectedApp, setSelectedApp] = useState<{ id: number; name: string; url: string; githubUrl?: string } | null>(null);
@@ -143,8 +145,8 @@ export default function Projects() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Selected Works</h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">Projects for brands and professional applications</p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">{t("selectedWorks")}</h2>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">{t("projectsForBrands")}</p>
         </motion.div>
 
         {/* Tab Navigation */}
@@ -161,7 +163,7 @@ export default function Projects() {
                 activeTab === "serious" ? "bg-blue-500 text-white" : "text-gray-400 hover:text-white hover:bg-white/10"
               }`}
             >
-              Projects
+              {t("projectsTab")}
             </button>
             <button
               onClick={() => setActiveTab("fun")}
@@ -169,7 +171,7 @@ export default function Projects() {
                 activeTab === "fun" ? "bg-blue-500 text-white" : "text-gray-400 hover:text-white hover:bg-white/10"
               }`}
             >
-              Side Projects
+              {t("sideProjectsTab")}
             </button>
           </div>
         </motion.div>
@@ -361,19 +363,7 @@ export default function Projects() {
               <span>View GitHub</span>
             </button>
 
-            {/* Open in New Tab */}
-            <button
-              onClick={() => {
-                if (contextMenuApp) {
-                  window.open(contextMenuApp.url, '_blank');
-                }
-                setShowContextMenu(false);
-              }}
-              className="w-full px-4 py-3 text-left text-white hover:bg-gray-700 transition-colors flex items-center gap-3"
-            >
-              <FontAwesomeIcon icon={faExternalLinkAlt} className="text-blue-400" />
-              <span>Open in New Tab</span>
-            </button>
+            
           </motion.div>
         )}
       </div>

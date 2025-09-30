@@ -13,8 +13,10 @@ import {
   faTwitter as faTwitterBrand
 } from "@fortawesome/free-brands-svg-icons";
 import emailjs from '@emailjs/browser';
+import { useLocale } from "@/i18n/LocaleProvider";
 
 export default function Contact() {
+  const { t } = useLocale();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -106,24 +108,20 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-            Let&apos;s Connect
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">{t("letsConnect")}</h2>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left Side - Social Links */}
           <div className="space-y-8">
             <div className="text-center lg:text-left">
-              <h3 className="text-2xl font-bold text-white mb-8">Get in Touch</h3>
-              <p className="text-gray-400 text-lg mb-8">
-                Have a project in mind? Let&apos;s discuss how we can bring your ideas to life.
-              </p>
+              <h3 className="text-2xl font-bold text-white mb-8">{t("getInTouch")}</h3>
+              <p className="text-gray-400 text-lg mb-8">{t("haveProject")}</p>
             </div>
 
             {/* Social Links */}
             <div className="space-y-4">
-              <h4 className="text-xl font-semibold text-white mb-6">Follow Me</h4>
+              <h4 className="text-xl font-semibold text-white mb-6">{t("followMe")}</h4>
               <div className="flex flex-wrap gap-4">
                 {socialLinks.map((social, index) => (
                   <a
@@ -146,8 +144,8 @@ export default function Contact() {
               <div className="flex items-center space-x-3">
                 <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
                 <div>
-                  <p className="text-white font-semibold">Available for Work</p>
-                  <p className="text-gray-400 text-sm">Currently accepting new projects</p>
+                  <p className="text-white font-semibold">{t("availableForWork")}</p>
+                  <p className="text-gray-400 text-sm">{t("acceptingProjects")}</p>
                 </div>
               </div>
             </div>
@@ -155,20 +153,20 @@ export default function Contact() {
 
           {/* Right Side - Contact Form */}
           <div className="bg-gray-800/30 backdrop-blur-xl border border-white/10 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-white mb-6">Send a Message</h3>
+            <h3 className="text-2xl font-bold text-white mb-6">{t("sendMessage")}</h3>
             
             {submitStatus === 'success' ? (
               <div className="text-center py-12">
                 <FontAwesomeIcon icon={faCheckCircle} className="text-green-400 text-6xl mb-4" />
-                <h4 className="text-2xl font-bold text-white mb-2">Message Sent!</h4>
-                <p className="text-gray-400">Thank you for reaching out. I&apos;ll get back to you soon!</p>
+                <h4 className="text-2xl font-bold text-white mb-2">{t("messageSent")}</h4>
+                <p className="text-gray-400">{t("thanksSoon")}</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-gray-300 text-sm font-medium mb-2">
-                      Full Name
+                      {t("fullName")}
                     </label>
                     <input
                       type="text"
@@ -178,12 +176,12 @@ export default function Contact() {
                       onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 bg-gray-700/50 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
-                      placeholder="Your full name"
+                      placeholder={t("fullNamePlaceholder")}
                     />
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-gray-300 text-sm font-medium mb-2">
-                      Email Address
+                      {t("emailAddress")}
                     </label>
                     <input
                       type="email"
@@ -193,14 +191,14 @@ export default function Contact() {
                       onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 bg-gray-700/50 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
-                      placeholder="your.email@example.com"
+                      placeholder={t("emailPlaceholder")}
                     />
                   </div>
                 </div>
                 
                 <div>
                   <label htmlFor="subject" className="block text-gray-300 text-sm font-medium mb-2">
-                    Subject
+                    {t("subject")}
                   </label>
                   <input
                     type="text"
@@ -210,13 +208,13 @@ export default function Contact() {
                     onChange={handleInputChange}
                     required
                     className="w-full px-4 py-3 bg-gray-700/50 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
-                    placeholder="What's this about?"
+                    placeholder={t("subjectPlaceholder")}
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="message" className="block text-gray-300 text-sm font-medium mb-2">
-                    Message
+                    {t("message")}
                   </label>
                   <textarea
                     id="message"
@@ -226,7 +224,7 @@ export default function Contact() {
                     required
                     rows={6}
                     className="w-full px-4 py-3 bg-gray-700/50 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors resize-none"
-                    placeholder="Tell me about your project..."
+                    placeholder={t("messagePlaceholder")}
                   />
                 </div>
 
@@ -246,12 +244,12 @@ export default function Contact() {
                   {isSubmitting ? (
                     <>
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                      <span>Sending...</span>
+                      <span>{t("sending")}</span>
                     </>
                   ) : (
                     <>
                       <FontAwesomeIcon icon={faPaperPlane} />
-                      <span>Send Message</span>
+                      <span>{t("sendMessage")}</span>
                     </>
                   )}
                 </button>
