@@ -10,13 +10,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "David Obonyano — Software Engineer",
-  description: "Frontend engineer in Lagos focused on performance and UX. 95+ Lighthouse projects.",
+  title: "David Obonyano — Full‑Stack Engineer",
+  description: "Full‑stack engineer in Lagos, Nigeria focused on performance and UX. High‑scoring Lighthouse projects.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://david-obonyano.vercel.app"),
   openGraph: {
     type: "website",
-    title: "David Obonyano — Software Engineer",
-    description: "Frontend engineer in Lagos focused on performance and UX. 95+ Lighthouse projects.",
+    title: "David Obonyano — Full‑Stack Engineer",
+    description: "Full‑stack engineer in Lagos, Nigeria focused on performance and UX. High‑scoring Lighthouse projects.",
     url: "/",
     siteName: "David Obonyano Portfolio",
     images: [
@@ -24,15 +24,15 @@ export const metadata: Metadata = {
         url: "/ddaave.jpg",
         width: 1200,
         height: 630,
-        alt: "David Obonyano — Software Engineer",
+        alt: "David Obonyano — Full‑Stack Engineer",
       },
     ],
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "David Obonyano — Software Engineer",
-    description: "Frontend engineer in Lagos focused on performance and UX. 95+ Lighthouse projects.",
+    title: "David Obonyano — Full‑Stack Engineer",
+    description: "Full‑stack engineer in Lagos, Nigeria focused on performance and UX. High‑scoring Lighthouse projects.",
     images: ["/ddaave.jpg"],
     creator: "@davidalocaefe",
   },
@@ -58,7 +58,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "David Obonyano",
-              jobTitle: "Software Engineer",
+              jobTitle: "Full‑Stack Engineer",
               url: (process.env.NEXT_PUBLIC_SITE_URL || "https://david-obonyano.vercel.app"),
               image: "/david-photo.jpeg",
               sameAs: [

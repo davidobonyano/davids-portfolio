@@ -55,7 +55,7 @@ export default function MainPortfolio() {
                 </span>
               </motion.a>
             ))}
-            <div className="ml-2 hidden md:block">
+            <div className="ml-2">
               <LanguageSwitcher />
             </div>
           </div>
