@@ -82,8 +82,8 @@ export default function MainPortfolio() {
           <span
             dangerouslySetInnerHTML={{
               __html: t("qualityHeadline")
-                .replace("{a}", `<span class=\\"text-gradient-ice\\">${t("design")}</span>`)
-                .replace("{b}", `<span class=\\"text-gradient-ice\\">${t("webDev")}</span>`),
+                .replace("{a}", `<span class="text-gradient-ice">${t("design")}</span>`)
+                .replace("{b}", `<span class="text-gradient-ice">${t("webDev")}</span>`),
             }}
           />
         </motion.h1>

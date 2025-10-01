@@ -27,7 +27,7 @@ export const seriousProjects: Project[] = [
       "React Hook Form + Zod",
       "PDF-Lib",
     ],
-    liveUrl: "https://yanoschoool.vercel.app/",
+    liveUrl: "https://www.yanoschools.com/",
     githubUrl: "https://github.com/davidobonyano/yanoschool-next",
     featured: true,
   },

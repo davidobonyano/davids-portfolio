@@ -343,12 +343,9 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // On mount, read stored preference and apply it
+      // On mount, read stored preference and apply it without depending on current state
       const stored = (localStorage.getItem("locale") as Locale) || "en";
-      if (stored !== locale) {
-        setLocale(stored);
-        return; // side-effect will run again after state update
-      }
+      setLocale(stored);
       document.documentElement.dir = stored === "ar" ? "rtl" : "ltr";
       document.documentElement.lang = stored;
       localStorage.setItem("locale", stored);
