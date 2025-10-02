@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -97,27 +96,12 @@ const funProjects = [
 
 export default function Projects() {
   const { t } = useLocale();
-  const [isVisible, setIsVisible] = useState(false);
   const [activeTab, setActiveTab] = useState("serious");
   const [selectedApp, setSelectedApp] = useState<{ id: number; name: string; url: string; githubUrl?: string } | null>(null);
   const [showContextMenu, setShowContextMenu] = useState(false);
   const [contextMenuApp, setContextMenuApp] = useState<{ id: number; name: string; url: string; githubUrl?: string } | null>(null);
   const [contextMenuPosition, setContextMenuPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-      }
-    }, { threshold: 0.1 });
-
-    const element = document.getElementById('projects-section');
-    if (element) {
-      observer.observe(element);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   const handleAppClick = (app: { id: number; name: string; url: string; githubUrl?: string }, event: React.MouseEvent) => {
     event.preventDefault();
@@ -139,27 +123,17 @@ export default function Projects() {
     <section id="projects" className="py-20 px-4 relative bg-black">
       <div id="projects-section" className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">{t("selectedWorks")}</h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">{t("projectsForBrands")}</p>
-        </motion.div>
+        </div>
 
         {/* Tab Navigation */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center mb-12"
-        >
+        <div className="flex justify-center mb-12">
           <div className="bg-gray-800/50 backdrop-blur-xl border border-white/10 rounded-full p-2">
             <button
               onClick={() => setActiveTab("serious")}
-              className={`px-6 py-3 rounded-full transition-all duration-300 text-lg font-medium ${
+              className={`px-6 py-3 rounded-full text-lg font-medium ${
                 activeTab === "serious" ? "bg-blue-500 text-white" : "text-gray-400 hover:text-white hover:bg-white/10"
               }`}
             >
@@ -167,32 +141,21 @@ export default function Projects() {
             </button>
             <button
               onClick={() => setActiveTab("fun")}
-              className={`px-6 py-3 rounded-full transition-all duration-300 text-lg font-medium ${
+              className={`px-6 py-3 rounded-full text-lg font-medium ${
                 activeTab === "fun" ? "bg-blue-500 text-white" : "text-gray-400 hover:text-white hover:bg-white/10"
               }`}
             >
               {t("sideProjectsTab")}
             </button>
           </div>
-        </motion.div>
+        </div>
 
         {/* Serious Projects Tab */}
         {activeTab === "serious" && (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
-          >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {seriousProjects.map((project, index) => (
               <Link key={project.id} href={`/projects/${project.id}`} className="group">
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.1 * index }}
-                  whileHover={{ y: -5 }}
-                  className="relative bg-gray-800/50 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all duration-300 cursor-pointer"
-                >
+                <div className="relative bg-gray-800/50 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:border-blue-500/50 cursor-pointer">
                   {project.featured && (
                     <div className="absolute top-4 right-4 z-10">
                       <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Featured</span>
@@ -233,18 +196,18 @@ export default function Projects() {
                         <FontAwesomeIcon icon={faCode} className="text-6xl text-gray-600" />
                       </div>
                     )}
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300"></div>
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10"></div>
                   </div>
 
                   <div className="p-6">
-                    <h3 className="text-2xl font-bold mb-3 group-hover:text-blue-400 transition-colors">{project.title}</h3>
+                    <h3 className="text-2xl font-bold mb-3 group-hover:text-blue-400">{project.title}</h3>
                     {/* CTA Row */}
                     <div className="flex items-center justify-between">
                       <span className="inline-flex items-center text-blue-400 group-hover:text-blue-300 font-medium">
                         <span>See details</span>
                         <FontAwesomeIcon
                           icon={faExternalLinkAlt}
-                          className="ml-2 transition-transform duration-200 group-hover:translate-x-1"
+                          className="ml-2"
                         />
                       </span>
                     </div>
@@ -253,20 +216,15 @@ export default function Projects() {
                       {project.technologies.slice(0, 3).join(", ")}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               </Link>
             ))}
-          </motion.div>
+          </div>
         )}
 
         {/* Fun Projects Tab - Phone Screen Layout */}
         {activeTab === "fun" && (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex justify-center"
-          >
+          <div className="flex justify-center">
             <div className="relative">
               {/* Phone Frame */}
               <div className="w-80 h-[600px] bg-gray-900 rounded-[3rem] p-4 shadow-2xl border-4 border-gray-700">
@@ -289,23 +247,18 @@ export default function Projects() {
                       <h3 className="text-white text-lg font-semibold mb-6 text-center">My Apps</h3>
                       <div className="grid grid-cols-4 gap-8">
                         {funProjects.map((app, index) => (
-                          <motion.div
+                          <div
                             key={app.id}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={isVisible ? { opacity: 1, scale: 1 } : {}}
-                            transition={{ duration: 0.4, delay: 0.1 * index }}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
                             className="relative group cursor-pointer"
                           >
                             {/* Main App Icon - Click shows context menu */}
                             <button onClick={(e) => handleAppClick(app, e)} className="block w-full">
-                              <div className={`w-14 h-14 bg-gradient-to-br ${app.color} rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 relative`}>
+                              <div className={`w-14 h-14 bg-gradient-to-br ${app.color} rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl relative`}>
                                 <FontAwesomeIcon icon={app.icon} className="text-white text-xl" />
                               </div>
                               <p className="text-white text-xs text-center mt-2 font-medium leading-tight">{app.name}</p>
                             </button>
-                          </motion.div>
+                          </div>
                         ))}
                       </div>
                     </div>
@@ -331,15 +284,12 @@ export default function Projects() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         )}
 
         {/* Context Menu for App Options */}
         {showContextMenu && contextMenuApp && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
+          <div
             className="fixed z-50 bg-gray-800 rounded-lg shadow-2xl border border-gray-600 py-2 min-w-[200px]"
             style={{ left: `${Math.min(contextMenuPosition.x - 100, window.innerWidth - 220)}px`, top: `${Math.min(contextMenuPosition.y - 50, window.innerHeight - 120)}px` }}
             onClick={(e) => e.stopPropagation()}
@@ -350,7 +300,7 @@ export default function Projects() {
                 setSelectedApp(contextMenuApp);
                 setShowContextMenu(false);
               }}
-              className="w-full px-4 py-3 text-left text-white hover:bg-gray-700 transition-colors flex items-center gap-3"
+              className="w-full px-4 py-3 text-left text-white hover:bg-gray-700 flex items-center gap-3"
             >
               <FontAwesomeIcon icon={faPlay} className="text-green-400" />
               <span>Open App</span>
@@ -364,14 +314,14 @@ export default function Projects() {
                 }
                 setShowContextMenu(false);
               }}
-              className="w-full px-4 py-3 text-left text-white hover:bg-gray-700 transition-colors flex items-center gap-3"
+              className="w-full px-4 py-3 text-left text-white hover:bg-gray-700 flex items-center gap-3"
             >
               <FontAwesomeIcon icon={faGithub} className="text-white" />
               <span>View GitHub</span>
             </button>
 
             
-          </motion.div>
+          </div>
         )}
       </div>
     </section>

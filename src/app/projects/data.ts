@@ -63,10 +63,33 @@ export const seriousProjects: Project[] = [
   },
   {
     id: 4,
+    title: "Online Exam Portal",
+    description:
+      "A comprehensive exam platform designed for Nigerian standard classes (JSS1-3, SS1-3) with advanced anti-cheating measures. Features camera proctoring, tab switching detection, copy/paste prevention, network-aware timer system, real-time answer saving, and comprehensive results analytics. Includes violation logging, fullscreen monitoring, and automatic grading with detailed performance breakdowns.",
+    descriptionKey: "project_4_description",
+    image: "/projects/exam.png",
+    technologies: [
+      "Next.js 15",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "Radix UI",
+      "React Hook Form + Zod",
+      "Framer Motion",
+      "Three.js",
+      "Recharts",
+      "Lottie React",
+    ],
+    liveUrl: "https://exam.yanoschools.com/",
+    githubUrl: "https://github.com/davidobonyano/Exam-portal-",
+    featured: true,
+  },
+  {
+    id: 5,
     title: "FixFinder - Local Services Directory",
     description:
       "A comprehensive service marketplace connecting users with verified local professionals across 13+ categories (electricians, plumbers, tailors, hair stylists, etc.). Features geo-location filtering, professional profiles with ratings, advanced search functionality, service categories, and responsive design. Built as a modern MVP with 26+ professional profiles and plans for full backend integration.",
-    descriptionKey: "project_4_description",
+    descriptionKey: "project_5_description",
     image: "/projects/fixfinder.png",
     technologies: [
       "React Router",
@@ -80,11 +103,11 @@ export const seriousProjects: Project[] = [
     featured: true,
   },
   {
-    id: 5,
+    id: 6,
     title: "Medilabs",
     description:
       "A modern hospital website featuring appointment booking system, medical services showcase, doctor profiles, and responsive design. Includes image sliders, contact forms, and professional healthcare presentation.",
-    descriptionKey: "project_5_description",
+    descriptionKey: "project_6_description",
     image: "/projects/medihospital.png",
     technologies: ["HTML5", "CSS3", "Javascript", "Font Awesome5"],
     liveUrl: "https://davidobonyano.github.io/medicare-/",
