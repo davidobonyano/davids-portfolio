@@ -74,7 +74,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Quick Links + Resume CTA */}
           <div className="space-y-4">
             <h4 className="text-lg font-semibold text-white">{translate("quickLinks")}</h4>
             <ul className="space-y-2">
@@ -96,6 +96,12 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+            <button
+              onClick={() => window.open('/david-cv.pdf', '_blank')}
+              className="mt-4 w-full px-4 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg shadow-lg shadow-blue-600/30 transition-colors duration-300"
+            >
+              {translate('viewCv')}
+            </button>
           </div>
 
           {/* Contact Info */}

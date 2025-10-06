@@ -22,7 +22,7 @@ const MESSAGES: Record<Locale, Messages> = {
     webDev: "Web Development",
     intro: "Hi, I'm David. A full-stack developer with expertise in Next.js, React, Node.js, and TypeScript. I create intuitive, visually stunning and highly functional web applications that deliver exceptional user experiences.",
     seeMyWork: "See My Work →",
-    viewCv: "View CV",
+    viewCv: "View Resume",
     selectedWorks: "Selected Works",
     projectsForBrands: "Projects for brands and professional applications",
     projectsTab: "Projects",
