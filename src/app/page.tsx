@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import SplashScreen from "@/components/SplashScreen";
 import MainPortfolio from "@/components/MainPortfolio";
@@ -8,6 +8,27 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 
 export default function HomePage() {
   const [splashDone, setSplashDone] = useState(false);
+
+  // Disable page scroll while splash screen is visible
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const html = document.documentElement;
+    const body = document.body;
+
+    if (!splashDone) {
+      const prevHtmlOverflow = html.style.overflow;
+      const prevBodyOverflow = body.style.overflow;
+
+      html.style.overflow = "hidden";
+      body.style.overflow = "hidden";
+
+      return () => {
+        html.style.overflow = prevHtmlOverflow;
+        body.style.overflow = prevBodyOverflow;
+      };
+    }
+  }, [splashDone]);
 
   return (
     <ErrorBoundary>

@@ -112,24 +112,19 @@ export default function Contact() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left Side - Social Links */}
+          {/* Left Side - Simple CTA with icons and availability (no cards) */}
           <div className="space-y-8">
             <div className="text-center lg:text-left">
-              <h3 className="text-2xl font-bold text-white mb-8">{t("getInTouch")}</h3>
-              <p className="text-gray-400 text-lg mb-8">{t("haveProject")}</p>
-            </div>
-
-            {/* Social Links */}
-            <div className="space-y-4">
-              <h4 className="text-xl font-semibold text-white mb-6">{t("followMe")}</h4>
-              <div className="flex flex-wrap gap-4">
+              <p className="text-gray-400 text-lg mb-6">{t("haveProject")}</p>
+              {/* Social icons inline (no cards) */}
+              <div className="flex flex-wrap items-center gap-5 mb-6 justify-center lg:justify-start text-gray-400">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center space-x-3 p-4 bg-gray-800/50 backdrop-blur-xl border border-white/10 rounded-xl text-gray-400 ${social.color} hover:border-blue-500/50 transition-all duration-300 group`}
+                    className={`inline-flex items-center gap-2 transition-colors ${social.color}`}
                     title={social.label}
                   >
                     <FontAwesomeIcon icon={social.icon} className="text-2xl" />
@@ -137,12 +132,9 @@ export default function Contact() {
                   </a>
                 ))}
               </div>
-            </div>
-
-            {/* Availability Status */}
-            <div className="p-6 bg-gray-800/30 backdrop-blur-xl border border-white/10 rounded-xl">
-              <div className="flex items-center space-x-3">
-                <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+              {/* Availability (no card) */}
+              <div className="flex items-center gap-3 mb-8 justify-center lg:justify-start">
+                <span className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></span>
                 <div>
                   <p className="text-white font-semibold">{t("availableForWork")}</p>
                   <p className="text-gray-400 text-sm">{t("acceptingProjects")}</p>
