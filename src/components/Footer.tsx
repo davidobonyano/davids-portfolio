@@ -2,7 +2,8 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
-  faArrowUp
+  faArrowUp,
+  faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
 import { 
   faLinkedin as faLinkedinBrand,
@@ -37,6 +38,12 @@ export default function Footer() {
       label: "X (Twitter)",
       url: "https://x.com/davidalocaefe?s=21",
       color: "hover:text-blue-400"
+    },
+    {
+      icon: faEnvelope,
+      label: "Email",
+      url: "mailto:davidobonyanoefe@gmail.com",
+      color: "hover:text-red-400"
     }
   ];
 

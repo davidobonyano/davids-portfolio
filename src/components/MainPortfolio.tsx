@@ -1,6 +1,7 @@
 "use client";
 
 import AboutMe from "./AboutMe";
+import Services from "./Services";
 import Projects from "./Projects";
 import Contact from "./Contact";
 import Footer from "./Footer";
@@ -9,7 +10,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faFolderOpen, faUser, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faFolderOpen, faUser, faEnvelope, faCogs } from "@fortawesome/free-solid-svg-icons";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useLocale } from "@/i18n/LocaleProvider";
 
@@ -240,6 +241,9 @@ export default function MainPortfolio() {
       
       {/* About Me Section */}
       <AboutMe />
+      
+      {/* Services Section */}
+      <Services />
       
       {/* Projects Section */}
       <Projects />
