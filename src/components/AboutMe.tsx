@@ -62,8 +62,8 @@ export default function AboutMe() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Personal Info */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0 }}
+            animate={isVisible ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-8"
           >

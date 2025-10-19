@@ -117,7 +117,7 @@ export default function MainPortfolio() {
           </button>
           
           <button 
-            className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold text-lg rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-600/30 flex items-center gap-2"
+            className="px-8 py-4 border-2 border-blue-500 hover:border-blue-400 bg-transparent hover:bg-blue-500/10 text-blue-400 hover:text-blue-300 font-bold text-lg rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
             onClick={() => {
               // Open CV in new tab for viewing
               window.open('/david-cv.pdf', '_blank');

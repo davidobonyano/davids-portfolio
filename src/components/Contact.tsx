@@ -115,9 +115,8 @@ export default function Contact() {
           {/* Left Side - Simple CTA with icons and availability (no cards) */}
           <div className="space-y-8">
             <div className="text-center lg:text-left">
-              <p className="text-gray-400 text-lg mb-6">{t("haveProject")}</p>
               {/* Social icons inline (no cards) */}
-              <div className="flex flex-wrap items-center gap-5 mb-6 justify-center lg:justify-start text-gray-400">
+              <div className="flex flex-wrap items-center gap-5 justify-center lg:justify-start text-gray-400">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
@@ -131,14 +130,6 @@ export default function Contact() {
                     <span className="font-medium">{social.label}</span>
                   </a>
                 ))}
-              </div>
-              {/* Availability (no card) */}
-              <div className="flex items-center gap-3 mb-8 justify-center lg:justify-start">
-                <span className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></span>
-                <div>
-                  <p className="text-white font-semibold">{t("availableForWork")}</p>
-                  <p className="text-gray-400 text-sm">{t("acceptingProjects")}</p>
-                </div>
               </div>
             </div>
           </div>

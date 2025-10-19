@@ -50,15 +50,15 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900/50 backdrop-blur-xl border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+        <div className="flex flex-col items-center space-y-6 mb-8">
           {/* Brand Section */}
-          <div className="space-y-4">
+          <div className="text-center space-y-4">
             <h3 className="text-2xl font-bold text-white">David Obonyano</h3>
-            <p className="text-gray-400 leading-relaxed">
+            <p className="text-gray-400 leading-relaxed max-w-md">
               Full-stack developer, bugs hate to see me coming. 
               I make websites that don&apos;t break when you click them (most of the time).
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 justify-center">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
@@ -74,52 +74,13 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links + Resume CTA */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">{translate("quickLinks")}</h4>
-            <ul className="space-y-2">
-              {quickLinks.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors duration-300"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const element = document.getElementById(link.href.substring(1));
-                      if (element) {
-                        element.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
-                  >
-                    {translate(link.nameKey)}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <button
-              onClick={() => window.open('/david-cv.pdf', '_blank')}
-              className="mt-4 w-full px-4 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg shadow-lg shadow-blue-600/30 transition-colors duration-300"
-            >
-              {translate('viewCv')}
-            </button>
-          </div>
-
-          {/* Contact Info */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">{translate("getInTouch")}</h4>
-            <div className="space-y-2">
-              <p className="text-gray-400">
-                <span className="text-white font-medium">{translate("email")}</span> davidobonyanoefe@gmail.com
-              </p>
-              <p className="text-gray-400">
-                <span className="text-white font-medium">{translate("location")}</span> Lagos, Nigeria
-              </p>
-              <p className="text-gray-400">
-                <span className="text-white font-medium">{translate("status")}</span> 
-                <span className="text-green-400 ml-2">{translate("availableForWork")}</span>
-              </p>
-            </div>
-          </div>
+          {/* CV Button */}
+          <button
+            onClick={() => window.open('/david-cv.pdf', '_blank')}
+            className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg shadow-lg shadow-blue-600/30 transition-colors duration-300"
+          >
+            {translate('viewCv')}
+          </button>
         </div>
 
         {/* Bottom Section */}

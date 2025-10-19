@@ -156,11 +156,6 @@ export default function Projects() {
             {seriousProjects.map((project, index) => (
               <Link key={project.id} href={`/projects/${project.id}`} className="group">
                 <div className="relative bg-gray-800/50 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:border-blue-500/50 cursor-pointer">
-                  {project.featured && (
-                    <div className="absolute top-4 right-4 z-10">
-                      <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Featured</span>
-                    </div>
-                  )}
 
                   <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 relative overflow-hidden">
                     {project.image && project.image !== "" ? (
