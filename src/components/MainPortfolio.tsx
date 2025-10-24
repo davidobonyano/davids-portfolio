@@ -6,18 +6,26 @@ import Projects from "./Projects";
 import Contact from "./Contact";
 import Footer from "./Footer";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faFolderOpen, faUser, faEnvelope, faCogs } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faFolderOpen, faUser, faEnvelope, faCogs, faHeart, faThumbsUp, faFrown, faAngry, faCheck, faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useLocale } from "@/i18n/LocaleProvider";
+import emailjs from '@emailjs/browser';
 
 export default function MainPortfolio() {
   const { t } = useLocale();
   const [activeSection, setActiveSection] = useState("home");
-  const [activeTestimonial, setActiveTestimonial] = useState<number | null>(null);
+  const [activeTestimonial, setActiveTestimonial] = useState<number>(0);
+  
+  // Feedback form state
+  const [selectedReaction, setSelectedReaction] = useState<string>('');
+  const [feedback, setFeedback] = useState<string>('');
+  const [showFeedbackForm, setShowFeedbackForm] = useState<boolean>(false);
+  const [isSubmittingFeedback, setIsSubmittingFeedback] = useState<boolean>(false);
+  const [feedbackSubmitStatus, setFeedbackSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const navItems = [
     { key: "nav_home", href: "#home", icon: faHome },
@@ -25,6 +33,73 @@ export default function MainPortfolio() {
     { key: "nav_projects", href: "#projects", icon: faFolderOpen },
     { key: "nav_contact", href: "#contact", icon: faEnvelope }
   ];
+
+  // Auto-rotate testimonials every 10 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveTestimonial((prev) => (prev + 1) % 5); // 5 testimonials total
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Handle feedback submission
+  const handleFeedbackSubmit = async () => {
+    if (!feedback.trim()) {
+      alert('Please provide some feedback!');
+      return;
+    }
+
+    setIsSubmittingFeedback(true);
+
+    try {
+      // Use the same EmailJS configuration as the contact form
+      const serviceId = 'service_573veza';
+      const templateId = 'template_2qsawal';
+      const publicKey = '6Q4DdR03xq4twi3Nj';
+
+      const templateParams = {
+        from_name: 'Portfolio Feedback',
+        from_email: 'portfolio@feedback.com',
+        subject: `Portfolio Feedback - ${selectedReaction}`,
+        message: `Reaction: ${selectedReaction}\n\nFeedback: ${feedback}`,
+        to_name: 'David Obonyano'
+      };
+
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
+
+      if (result.status === 200) {
+        // Reset form and show confirmation
+        setSelectedReaction('');
+        setFeedback('');
+        setShowFeedbackForm(false);
+        setFeedbackSubmitStatus('success');
+        
+        // Reset success status after 3 seconds
+        setTimeout(() => {
+          setFeedbackSubmitStatus('idle');
+        }, 3000);
+      } else {
+        throw new Error('Failed to send feedback');
+      }
+    } catch (error) {
+      console.error('Error sending feedback:', error);
+      setFeedbackSubmitStatus('error');
+      
+      // Reset error status after 3 seconds
+      setTimeout(() => {
+        setFeedbackSubmitStatus('idle');
+      }, 3000);
+    } finally {
+      setIsSubmittingFeedback(false);
+    }
+  };
+
 
   return (
     <div className="min-h-screen bg-grid text-white overflow-x-hidden">
@@ -103,7 +178,7 @@ export default function MainPortfolio() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-10 mb-16 flex flex-col sm:flex-row gap-4 items-center"
+          className="mt-10 mb-16 flex flex-col sm:flex-row gap-4 items-center relative z-30"
         >
           <button 
             onClick={() => {
@@ -136,7 +211,7 @@ export default function MainPortfolio() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-12 mb-20 flex flex-col items-center px-2 sm:px-4"
+          className="mt-32 mb-20 flex flex-col items-center px-2 sm:px-4"
         >
           {/* Profile Pictures */}
           <div className="relative flex items-center justify-center mb-8">
@@ -166,15 +241,15 @@ export default function MainPortfolio() {
                 image: "/testimonials/joy.jpg"
               },
               { 
-                name: "Driven", 
-                role: "Tech Startup", 
-                testimonial: "We shipped a solid MVP fast. David combines product sense with strong engineering, setting us up with a codebase that’s scalable and easy to extend.",
+                name: "Orezi", 
+                role: "Mena247 Hairs", 
+                testimonial: "We shipped a solid MVP fast. David combines product sense with strong engineering, setting us up with a codebase that's scalable and easy to extend.",
                 image: "/testimonials/koyin.jpg"
               }
             ].map((client, index) => (
               <motion.div
                 key={client.name}
-                className="relative cursor-pointer group"
+                className="relative group cursor-pointer"
                 style={{
                   marginLeft: index > 0 ? '-20px' : '0',
                   zIndex: 5 - index
@@ -188,15 +263,15 @@ export default function MainPortfolio() {
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.9 + index * 0.1 }}
-                onClick={() => setActiveTestimonial(activeTestimonial === index ? null : index)}
+                onClick={() => setActiveTestimonial(activeTestimonial === index ? -1 : index)}
               >
                 {/* Profile Image with fallback to initials */}
-                <div className="relative w-12 h-12 rounded-full overflow-hidden shadow-lg border-2 border-white/20">
+                <div className="relative w-16 h-16 rounded-full overflow-hidden shadow-lg border-2 border-white/20">
                   <Image 
                     src={client.image}
                     alt={client.name}
                     fill
-                    sizes="48px"
+                    sizes="64px"
                     className="object-cover"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
@@ -204,7 +279,7 @@ export default function MainPortfolio() {
                       if (parent) {
                         const initials = client.name.split(' ').map(n => n.charAt(0)).join('').slice(0,2).toUpperCase();
                         parent.innerHTML = `
-                          <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                          <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
                             ${initials}
                           </div>
                         `;
@@ -251,6 +326,88 @@ export default function MainPortfolio() {
       {/* Contact Section */}
       <Contact />
       
+      {/* Portfolio Feedback Section */}
+      <section className="py-20 px-4 relative bg-black">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="flex items-center justify-center gap-8">
+            {/* Feedback Card */}
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-lg p-4 w-80">
+              {feedbackSubmitStatus === 'success' ? (
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <FontAwesomeIcon icon={faCheck} className="text-green-400 text-xl" />
+                  </div>
+                  <h3 className="text-green-400 text-lg font-semibold mb-2">Thanks for your feedback!</h3>
+                  <p className="text-gray-300 text-sm">I really appreciate you taking the time to share your thoughts.</p>
+                </div>
+              ) : feedbackSubmitStatus === 'error' ? (
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <FontAwesomeIcon icon={faExclamationTriangle} className="text-red-400 text-xl" />
+                  </div>
+                  <h3 className="text-red-400 text-lg font-semibold mb-2">Oops! Something went wrong</h3>
+                  <p className="text-gray-300 text-sm">Please try again in a moment.</p>
+                </div>
+              ) : !showFeedbackForm ? (
+                <h2 className="text-white text-lg">Like my portfolio?</h2>
+              ) : (
+                <div className="space-y-3">
+                  
+                  <textarea
+                    value={feedback}
+                    onChange={(e) => setFeedback(e.target.value)}
+                    placeholder="Tell me what you think..."
+                    className="w-full h-16 bg-white/5 border border-white/10 rounded px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors resize-none text-sm"
+                  />
+                  
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => {
+                        setShowFeedbackForm(false);
+                        setSelectedReaction('');
+                        setFeedback('');
+                      }}
+                      className="flex-1 bg-white/10 hover:bg-white/20 text-white py-2 px-3 rounded text-sm transition-colors"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      onClick={handleFeedbackSubmit}
+                      disabled={isSubmittingFeedback}
+                      className="flex-1 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-600 text-white py-2 px-3 rounded text-sm transition-colors"
+                    >
+                      {isSubmittingFeedback ? 'Sending...' : 'Submit'}
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Professional Icons */}
+            <div className="flex gap-4">
+              {[
+                { icon: faHeart, label: 'Love it!', value: 'love' },
+                { icon: faThumbsUp, label: 'Great!', value: 'great' },
+                { icon: faFrown, label: 'Sad', value: 'sad' },
+                { icon: faAngry, label: 'Angry', value: 'angry' }
+              ].map((reaction, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setSelectedReaction(reaction.value);
+                    setShowFeedbackForm(true);
+                  }}
+                  className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 text-white hover:animate-bounce"
+                  title={reaction.label}
+                >
+                  <FontAwesomeIcon icon={reaction.icon} className="text-xl" />
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <Footer />
     </div>

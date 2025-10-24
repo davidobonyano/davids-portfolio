@@ -1,14 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useLocale } from "@/i18n/LocaleProvider";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
   faGamepad, 
   faFutbol, 
-  faHeart
+  faHeart,
+  faChevronDown
 } from "@fortawesome/free-solid-svg-icons";
 
 const technologies = [
@@ -30,26 +30,20 @@ const technologies = [
 
 export default function AboutMe() {
   const { t } = useLocale();
-  const [isVisible, setIsVisible] = useState(false);
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
+  const [expandedSections, setExpandedSections] = useState({
+    about: true,
+    experience: true,
+    skills: true,
+    interests: true
+  });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const element = document.getElementById('about-section');
-    if (element) {
-      observer.observe(element);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const toggleSection = (section: keyof typeof expandedSections) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  };
 
   return (
     <section id="about" className="py-20 px-4 relative">
@@ -58,30 +52,20 @@ export default function AboutMe() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent from-0% via-transparent via-20% to-black to-40%"></div>
       
       <div id="about-section" className="max-w-7xl mx-auto relative z-10">
-
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Personal Info */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isVisible ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-8"
-          >
+          <div className="space-y-8">
             {/* Profile Image with Unique Design */}
             <div className="relative">
-              <motion.div
-                className="relative w-80 h-80 mx-auto"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              >
-                {/* Animated Background Circles */}
-                <div className="absolute inset-0 rounded-full bg-gray-800 opacity-20 animate-pulse"></div>
-                <div className="absolute inset-2 rounded-full bg-gray-700 opacity-30 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                <div className="absolute inset-4 rounded-full bg-gray-600 opacity-40 animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <div className="relative w-80 h-80 mx-auto">
+                {/* Background Circles */}
+                <div className="absolute inset-0 rounded-full bg-gray-800 opacity-20"></div>
+                <div className="absolute inset-2 rounded-full bg-gray-700 opacity-30"></div>
+                <div className="absolute inset-4 rounded-full bg-gray-600 opacity-40"></div>
                 
                 {/* Main Profile Circle */}
                 <div className="relative w-full h-full rounded-full bg-gray-800 p-1">
-                  <div className="w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden">
+                  <div className="relative w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden">
                     {/* Your actual photo */}
                     <Image 
                       src="/david-photo.jpeg" 
@@ -112,95 +96,170 @@ export default function AboutMe() {
                 </div>
 
                 {/* Floating Elements */}
-                <motion.div
-                  className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center"
-                  animate={{ 
-                    y: [0, -10, 0],
-                    rotate: [0, 5, -5, 0]
-                  }}
-                  transition={{ 
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                >
+                <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
                   <FontAwesomeIcon icon={faGamepad} className="text-white text-sm" />
-                </motion.div>
+                </div>
 
-                <motion.div
-                  className="absolute -bottom-4 -left-4 w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center"
-                  animate={{ 
-                    y: [0, 10, 0],
-                    rotate: [0, -5, 5, 0]
-                  }}
-                  transition={{ 
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.5
-                  }}
-                >
+                <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
                   <FontAwesomeIcon icon={faFutbol} className="text-white text-sm" />
-                </motion.div>
+                </div>
 
-                <motion.div
-                  className="absolute top-1/2 -right-8 w-6 h-6 bg-gray-500 rounded-full flex items-center justify-center"
-                  animate={{ 
-                    x: [0, -5, 0],
-                    rotate: [0, 10, -10, 0]
-                  }}
-                  transition={{ 
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 1
-                  }}
-                >
+                <div className="absolute top-1/2 -right-8 w-6 h-6 bg-gray-500 rounded-full flex items-center justify-center">
                   <FontAwesomeIcon icon={faHeart} className="text-white text-xs" />
-                </motion.div>
-              </motion.div>
+                </div>
+              </div>
             </div>
 
-            {/* Personal Details */}
-            <div className="space-y-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-center"
-              >
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                  David Obonyano
-                </h3>
-                <p className="text-xl font-semibold mb-2 text-gradient-ice">
-                  Full-Stack Developer
-                </p>
-                <p className="text-gray-400 text-lg">
-                  4+ {t("yearsExperience")}
-                </p>
-              </motion.div>
 
-              {/* Bio */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="text-center"
-              >
-                <p className="text-gray-400 italic text-lg">
-                  Pro COD Player • Video Games • Barca Fan
-                </p>
-              </motion.div>
+            {/* Small About Card */}
+            <div className="w-full max-w-sm bg-black/20 backdrop-blur-xl border border-gray-600/30 rounded-lg p-4 shadow-lg">
+              {/* Card Header */}
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h2 className="text-lg font-bold text-blue-400 uppercase">ABOUT SNAPSHOT</h2>
+                  <p className="text-gray-400 text-xs">Quick peek into who I am & what I do</p>
+                </div>
+                <button className="px-3 py-1 bg-blue-500 text-white rounded text-xs font-medium hover:bg-blue-600 transition-colors">
+                  about
+                </button>
+              </div>
+
+              {/* Collapsible Sections */}
+              <div className="space-y-3">
+                {/* About Section */}
+                <div>
+                  <button 
+                    onClick={() => toggleSection('about')}
+                    className="flex items-center justify-between w-full text-left text-gray-300 hover:text-white transition-colors"
+                  >
+                    <span className="flex items-center">
+                      <FontAwesomeIcon 
+                        icon={faChevronDown} 
+                        className={`mr-2 text-xs transition-transform ${expandedSections.about ? 'rotate-180' : ''}`} 
+                      />
+                      about
+                    </span>
+                  </button>
+                  {expandedSections.about && (
+                    <div className="ml-4 mt-2 space-y-1">
+                      <div className="flex items-center">
+                        <FontAwesomeIcon icon={faChevronDown} className="mr-2 text-xs text-blue-400" />
+                        <span className="text-gray-300 text-sm">profile</span>
+                      </div>
+                      <div className="ml-4 space-y-1 text-gray-400 text-sm">
+                        <div><span className="text-blue-400">name:</span> David Obonyano</div>
+                        <div><span className="text-blue-400">role:</span> Full-Stack Dev</div>
+                        <div><span className="text-blue-400">location:</span> Lagos, Nigeria</div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Experience Section */}
+                <div>
+                  <button 
+                    onClick={() => toggleSection('experience')}
+                    className="flex items-center justify-between w-full text-left text-gray-300 hover:text-white transition-colors"
+                  >
+                    <span className="flex items-center">
+                      <FontAwesomeIcon 
+                        icon={faChevronDown} 
+                        className={`mr-2 text-xs transition-transform ${expandedSections.experience ? 'rotate-180' : ''}`} 
+                      />
+                      experience
+                    </span>
+                  </button>
+                  {expandedSections.experience && (
+                    <div className="ml-4 mt-2 space-y-1">
+                      <div className="flex items-center text-gray-400 text-sm">
+                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></div>
+                        <span>5+ yrs • Web Dev</span>
+                      </div>
+                      <div className="flex items-center text-gray-400 text-sm">
+                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></div>
+                        <span>4+ yrs • React/Next</span>
+                      </div>
+                      <div className="flex items-center text-gray-400 text-sm">
+                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></div>
+                        <span>3+ yrs • Full-Stack</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Skills Section */}
+                <div>
+                  <button 
+                    onClick={() => toggleSection('skills')}
+                    className="flex items-center justify-between w-full text-left text-gray-300 hover:text-white transition-colors"
+                  >
+                    <span className="flex items-center">
+                      <FontAwesomeIcon 
+                        icon={faChevronDown} 
+                        className={`mr-2 text-xs transition-transform ${expandedSections.skills ? 'rotate-180' : ''}`} 
+                      />
+                      skills
+                    </span>
+                  </button>
+                  {expandedSections.skills && (
+                    <div className="ml-4 mt-2 space-y-1">
+                      <div className="flex items-center text-gray-400 text-sm">
+                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></div>
+                        <span>TS • React • Node</span>
+                      </div>
+                      <div className="flex items-center text-gray-400 text-sm">
+                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></div>
+                        <span>DB • APIs • Cloud</span>
+                      </div>
+                      <div className="flex items-center text-gray-400 text-sm">
+                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></div>
+                        <span>Docker • Git • Testing</span>
+                      </div>
+                      <div className="flex items-center text-gray-400 text-sm">
+                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></div>
+                        <span>Claude • AI • Copilot</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Interests Section */}
+                <div>
+                  <button 
+                    onClick={() => toggleSection('interests')}
+                    className="flex items-center justify-between w-full text-left text-gray-300 hover:text-white transition-colors"
+                  >
+                    <span className="flex items-center">
+                      <FontAwesomeIcon 
+                        icon={faChevronDown} 
+                        className={`mr-2 text-xs transition-transform ${expandedSections.interests ? 'rotate-180' : ''}`} 
+                      />
+                      interests
+                    </span>
+                  </button>
+                  {expandedSections.interests && (
+                    <div className="ml-4 mt-2 space-y-1">
+                      <div className="flex items-center text-gray-400 text-sm">
+                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></div>
+                        <span>💻 Code enthusiast</span>
+                      </div>
+                      <div className="flex items-center text-gray-400 text-sm">
+                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></div>
+                        <span>🍽️ Eating eba</span>
+                      </div>
+                      <div className="flex items-center text-gray-400 text-sm">
+                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></div>
+                        <span>🎵 Listening to music</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right Side - Technologies */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-8"
-          >
+          <div className="space-y-8">
             <div className="text-center mb-8">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
                 Current <span className="text-gradient-ice">{t("technologiesWord")}</span>
@@ -213,21 +272,11 @@ export default function AboutMe() {
             {/* Technology Grid */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {technologies.map((tech, index) => (
-                <motion.div
+                <div
                   key={tech.name}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={isVisible ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ 
-                    duration: 0.5, 
-                    delay: 0.6 + index * 0.1 
-                  }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    y: -5
-                  }}
-                  onHoverStart={() => setHoveredTech(tech.name)}
-                  onHoverEnd={() => setHoveredTech(null)}
-                  className="relative group cursor-pointer"
+                  onMouseEnter={() => setHoveredTech(tech.name)}
+                  onMouseLeave={() => setHoveredTech(null)}
+                  className="relative group cursor-pointer hover:scale-105 hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className={`bg-gray-800 border border-gray-700 p-4 rounded-xl shadow-lg transition-all duration-300 hover:border-blue-500 ${
                     hoveredTech === tech.name ? 'shadow-2xl border-blue-500' : ''
@@ -261,25 +310,16 @@ export default function AboutMe() {
 
                   {/* Hover Effect */}
                   {hoveredTech === tech.name && (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      className="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center shadow-lg"
-                    >
+                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center shadow-lg">
                       <FontAwesomeIcon icon={faHeart} className="text-white text-xs" />
-                    </motion.div>
+                    </div>
                   )}
-                </motion.div>
+                </div>
               ))}
             </div>
 
             {/* Experience Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="grid grid-cols-2 gap-6 mt-12"
-            >
+            <div className="grid grid-cols-2 gap-6 mt-12">
               <div className="text-center bg-gray-800 p-6 rounded-xl border border-gray-700">
                 <div className="text-3xl font-bold text-gradient-ice mb-2">4+</div>
                 <div className="text-gray-400">{t("yearsExperience")}</div>
@@ -296,8 +336,8 @@ export default function AboutMe() {
                 <div className="text-3xl font-bold text-gradient-ice mb-2">24/7</div>
                 <div className="text-gray-400">{t("available")}</div>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

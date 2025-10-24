@@ -63,7 +63,7 @@ export default function Contact() {
 
     try {
       // EmailJS configuration - you'll need to replace these with your actual values
-      const serviceId = 'service_wqnlyzs';
+      const serviceId = 'service_573veza';
       const templateId = 'template_2qsawal';
       const publicKey = '6Q4DdR03xq4twi3Nj';
 
@@ -75,6 +75,7 @@ export default function Contact() {
           from_email: formData.email,
           subject: formData.subject,
           message: formData.message,
+          to_name: 'David Obonyano'
         },
         publicKey
       );
@@ -109,6 +110,9 @@ export default function Contact() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">{t("letsConnect")}</h2>
+          <div className="flex justify-center mb-6">
+            <div className="w-32 h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">

@@ -125,6 +125,9 @@ export default function Projects() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">{t("selectedWorks")}</h2>
+          <div className="flex justify-center mb-6">
+            <div className="w-32 h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
+          </div>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">{t("projectsForBrands")}</p>
         </div>
 

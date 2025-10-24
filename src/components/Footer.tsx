@@ -57,38 +57,6 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900/50 backdrop-blur-xl border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="flex flex-col items-center space-y-6 mb-8">
-          {/* Brand Section */}
-          <div className="text-center space-y-4">
-            <h3 className="text-2xl font-bold text-white">David Obonyano</h3>
-            <p className="text-gray-400 leading-relaxed max-w-md">
-              Full-stack developer, bugs hate to see me coming. 
-              I make websites that don&apos;t break when you click them (most of the time).
-            </p>
-            <div className="flex space-x-4 justify-center">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-10 h-10 bg-gray-800/50 border border-white/10 rounded-lg flex items-center justify-center text-gray-400 ${social.color} hover:border-blue-500/50 transition-all duration-300`}
-                  title={social.label}
-                >
-                  <FontAwesomeIcon icon={social.icon} className="text-lg" />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* CV Button */}
-          <button
-            onClick={() => window.open('/david-cv.pdf', '_blank')}
-            className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg shadow-lg shadow-blue-600/30 transition-colors duration-300"
-          >
-            {translate('viewCv')}
-          </button>
-        </div>
 
         {/* Bottom Section */}
         <div className="border-t border-white/10 pt-8">
