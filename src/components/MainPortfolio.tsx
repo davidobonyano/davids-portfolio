@@ -329,9 +329,31 @@ export default function MainPortfolio() {
       {/* Portfolio Feedback Section */}
       <section className="py-20 px-4 relative bg-black">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="flex items-center justify-center gap-8">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+            {/* Professional Icons */}
+            <div className="flex gap-4 order-1 md:order-2">
+              {[
+                { icon: faHeart, label: 'Love it!', value: 'love' },
+                { icon: faThumbsUp, label: 'Great!', value: 'great' },
+                { icon: faFrown, label: 'Sad', value: 'sad' },
+                { icon: faAngry, label: 'Angry', value: 'angry' }
+              ].map((reaction, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setSelectedReaction(reaction.value);
+                    setShowFeedbackForm(true);
+                  }}
+                  className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 text-white hover:animate-bounce"
+                  title={reaction.label}
+                >
+                  <FontAwesomeIcon icon={reaction.icon} className="text-xl" />
+                </button>
+              ))}
+            </div>
+
             {/* Feedback Card */}
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-lg p-4 w-80">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-lg p-4 w-full max-w-80 order-2 md:order-1">
               {feedbackSubmitStatus === 'success' ? (
                 <div className="text-center">
                   <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -381,28 +403,6 @@ export default function MainPortfolio() {
                   </div>
                 </div>
               )}
-            </div>
-
-            {/* Professional Icons */}
-            <div className="flex gap-4">
-              {[
-                { icon: faHeart, label: 'Love it!', value: 'love' },
-                { icon: faThumbsUp, label: 'Great!', value: 'great' },
-                { icon: faFrown, label: 'Sad', value: 'sad' },
-                { icon: faAngry, label: 'Angry', value: 'angry' }
-              ].map((reaction, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    setSelectedReaction(reaction.value);
-                    setShowFeedbackForm(true);
-                  }}
-                  className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 text-white hover:animate-bounce"
-                  title={reaction.label}
-                >
-                  <FontAwesomeIcon icon={reaction.icon} className="text-xl" />
-                </button>
-              ))}
             </div>
           </div>
         </div>
