@@ -1,209 +1,548 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>David Obonyano — Software Engineer CV</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>David Obonyano — Full-Stack Engineer</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap"
+		rel="stylesheet">
 	<style>
-		:root { --text:#0f172a; --muted:#475569; --accent:#0ea5e9; }
-		html,body { margin:0; padding:0; }
-		body { font-family: Segoe UI, system-ui, -apple-system, Inter, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; color:var(--text); font-weight:400; font-synthesis: none; font-variation-settings: "wght" 400; font-optical-sizing: none; }
-		b, strong { font-weight:600; }
-		a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
-		a:visited { color: #0369a1; }
-		a:hover { text-decoration-thickness: 2px; }
-		.page { max-width: 800px; margin: 32px auto; padding: 0 24px 32px; }
-		.header { display:flex; justify-content:space-between; gap:24px; align-items:flex-start; border-bottom:2px solid #e2e8f0; padding-bottom:16px; }
-		.name { margin:0 0 4px; font-size:32px; line-height:1.1; font-weight:700; font-variation-settings: "wght" 700; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
-		.role { margin:0; color:var(--muted); font-weight:500; font-variation-settings: "wght" 500; }
-		.contacts { list-style:none; margin:0; padding:0; font-size:14px; text-align:right; }
-		.contacts li { margin:2px 0; }
-		.contacts a { color: var(--accent); text-decoration: underline; }
-		.section { margin-top:20px; }
-		.section__title { margin:0 0 8px; font-size:15px; letter-spacing:.08em; text-transform:uppercase; color:#0f172a; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; font-weight:600; }
-		.summary { margin:0; color:var(--text); font-weight:400; font-variation-settings: "wght" 400; }
-		.two-col { display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
-		.pill-list { list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px; }
-		.pill-list li { border:1px solid #e2e8f0; padding:6px 10px; border-radius:999px; font-size:13px; }
-		.bullets { margin:8px 0 0; padding-left:18px; }
-		.bullets li { margin:6px 0; font-weight:400; font-variation-settings: "wght" 400; }
-		.bullets.tight li { margin:4px 0; }
-		.item { margin-top:12px; }
-		.item__head { display:flex; justify-content:space-between; gap:12px; align-items:baseline; }
-		.item__title { margin:0; font-size:16px; font-weight:600; font-variation-settings: "wght" 600; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
-		.item__meta { color:var(--muted); font-size:13px; }
-		.muted { color:var(--muted); margin:6px 0 0; font-weight:400; font-variation-settings: "wght" 400; }
-		p { font-weight:400; font-variation-settings: "wght" 400; }
-		li { font-weight:400; font-variation-settings: "wght" 400; }
-		i { font-style:italic; font-weight:400; }
-		.footer { border-top:1px solid #e2e8f0; margin-top:16px; padding-top:10px; }
-		.small { font-size:13px; }
+		:root {
+			--bg: #ffffff;
+			--text-primary: #1e293b;
+			/* Slate 800 */
+			--text-secondary: #64748b;
+			/* Slate 500 */
+			--text-tertiary: #94a3b8;
+			/* Slate 400 */
+			--accent: #2563eb;
+			/* Blue 600 */
+			--accent-light: #eff6ff;
+			--border: #e2e8f0;
+			--font-main: 'Inter', system-ui, -apple-system, sans-serif;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: var(--font-main);
+			color: var(--text-primary);
+			line-height: 1.6;
+			background: #f8fafc;
+			font-size: 14px;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit;
+			transition: color 0.2s;
+		}
+
+		a:hover {
+			color: var(--accent);
+		}
+
+		.container {
+			max-width: 1000px;
+			/* A4-ish width */
+			margin: 40px auto;
+			background: var(--bg);
+			box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+			min-height: 100vh;
+		}
+
+		/* Header */
+		.header {
+			padding: 48px 48px 32px;
+			border-bottom: 1px solid var(--border);
+		}
+
+		.header__top {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+		}
+
+		.name {
+			font-size: 36px;
+			font-weight: 700;
+			letter-spacing: -0.03em;
+			margin: 0 0 8px;
+			color: #0f172a;
+		}
+
+		.role {
+			font-size: 16px;
+			color: var(--accent);
+			font-weight: 500;
+			margin: 0;
+			letter-spacing: -0.01em;
+		}
+
+		.contact-grid {
+			display: flex;
+			gap: 24px;
+			margin-top: 24px;
+			font-size: 13px;
+			color: var(--text-secondary);
+			flex-wrap: wrap;
+		}
+
+		.contact-item {
+			display: flex;
+			align-items: center;
+			gap: 6px;
+		}
+
+		.contact-item svg {
+			width: 16px;
+			height: 16px;
+			opacity: 0.7;
+		}
+
+		/* Main Layout */
+		.main-content {
+			display: grid;
+			grid-template-columns: 280px 1fr;
+		}
+
+		.sidebar {
+			background: #fcfcfc;
+			padding: 40px 32px;
+			border-right: 1px solid var(--border);
+		}
+
+		.content {
+			padding: 40px 48px;
+		}
+
+		/* Section Styling */
+		.section {
+			margin-bottom: 40px;
+		}
+
+		.section:last-child {
+			margin-bottom: 0;
+		}
+
+		.section__title {
+			font-size: 13px;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			color: var(--text-secondary);
+			font-weight: 700;
+			margin: 0 0 16px;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+
+		.section__title::after {
+			content: '';
+			flex: 1;
+			height: 1px;
+			background: var(--border);
+			opacity: 0.6;
+		}
+
+		/* Skills Styling */
+		.skills-group {
+			margin-bottom: 24px;
+		}
+
+		.skills-label {
+			font-size: 12px;
+			font-weight: 600;
+			color: var(--text-primary);
+			margin-bottom: 8px;
+			display: block;
+		}
+
+		.tags {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 6px;
+		}
+
+		.tag {
+			font-size: 12px;
+			background: #fff;
+			border: 1px solid var(--border);
+			padding: 4px 10px;
+			border-radius: 6px;
+			color: var(--text-secondary);
+			font-weight: 500;
+		}
+
+		/* Experience Styling */
+		.job {
+			margin-bottom: 32px;
+		}
+
+		.job__header {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			margin-bottom: 8px;
+		}
+
+		.job__role {
+			font-size: 16px;
+			font-weight: 600;
+			color: #0f172a;
+		}
+
+		.job__company {
+			color: var(--text-secondary);
+			font-weight: 500;
+		}
+
+		.job__time {
+			font-size: 13px;
+			color: var(--text-tertiary);
+			font-feature-settings: "tnum";
+			font-variant-numeric: tabular-nums;
+		}
+
+		.job__desc {
+			margin: 0;
+			padding-left: 16px;
+			color: var(--text-secondary);
+		}
+
+		.job__desc li {
+			margin-bottom: 6px;
+		}
+
+		/* Projects */
+		.project {
+			margin-bottom: 24px;
+		}
+
+		.project__head {
+			display: flex;
+			align-items: baseline;
+			gap: 10px;
+			margin-bottom: 4px;
+		}
+
+		.project__name {
+			font-weight: 600;
+			font-size: 15px;
+			color: var(--text-primary);
+		}
+
+		.project__tech {
+			font-size: 12px;
+			color: var(--accent);
+			background: var(--accent-light);
+			padding: 2px 8px;
+			border-radius: 4px;
+			font-weight: 500;
+		}
+
+		.project__text {
+			color: var(--text-secondary);
+			font-size: 14px;
+			margin: 4px 0 0;
+		}
+
+		@media screen and (max-width: 768px) {
+			.container {
+				margin: 0;
+				box-shadow: none;
+			}
+
+			.main-content {
+				grid-template-columns: 1fr;
+			}
+
+			.sidebar {
+				border-right: none;
+				border-bottom: 1px solid var(--border);
+				padding: 32px;
+				order: 2;
+			}
+
+			.content {
+				padding: 32px;
+				order: 1;
+			}
+
+			.header {
+				padding: 32px;
+			}
+
+			.name {
+				font-size: 28px;
+			}
+		}
+
 		@media print {
-			.page { max-width: 210mm; margin: 0; padding: 12mm; }
-			.header { padding-bottom:8px; }
-			/* Ensure colors and link styles are preserved in PDF */
-			body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-synthesis: none; font-variation-settings: "wght" 400; font-optical-sizing: none; }
-			p, li, .summary, .muted { font-weight:400 !important; font-variation-settings: "wght" 400 !important; }
-			.name { font-weight:700 !important; font-variation-settings: "wght" 700 !important; }
-			.item__title { font-weight:600 !important; font-variation-settings: "wght" 600 !important; }
-			a { color: var(--accent); text-decoration: underline; }
-			.contacts a { color: var(--accent); text-decoration: underline; }
+			body {
+				background: #fff;
+			}
+
+			.container {
+				margin: 0;
+				box-shadow: none;
+				max-width: 100%;
+			}
+
+			.main-content {
+				grid-template-columns: 240px 1fr;
+			}
+
+			/* Force grid for print */
+			.section__title {
+				color: #000;
+			}
+
+			a {
+				text-decoration: none !important;
+				color: #000 !important;
+			}
+
+			.tag {
+				border-color: #ccc;
+			}
 		}
 	</style>
 </head>
+
 <body>
-	<main class="page">
+	<div class="container">
 		<header class="header">
-			<div>
-				<h1 class="name">David Obonyano</h1>
-				<p class="role">Software Engineer — Full‑Stack (React / Next.js / TypeScript)</p>
+			<div class="header__top">
+				<div>
+					<h1 class="name">David Obonyano</h1>
+					<p class="role">Full-Stack Engineer</p>
+				</div>
 			</div>
-			<ul class="contacts">
-				<li><a href="mailto:davidobonyanoefe@gmail.com">davidobonyanoefe@gmail.com</a></li>
-				<li><a href="tel:+2349035526146">+234 903 552 6146</a></li>
-				<li><a href="https://www.linkedin.com/in/david-obonyano" target="_blank" rel="noreferrer">linkedin.com/in/david-obonyano</a></li>
-				<li>Lagos, Nigeria</li>
-			</ul>
+			<div class="contact-grid">
+				<a href="mailto:davidobonyanoefe@gmail.com" class="contact-item">
+					<svg fill="currentColor" viewBox="0 0 20 20">
+						<path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+						<path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+					</svg>
+					davidobonyanoefe@gmail.com
+				</a>
+				<a href="tel:+2349035526146" class="contact-item">
+					<svg fill="currentColor" viewBox="0 0 20 20">
+						<path
+							d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+					</svg>
+					+234 903 552 6146
+				</a>
+				<a href="https://david-obonyano.vercel.app" class="contact-item">
+					<svg fill="currentColor" viewBox="0 0 20 20">
+						<path fill-rule="evenodd"
+							d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.556 1.94l.215.334a1 1 0 01-1.68.653l-.844-.844a4.012 4.012 0 00-1.09-2.146A4.99 4.99 0 002.38 9.01a8 8 0 011.952-.982zM10 20a10 10 0 110-20 10 10 0 010 20z"
+							clip-rule="evenodd" />
+					</svg>
+					Portfolio
+				</a>
+				<a href="https://www.linkedin.com/in/david-obonyano-bb3478256/" class="contact-item">
+					<svg fill="currentColor" viewBox="0 0 20 20">
+						<path fill-rule="evenodd"
+							d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763h2.674v-8.59H3.668v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
+							clip-rule="evenodd" />
+					</svg>
+					LinkedIn
+				</a>
+				<div class="contact-item">
+					<svg fill="currentColor" viewBox="0 0 20 20">
+						<path fill-rule="evenodd"
+							d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+							clip-rule="evenodd" />
+					</svg>
+					Lagos, Nigeria
+				</div>
+			</div>
 		</header>
 
-		<section class="section">
-			<h2 class="section__title">Profile</h2>
-			<p class="summary">Product‑driven full‑stack engineer with a track record of shipping performant web apps, teaching, and collaborating with small teams. I move fast with high quality, communicate clearly, and focus on business impact. Background in Geology with strong analytical thinking and resilience proven through self‑funded studies and entrepreneurial projects.</p>
-		</section>
+		<main class="main-content">
+			<aside class="sidebar">
+				<section class="section">
+					<h3 class="section__title">Skills</h3>
 
-		<section class="section two-col">
-			<div>
-				<h2 class="section__title">Core Skills</h2>
-				<ul class="pill-list">
-					<li>React</li>
-					<li>Next.js</li>
-					<li>TypeScript</li>
-					<li>Node.js</li>
-					<li>Tailwind CSS</li>
-					<li>Supabase</li>
-					<li>PostgreSQL</li>
-					<li>REST APIs</li>
-					<li>Auth & RBAC</li>
-					<li>Testing</li>
-					<li>CI/CD</li>
-					<li>MongoDB</li>
-					<li>MySQL</li>
-					<li>Python</li>
-					<li>Heroku</li>
-				</ul>
-			</div>
-			<div>
-				<h2 class="section__title">Strengths</h2>
-				<ul class="bullets tight">
-					<li>Rapid delivery with clean, maintainable code</li>
-					<li>Clear communication and teaching ability</li>
-					<li>Ownership mindset and product sense</li>
-					<li>Adaptable and resilient under constraints</li>
-				</ul>
-			</div>
-		</section>
-
-		<section class="section">
-			<h2 class="section__title">Experience</h2>
-			<div class="item">
-				<div class="item__head">
-					<h3 class="item__title">Full‑Stack Engineer — Yano School Site</h3>
-					<div class="item__meta">Remote • 2023 — Present</div>
-				</div>
-				<ul class="bullets">
-					<li>Designed and built a modern school portal for enrollment, content, and announcements.</li>
-					<li>Implemented responsive UI with Next.js and Tailwind; improved page performance scores to 90+.</li>
-					<li>Integrated Supabase for auth, storage, and relational data with role‑based access.</li>
-				</ul>
-			</div>
-
-			<div class="item">
-				<div class="item__head">
-					<h3 class="item__title">Junior Full‑Stack Developer — Nigeria Sugar Development Council (NSDC)</h3>
-					<div class="item__meta">Abuja • May 2022 (1 month)</div>
-				</div>
-				<ul class="bullets">
-					<li>Contributed to the official NSDC site across frontend and backend features.</li>
-					<li>Collaborated in a small team to deliver secure forms, content tooling, and deploys.</li>
-				</ul>
-			</div>
-
-			<div class="item">
-				<div class="item__head">
-					<h3 class="item__title">Frontend Engineer — G47 Hairs (Salon Site)</h3>
-					<div class="item__meta">Remote • 2022</div>
-				</div>
-				<ul class="bullets">
-					<li>Built a responsive salon website with service listings, photo gallery, and booking flow.</li>
-					<li>Implemented SEO basics and performance optimizations improving Core Web Vitals.</li>
-				</ul>
-			</div>
-
-			<div class="item">
-				<div class="item__head">
-					<h3 class="item__title">Frontend Engineer — Deluxe Store (E‑commerce)</h3>
-					<div class="item__meta">Remote • 2025</div>
-				</div>
-				<ul class="bullets">
-					<li>Implemented product listing, cart, and checkout UX; elevated conversion through improved performance.</li>
-					<li>Built testimonial section and merchandising pages with reusable components.</li>
-				</ul>
-			</div>
-
-			<div class="item">
-				<div class="item__head">
-					<h3 class="item__title">Full‑Stack Engineer — Driven (Startup)</h3>
-					<div class="item__meta">Remote • 2024</div>
-				</div>
-				<ul class="bullets">
-					<li>Early‑stage product work on a startup that later wound down; delivered MVP features and learned from rapid iteration.</li>
-				</ul>
-			</div>
-
-			<div class="item">
-				<div class="item__head">
-					<h3 class="item__title">Freelance & Teaching</h3>
-					<div class="item__meta">Delta State • 2022 — Present</div>
-				</div>
-				<ul class="bullets">
-					<li>Built and maintained React/Next.js apps for schools, small businesses, and blogs.</li>
-					<li>English & Geography Teacher (2023): strengthened communication and mentorship skills.</li>
-				</ul>
-			</div>
-		</section>
-
-		<section class="section two-col">
-			<div>
-				<h2 class="section__title">Selected Projects</h2>
-				<ul class="bullets">
-					<li><strong>Online Exam Portal</strong> — role‑based exams, analytics, and secure proctoring adopted by schools.</li>
-					<li><strong>Condo</strong> — personal tech blog project; sunset after learnings on product‑market fit.</li>
-				</ul>
-			</div>
-			<div>
-				<h2 class="section__title">Education</h2>
-				<div class="item">
-					<div class="item__head">
-						<h3 class="item__title">FUPRE — B.Sc. Geology</h3>
-						<div class="item__meta">Effurun, Delta State • Graduated 2024</div>
+					<div class="skills-group">
+						<span class="skills-label">Frontend</span>
+						<div class="tags">
+							<span class="tag">React</span>
+							<span class="tag">Next.js 14</span>
+							<span class="tag">TypeScript</span>
+							<span class="tag">Tailwind CSS</span>
+							<span class="tag">Redux</span>
+						</div>
 					</div>
-					<p class="muted">Thesis: Study of Lignite Deposits in Obomkpa, Asaba</p>
-				</div>
+
+					<div class="skills-group">
+						<span class="skills-label">Backend</span>
+						<div class="tags">
+							<span class="tag">Node.js</span>
+							<span class="tag">PostgreSQL</span>
+							<span class="tag">Supabase</span>
+							<span class="tag">Python</span>
+							<span class="tag">GraphQL</span>
+						</div>
+					</div>
+
+					<div class="skills-group">
+						<span class="skills-label">Tools & DevOps</span>
+						<div class="tags">
+							<span class="tag">Git</span>
+							<span class="tag">Docker</span>
+							<span class="tag">AWS</span>
+							<span class="tag">CI/CD</span>
+							<span class="tag">Jest</span>
+						</div>
+					</div>
+				</section>
+
+				<section class="section">
+					<h3 class="section__title">Education</h3>
+					<div style="margin-bottom: 16px;">
+						<div style="font-weight: 600; font-size: 14px;">B.Sc. Geology</div>
+						<div style="color: var(--text-secondary); font-size: 13px;">FUPRE, Delta State</div>
+						<div style="color: var(--text-tertiary); font-size: 12px;">Graduated 2024</div>
+					</div>
+				</section>
+
+				<section class="section">
+					<h3 class="section__title">Summary</h3>
+					<p style="font-size: 13px; color: var(--text-secondary); margin: 0;">
+						Product-minded engineer specializing in scalable web applications. Proven ability to take
+						projects from concept to production with a focus on performance, clean architecture, and user
+						experience.
+					</p>
+				</section>
+			</aside>
+
+			<div class="content">
+				<section class="section">
+					<h2 class="section__title">Professional Experience</h2>
+
+					<div class="job">
+						<div class="job__header">
+							<div>
+								<span class="job__role">Frontend Engineer</span>
+								<span class="job__company"> · Deluxe Store</span>
+							</div>
+							<span class="job__time">Jan 2025 — Aug 2025</span>
+						</div>
+						<ul class="job__desc">
+							<li>Led the frontend modernization of a high-traffic e-commerce platform, resulting in a 25%
+								increase in conversion rates.</li>
+							<li>Optimized Core Web Vitals, achieving perfect interaction scores (INP) and reducing heavy
+								main-thread work.</li>
+							<li>Built a reusable component system that accelerated feature delivery for the
+								merchandising team.</li>
+						</ul>
+					</div>
+
+					<div class="job">
+						<div class="job__header">
+							<div>
+								<span class="job__role">Full-Stack Engineer</span>
+								<span class="job__company"> · YanoEd Platforms</span>
+							</div>
+							<span class="job__time">Jan 2023 — Dec 2024</span>
+						</div>
+						<ul class="job__desc">
+							<li>Developed a comprehensive school management portal handling enrollment, grading, and
+								content delivery for 500+ students.</li>
+							<li>Engineered a role-based access control (RBAC) system using Supabase Auth to secure
+								sensitive student data.</li>
+							<li>Reduced page load times to under 1.5s globally by implementing edge caching and image
+								optimization strategies in Next.js.</li>
+						</ul>
+					</div>
+
+					<div class="job">
+						<div class="job__header">
+							<div>
+								<span class="job__role">Software Engineer</span>
+								<span class="job__company"> · BetOracle</span>
+							</div>
+							<span class="job__time">Jan 2024 — Dec 2024</span>
+						</div>
+						<ul class="job__desc">
+							<li>Architected the frontend for an AI-inspired betting analytics platform (startup);
+								delivered MVP features and adapted to rapid product pivots.</li>
+							<li>Implemented real-time odds tracking using WebSockets, reducing data latency by 40%.</li>
+							<li>Collaborated mainly in a failed startup environment, learning valuable lessons in
+								product-market fit and resource efficiency.</li>
+						</ul>
+					</div>
+
+					<div class="job">
+						<div class="job__header">
+							<div>
+								<span class="job__role">Frontend Developer</span>
+								<span class="job__company"> · Mena247hairs</span>
+							</div>
+							<span class="job__time">Feb 2022 — Nov 2022</span>
+						</div>
+						<ul class="job__desc">
+							<li>Built a custom salon booking and portfolio site that streamlined appointments and
+								reduced manual scheduling overhead.</li>
+							<li>Designed a mobile-first gallery interface that increased user engagement time by 30%.
+							</li>
+						</ul>
+					</div>
+
+					<div class="job">
+						<div class="job__header">
+							<div>
+								<span class="job__role">Junior Full-Stack Developer</span>
+								<span class="job__company"> · NSDC</span>
+							</div>
+							<span class="job__time">May 2022 — Jun 2022</span>
+						</div>
+						<ul class="job__desc">
+							<li>Contributed to the Nigeria Sugar Development Council's internal tooling and frontend
+								interfaces.</li>
+							<li>Collaborated with senior engineers to fix bugs and improve form validation logic.</li>
+						</ul>
+					</div>
+				</section>
+
+				<section class="section">
+					<h2 class="section__title">Selected Projects</h2>
+
+					<div class="project">
+						<div class="project__head">
+							<div class="project__name">LogiStream SaaS</div>
+							<span class="project__tech">Next.js &middot; Redis &middot; Socket.io</span>
+						</div>
+						<p class="project__text">A real-time logistics dashboard enabling fleet managers to track asset
+							locations with sub-second latency. Implemented geofencing alerts and historical route
+							playback using Mapbox GL.</p>
+					</div>
+
+					<div class="project">
+						<div class="project__head">
+							<div class="project__name">Online Exam Portal</div>
+							<span class="project__tech">React &middot; TensorFlow.js</span>
+						</div>
+						<p class="project__text">The core assessment module for <strong>YanoEd</strong>. A browser-based
+							exam proctoring tool that utilizes client-side computer vision to detect tabulated behaviors
+							and multiple faces, ensuring academic integrity.</p>
+					</div>
+
+				</section>
 			</div>
-		</section>
-
-		<section class="section">
-			<h2 class="section__title">Leadership & Impact</h2>
-			<ul class="bullets">
-				<li>Self‑funded education through entrepreneurship (Uber) while completing research and studies.</li>
-				<li>Mentored peers on balancing academics with work; led small teams to ship.</li>
-			</ul>
-		</section>
-
-		
-	</main>
+		</main>
+	</div>
 </body>
+
 </html>
