@@ -66,7 +66,7 @@ const About = () => {
 
                         <div className="flex flex-col gap-8">
                             <p className="text-lg lg:text-xl font-sans text-white/60 leading-relaxed max-w-[600px]">
-                                I approach every project with a blend of engineering precision and creative intuition. My goal isn't just to write code, but to build digital ecosystems that scale, perform, and delight.
+                                Based in Nigeria and working with clients globally, I approach every project with a blend of engineering precision and creative intuition. My goal isn't just to write code, but to build digital ecosystems that scale, perform, and delight.
                             </p>
                             <p className="text-base font-sans text-white/40 leading-relaxed max-w-[600px]">
                                 With over 4 years of experience shipping production-grade applications, I specialize in the React/Next.js ecosystem, cloud architecture, and high-performance UI interactions. I believe the best software feels invisible—it just works.

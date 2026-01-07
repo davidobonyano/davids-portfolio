@@ -113,27 +113,40 @@ const ProjectCard = ({ project, index }: { project: typeof seriousProjects[0], i
         transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
         className="group relative flex flex-col gap-6 cursor-pointer"
       >
-        <div className="relative aspect-[4/3] overflow-hidden bg-[#1a1a1a]">
-          <motion.div style={{ y }} className="relative h-[115%] w-full -top-[7.5%]">
-            {/* Fallback to gradient/icon if no image, but we expect images for these */}
-            {project.image ? (
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-              />
-            ) : (
-              <div className="w-full h-full bg-[#222] flex items-center justify-center">
-                <FontAwesomeIcon icon={faCode} className="text-4xl text-white/20" />
-              </div>
-            )}
-          </motion.div>
+        {/* Image Container with Cool Frame */}
+        <div className="relative aspect-[4/3] overflow-hidden bg-[#0a0a0a] p-2 rounded-lg border border-white/5">
+          {/* Animated Corner Accents */}
+          <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#9EFF00] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#9EFF00] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#9EFF00] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#9EFF00] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-          {/* Hover Overlay */}
-          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-full">
-              <span className="text-white text-xs font-mono tracking-widest uppercase">Read Case Study</span>
+          {/* Glow Effect */}
+          <div className="absolute inset-0 bg-[#9EFF00]/0 group-hover:bg-[#9EFF00]/5 transition-colors duration-500 pointer-events-none" />
+
+          {/* Image Wrapper */}
+          <div className="relative w-full h-full overflow-hidden rounded">
+            <motion.div style={{ y }} className="relative h-[115%] w-full -top-[7.5%]">
+              {/* Fallback to gradient/icon if no image, but we expect images for these */}
+              {project.image ? (
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+              ) : (
+                <div className="w-full h-full bg-[#222] flex items-center justify-center">
+                  <FontAwesomeIcon icon={faCode} className="text-4xl text-white/20" />
+                </div>
+              )}
+            </motion.div>
+
+            {/* Hover Overlay */}
+            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+              <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-full">
+                <span className="text-white text-xs font-mono tracking-widest uppercase">Read Case Study</span>
+              </div>
             </div>
           </div>
         </div>
