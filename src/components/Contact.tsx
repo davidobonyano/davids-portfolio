@@ -2,21 +2,22 @@
 
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { 
+import {
   faPaperPlane,
   faCheckCircle,
-  faExclamationCircle
+  faExclamationCircle,
+  faArrowRight
 } from "@fortawesome/free-solid-svg-icons";
-import { 
+import {
   faLinkedin as faLinkedinBrand,
   faGithub as faGithubBrand,
-  faTwitter as faTwitterBrand
+  faTwitter as faTwitterBrand,
 } from "@fortawesome/free-brands-svg-icons";
 import emailjs from '@emailjs/browser';
-import { useLocale } from "@/i18n/LocaleProvider";
+import { motion, AnimatePresence } from "framer-motion";
+import MagneticButton from "./MagneticButton";
 
 export default function Contact() {
-  const { t } = useLocale();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,20 +32,20 @@ export default function Contact() {
     {
       icon: faLinkedinBrand,
       label: "LinkedIn",
-      url: "https://www.linkedin.com/in/david-obonyano-bb3478256?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-      color: "hover:text-blue-400"
+      handle: "David Obonyano",
+      url: "https://www.linkedin.com/in/david-obonyano-bb3478256",
     },
     {
       icon: faGithubBrand,
       label: "GitHub",
+      handle: "@davidobonyano",
       url: "https://github.com/davidobonyano",
-      color: "hover:text-gray-300"
     },
     {
       icon: faTwitterBrand,
       label: "X (Twitter)",
-      url: "https://x.com/davidalocaefe?s=21",
-      color: "hover:text-blue-400"
+      handle: "@davidalocaefe",
+      url: "https://x.com/davidalocaefe",
     }
   ];
 
@@ -62,7 +63,6 @@ export default function Contact() {
     setErrorMessage('');
 
     try {
-      // EmailJS configuration - you'll need to replace these with your actual values
       const serviceId = 'service_573veza';
       const templateId = 'template_2qsawal';
       const publicKey = '6Q4DdR03xq4twi3Nj';
@@ -83,8 +83,6 @@ export default function Contact() {
       if (result.status === 200) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
-        
-        // Reset success message after 5 seconds
         setTimeout(() => setSubmitStatus('idle'), 5000);
       } else {
         throw new Error('Failed to send message');
@@ -92,9 +90,7 @@ export default function Contact() {
     } catch (error) {
       console.error('Error sending email:', error);
       setSubmitStatus('error');
-      setErrorMessage('Failed to send message. Please try again or contact me directly.');
-      
-      // Reset error message after 5 seconds
+      setErrorMessage('Failed to send message. Please try again.');
       setTimeout(() => {
         setSubmitStatus('idle');
         setErrorMessage('');
@@ -105,56 +101,63 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 relative bg-black">
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">{t("letsConnect")}</h2>
-          <div className="flex justify-center mb-6">
-            <div className="w-32 h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
+    <section id="contact" className="relative py-24 lg:py-32 bg-black text-[#E2E1DF] overflow-hidden">
+
+      {/* Background Ambience */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#9EFF00]/5 blur-[120px] rounded-full pointer-events-none z-0" />
+
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-16 relative z-10">
+
+        {/* Header */}
+        <div className="flex flex-col gap-6 mb-20 lg:mb-32">
+          <div className="flex items-center gap-6">
+            <span className="text-[10px] uppercase tracking-[0.5em] text-[#9EFF00] font-medium">[ CONTACT ]</span>
+            <div className="h-[1px] w-16 bg-[#9EFF00]/30" />
           </div>
+          <h2 className="text-6xl lg:text-[7rem] font-display uppercase leading-[0.85] tracking-tighter">
+            Let's <br /> <span className="opacity-30 italic">Connect</span>
+          </h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left Side - Simple CTA with icons and availability (no cards) */}
-          <div className="space-y-8">
-            <div className="text-center lg:text-left">
-              {/* Social icons inline (no cards) */}
-              <div className="flex flex-wrap items-center gap-5 justify-center lg:justify-start text-gray-400">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-2 transition-colors ${social.color}`}
-                    title={social.label}
-                  >
-                    <FontAwesomeIcon icon={social.icon} className="text-2xl" />
-                    <span className="font-medium">{social.label}</span>
-                  </a>
-                ))}
-              </div>
+        <div className="grid lg:grid-cols-12 gap-16 lg:gap-24">
+
+          {/* Left Column: Socials */}
+          <div className="lg:col-span-5 flex flex-col gap-12">
+            <p className="text-lg text-white/60 font-sans leading-relaxed">
+              Have a project in mind or just want to chat? Feel free to reach out. I'm always open to discussing new opportunities and creative ideas.
+            </p>
+
+            <div className="flex flex-col gap-6">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-6 p-6 border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-[#9EFF00]/50 transition-all duration-500"
+                >
+                  <div className="text-2xl text-white/40 group-hover:text-[#9EFF00] transition-colors">
+                    <FontAwesomeIcon icon={social.icon} />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-xs uppercase tracking-widest text-[#9EFF00] mb-1">{social.label}</span>
+                    <span className="font-display text-xl uppercase tracking-wide text-white group-hover:tracking-wider transition-all">{social.handle}</span>
+                  </div>
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Right Side - Contact Form */}
-          <div className="bg-gray-800/30 backdrop-blur-xl border border-white/10 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-white mb-6">{t("sendMessage")}</h3>
-            
-            {submitStatus === 'success' ? (
-              <div className="text-center py-12">
-                <FontAwesomeIcon icon={faCheckCircle} className="text-green-400 text-6xl mb-4" />
-                <h4 className="text-2xl font-bold text-white mb-2">{t("messageSent")}</h4>
-                <p className="text-gray-400">{t("thanksSoon")}</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-gray-300 text-sm font-medium mb-2">
-                      {t("fullName")}
-                    </label>
+          {/* Right Column: Form */}
+          <div className="lg:col-span-7">
+            <div className="p-8 lg:p-12 border border-white/10 bg-[#050505]">
+              <h3 className="text-3xl font-display uppercase tracking-tight mb-12">Send a Message</h3>
+
+              <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+                {/* Name & Email Row */}
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="flex flex-col gap-3">
+                    <label htmlFor="name" className="text-xs uppercase tracking-widest text-white/40 font-mono">Full Name</label>
                     <input
                       type="text"
                       id="name"
@@ -162,14 +165,12 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-gray-700/50 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
-                      placeholder={t("fullNamePlaceholder")}
+                      className="w-full bg-transparent border-b border-white/20 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#9EFF00] transition-colors font-sans text-lg rounded-none"
+                      placeholder="Your full name"
                     />
                   </div>
-                  <div>
-                    <label htmlFor="email" className="block text-gray-300 text-sm font-medium mb-2">
-                      {t("emailAddress")}
-                    </label>
+                  <div className="flex flex-col gap-3">
+                    <label htmlFor="email" className="text-xs uppercase tracking-widest text-white/40 font-mono">Email Address</label>
                     <input
                       type="email"
                       id="email"
@@ -177,16 +178,15 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-gray-700/50 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
-                      placeholder={t("emailPlaceholder")}
+                      className="w-full bg-transparent border-b border-white/20 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#9EFF00] transition-colors font-sans text-lg rounded-none"
+                      placeholder="your.email@example.com"
                     />
                   </div>
                 </div>
-                
-                <div>
-                  <label htmlFor="subject" className="block text-gray-300 text-sm font-medium mb-2">
-                    {t("subject")}
-                  </label>
+
+                {/* Subject */}
+                <div className="flex flex-col gap-3">
+                  <label htmlFor="subject" className="text-xs uppercase tracking-widest text-white/40 font-mono">Subject</label>
                   <input
                     type="text"
                     id="subject"
@@ -194,54 +194,71 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-700/50 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
-                    placeholder={t("subjectPlaceholder")}
+                    className="w-full bg-transparent border-b border-white/20 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#9EFF00] transition-colors font-sans text-lg rounded-none"
+                    placeholder="What's this about?"
                   />
                 </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-gray-300 text-sm font-medium mb-2">
-                    {t("message")}
-                  </label>
+
+                {/* Message */}
+                <div className="flex flex-col gap-3">
+                  <label htmlFor="message" className="text-xs uppercase tracking-widest text-white/40 font-mono">Message</label>
                   <textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
                     required
-                    rows={6}
-                    className="w-full px-4 py-3 bg-gray-700/50 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors resize-none"
-                    placeholder={t("messagePlaceholder")}
+                    rows={5}
+                    className="w-full bg-transparent border-b border-white/20 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#9EFF00] transition-colors font-sans text-lg resize-none rounded-none"
+                    placeholder="Tell me about your project..."
                   />
                 </div>
 
-                {/* Error Message */}
-                {submitStatus === 'error' && (
-                  <div className="flex items-center space-x-2 p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
-                    <FontAwesomeIcon icon={faExclamationCircle} className="text-red-400" />
-                    <p className="text-red-400 text-sm">{errorMessage}</p>
-                  </div>
-                )}
-                
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-blue-500 hover:bg-blue-600 disabled:bg-gray-600 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                      <span>{t("sending")}</span>
-                    </>
-                  ) : (
-                    <>
-                      <FontAwesomeIcon icon={faPaperPlane} />
-                      <span>{t("sendMessage")}</span>
-                    </>
+                {/* Status Feedback Area */}
+                <AnimatePresence mode="wait">
+                  {submitStatus === 'error' && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="flex items-center gap-3 text-red-400 font-mono text-sm py-2"
+                    >
+                      <FontAwesomeIcon icon={faExclamationCircle} />
+                      <span>{errorMessage}</span>
+                    </motion.div>
                   )}
-                </button>
+
+                  {submitStatus === 'success' && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="flex items-center gap-3 text-[#9EFF00] font-mono text-sm py-2"
+                    >
+                      <FontAwesomeIcon icon={faCheckCircle} />
+                      <span>Message sent successfully. I'll get back to you soon.</span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Submit Button */}
+                <div className="mt-4">
+                  <MagneticButton strength={0.4}>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="group relative px-10 py-5 bg-[#E2E1DF] text-black font-display uppercase tracking-widest text-sm hover:bg-[#9EFF00] transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <span className="relative z-10 flex items-center gap-3">
+                        {isSubmitting ? 'Sending...' : 'Send Message'}
+                        {!isSubmitting && <FontAwesomeIcon icon={faArrowRight} className="group-hover:translate-x-1 transition-transform" />}
+                      </span>
+                    </button>
+                  </MagneticButton>
+                </div>
+
               </form>
-            )}
+            </div>
           </div>
         </div>
       </div>

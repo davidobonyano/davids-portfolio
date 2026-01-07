@@ -1,0 +1,72 @@
+export const seriousProjects = [
+    {
+        id: 1,
+        title: "Yano School",
+        category: "EdTech Platform",
+        image: "/projects/yanoschool.png",
+        gallery: ["/projects/yanoschool_1.png", "/projects/yanoschool_2.png"],
+        year: "2024",
+        link: "https://www.yanoschools.com/",
+        github: "https://github.com/davidobonyano",
+        technologies: ["Next.js", "Supabase", "React", "TypeScript", "Tailwind CSS"],
+        description: "A comprehensive school management platform serving students from KG1 to SS3. It features dedicated dashboards for administrators, teachers, and students.",
+        challenge: "Traditional school management systems are often clunky, expensive, and difficult to navigate for non-technical staff. The challenge was to build a system that was incredibly intuitive yet powerful enough to handle complex data like exam results, fee payments, and automated timetabling without overwhelming the user.",
+        solution: "We developed a modular architecture using Next.js and Supabase. The interface prioritizes clarity, with distinct dashboards for each user role. Automated result compilation reduced teacher workload by 60%, and the integrated payment gateway streamlined fee collection for parents."
+    },
+    {
+        id: 3,
+        title: "NSDC Nigeria",
+        category: "Government Portal",
+        image: "/projects/nscdc.png",
+        gallery: ["/projects/nscdc_1.png", "/projects/nscdc_2.png"],
+        year: "2023",
+        link: "https://www.nsdcnigeria.org/",
+        github: "https://github.com/davidobonyano",
+        technologies: ["PHP", "MySQL", "Bootstrap", "jQuery"],
+        description: "The official website for the National Sugar Development Council (NSDC) of Nigeria, serving as a central hub for industry data and policy.",
+        challenge: "The council needed a digital presence that effectively communicated government policies, industry statistics, and pricing data to a diverse audience. The previous system was fragmented and lacked a cohesive content management strategy.",
+        solution: "I designed and deployed a robust portal that centralizes all industry data. The system features a custom CMS for easy updates, interactive data visualization for pricing trends, and a responsive design that ensures accessibility for all stakeholders across Nigeria."
+    },
+    {
+        id: 4,
+        title: "Exam Portal",
+        category: "Assessment System",
+        image: "/projects/exam.png",
+        gallery: ["/projects/exam_1.png", "/projects/exam_2.png"],
+        year: "2024",
+        link: "https://exam.yanoschools.com/",
+        github: "https://github.com/davidobonyano",
+        technologies: ["Three.js", "AI Proctoring", "Next.js", "WebRTC"],
+        description: "A secure and advanced online examination system featuring AI-based proctoring and real-time monitoring.",
+        challenge: "Conducting remote examinations carries high risks of malpractice. The client needed a solution that could guarantee the integrity of online tests without requiring invasive software installation on students' devices.",
+        solution: "The solution integrates WebRTC and AI-driven behavior analysis directly into the browser. It monitors for suspicious activity (multiple faces, tab switching, absence) and flags incidents in real-time for invigilators, ensuring a secure and fair testing environment."
+    },
+    {
+        id: 5,
+        title: "FixFinder",
+        category: "Marketplace",
+        image: "/projects/fixfinder.png",
+        gallery: ["/projects/fixfinder_1.png", "/projects/fixfinder_2.png"],
+        year: "2025",
+        link: "https://fixfinder-cyan.vercel.app/",
+        github: "https://github.com/davidobonyano",
+        technologies: ["Socket.io", "Face API", "MERN Stack", "Redux"],
+        description: "A dynamic service marketplace connecting users with verified local professionals across over 13 categories.",
+        challenge: "Finding reliable local artisans (plumbers, electricians) is often a hassle filled with trust issues. Users needed a platform that not only listed services but verified provider identity and facilitated secure, real-time communication.",
+        solution: "FixFinder leverages a MERN stack with Socket.io for instant messaging. We implemented Face API to verify provider identities against their profile photos. The location-based search allows users to find help within their immediate vicinity, fostering trust and community."
+    },
+    {
+        id: 2,
+        title: "CareerPilot",
+        category: "Productivity Tool",
+        image: "/projects/careerpilot.png",
+        gallery: ["/projects/careerpilot_1.png", "/projects/careerpilot_2.png"],
+        year: "2023",
+        link: "https://career-pilot-liard.vercel.app",
+        github: "https://github.com/davidobonyano",
+        technologies: ["Framer Motion", "IndexedDB", "React", "Vite"],
+        description: "A privacy-first job application tracker using a Kanban board methodology with offline persistence.",
+        challenge: "Job hunting involves tracking hundreds of applications across different stages. Existing tools were either too complex (CRMs) or too simple (spreadsheets), and many required cloud accounts that compromised privacy.",
+        solution: "CareerPilot is built as a 'Local-First' application using IndexedDB. All data stays on the user's device. The drag-and-drop Kanban interface makes tracking status intuitive, while the clean, distraction-free UI keeps the focus on the goal: getting hired."
+    }
+];

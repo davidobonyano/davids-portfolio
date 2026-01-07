@@ -1,11 +1,11 @@
 "use client";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { 
+import {
   faArrowUp,
   faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
-import { 
+import {
   faLinkedin as faLinkedinBrand,
   faGithub as faGithubBrand,
   faTwitter as faTwitterBrand
@@ -55,24 +55,22 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gray-900/50 backdrop-blur-xl border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-4 py-12">
+    <footer className="bg-black border-t border-white/5 pb-8 pt-4">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-16">
 
         {/* Bottom Section */}
-        <div className="border-t border-white/10 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-gray-400">
-              <span>© {currentYear} David Obonyano. All rights reserved.</span>
-            </div>
-            
-            <button
-              onClick={scrollToTop}
-              className="flex items-center space-x-2 bg-gray-800/50 hover:bg-gray-700/50 text-gray-400 hover:text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105"
-            >
-              <FontAwesomeIcon icon={faArrowUp} />
-              <span>{translate("backToTop")}</span>
-            </button>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="text-white/40 font-mono text-xs uppercase tracking-widest">
+            <span>© {currentYear} David Obonyano. All rights reserved.</span>
           </div>
+
+          <button
+            onClick={scrollToTop}
+            className="flex items-center space-x-2 text-white/40 hover:text-[#9EFF00] transition-colors duration-300 group"
+          >
+            <span className="font-mono text-xs uppercase tracking-widest">{translate("backToTop")}</span>
+            <FontAwesomeIcon icon={faArrowUp} className="group-hover:-translate-y-1 transition-transform" />
+          </button>
         </div>
       </div>
     </footer>
