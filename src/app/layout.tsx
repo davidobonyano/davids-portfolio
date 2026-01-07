@@ -18,12 +18,12 @@ const anton = Anton({
 
 export const metadata: Metadata = {
   title: "David Obonyano — Full‑Stack Engineer",
-  description: "Full‑stack engineer in Lagos, Nigeria focused on performance and UX. High‑scoring Lighthouse projects.",
+  description: "Full‑stack engineer based in Nigeria, working globally. Focused on performance, interactivity, and high-end web experiences.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://david-obonyano.vercel.app"),
   openGraph: {
     type: "website",
     title: "David Obonyano — Full‑Stack Engineer",
-    description: "Full‑stack engineer in Lagos, Nigeria focused on performance and UX. High‑scoring Lighthouse projects.",
+    description: "Full‑stack engineer based in Nigeria, working globally. Focused on performance, interactivity, and high-end web experiences.",
     url: "/",
     siteName: "David Obonyano Portfolio",
     images: [
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "David Obonyano — Full‑Stack Engineer",
-    description: "Full‑stack engineer in Lagos, Nigeria focused on performance and UX. High‑scoring Lighthouse projects.",
+    description: "Full‑stack engineer based in Nigeria, working globally. Focused on performance, interactivity, and high-end web experiences.",
     images: ["/ddaave.jpg"],
     creator: "@davidalocaefe",
   },
@@ -53,6 +53,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
@@ -72,7 +75,6 @@ export default function RootLayout({
               ],
               address: {
                 "@type": "PostalAddress",
-                addressLocality: "Lagos",
                 addressCountry: "NG",
               },
             }),
