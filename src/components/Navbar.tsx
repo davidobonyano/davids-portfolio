@@ -72,7 +72,7 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                 >
                     {/* Header inside Menu */}
                     <div className="flex justify-between items-center mb-24">
-                        <span className="font-display font-bold text-xl tracking-tighter text-[#E2E1DF]">DAVID OBONYANO</span>
+                        <span className="font-display font-bold text-xl tracking-tighter text-[#E2E1DF]">CAPTAIN DAVE</span>
                         <button
                             onClick={onClose}
                             className="w-10 h-10 flex flex-col justify-center items-center gap-2"
@@ -202,8 +202,8 @@ const Navbar = () => {
             >
                 <div className="max-w-[1400px] mx-auto px-6 lg:px-16 flex justify-between items-center">
                     <a href="/#home" className="hover:opacity-70 transition-opacity flex items-center gap-1">
-                        <span className="font-display font-bold text-2xl tracking-tighter text-[#E2E1DF]">DAVID</span>
-                        <span className="font-display font-bold text-2xl tracking-tighter text-[#888]">WORKS</span>
+                        <span className="font-display font-bold text-2xl tracking-tighter text-[#E2E1DF]">CAPTAIN</span>
+                        <span className="font-display font-bold text-2xl tracking-tighter text-[#888]">DAVE</span>
                         <div className="w-2 h-2 rounded-full bg-[#E2E1DF] mt-1" />
                     </a>
 
