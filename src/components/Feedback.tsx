@@ -93,7 +93,7 @@ export default function Feedback() {
                     {!hasVoted ? (
                         <div className="flex flex-col gap-4">
                             <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 rounded-full bg-[#9EFF00]/10 flex items-center justify-center text-[#9EFF00]">
+                                <div className="w-8 h-8 rounded-full bg-[#E2E1DF]/10 flex items-center justify-center text-[#E2E1DF]">
                                     <FontAwesomeIcon icon={faHeart} className="text-sm" />
                                 </div>
                                 <span className="font-sans text-sm font-medium text-white">Do you like this portfolio?</span>
@@ -102,7 +102,7 @@ export default function Feedback() {
                             <div className="flex gap-2">
                                 <button
                                     onClick={() => handleVote('yes')}
-                                    className="flex-1 py-2 px-4 bg-[#9EFF00] hover:bg-[#8BE000] text-black font-bold text-xs uppercase tracking-widest rounded-lg transition-colors"
+                                    className="flex-1 py-2 px-4 bg-[#E2E1DF] hover:bg-white text-black font-bold text-xs uppercase tracking-widest rounded-lg transition-colors"
                                 >
                                     Yes
                                 </button>

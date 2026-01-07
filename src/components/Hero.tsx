@@ -67,11 +67,11 @@ const Hero = () => {
     const nameParts = ["DAVID", "OBONYANO"];
 
     return (
-        <section id="home" ref={containerRef} className="relative min-h-screen flex flex-col justify-center bg-black text-[#E2E1DF] selection:bg-[#9EFF00] selection:text-black overflow-hidden px-4 sm:px-6 lg:px-7">
+        <section id="home" ref={containerRef} className="relative min-h-screen flex flex-col justify-center bg-black text-[#E2E1DF] selection:bg-[#33373A] selection:text-[#E2E1DF] overflow-hidden px-4 sm:px-6 lg:px-7">
 
             {/* Background Gradient Mesh (Subtle) */}
             <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none z-0" />
-            <div className="absolute top-[-20%] right-[-10%] w-[400px] lg:w-[600px] h-[400px] lg:h-[600px] bg-[#9EFF00]/5 blur-[120px] lg:blur-[150px] rounded-full pointer-events-none z-0" />
+            <div className="absolute top-[-20%] right-[-10%] w-[400px] lg:w-[600px] h-[400px] lg:h-[600px] bg-[#33373A]/10 blur-[120px] lg:blur-[150px] rounded-full pointer-events-none z-0" />
 
             {/* Left Vertical Ticker */}
             <ExperienceTicker />

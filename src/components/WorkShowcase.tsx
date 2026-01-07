@@ -116,13 +116,13 @@ const ProjectCard = ({ project, index }: { project: typeof seriousProjects[0], i
         {/* Image Container with Cool Frame */}
         <div className="relative aspect-[4/3] overflow-hidden bg-[#0a0a0a] p-2 rounded-lg border border-white/5">
           {/* Animated Corner Accents */}
-          <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#9EFF00] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#9EFF00] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#9EFF00] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#9EFF00] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#E2E1DF] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#E2E1DF] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#E2E1DF] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#E2E1DF] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
           {/* Glow Effect */}
-          <div className="absolute inset-0 bg-[#9EFF00]/0 group-hover:bg-[#9EFF00]/5 transition-colors duration-500 pointer-events-none" />
+          <div className="absolute inset-0 bg-[#33373A]/0 group-hover:bg-[#33373A]/20 transition-colors duration-500 pointer-events-none" />
 
           {/* Image Wrapper */}
           <div className="relative w-full h-full overflow-hidden rounded">
@@ -153,7 +153,7 @@ const ProjectCard = ({ project, index }: { project: typeof seriousProjects[0], i
 
         <div className="flex justify-between items-start border-t border-white/10 pt-4">
           <div className="flex flex-col gap-1">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-[#9EFF00] font-medium">{project.category}</span>
+            <span className="text-[10px] uppercase tracking-[0.2em] text-[#E2E1DF] font-medium">{project.category}</span>
             <h3 className="text-2xl font-display uppercase tracking-tight text-[#E2E1DF]">{project.title}</h3>
           </div>
           <div className="flex flex-col items-end gap-1">
@@ -186,8 +186,8 @@ const WorkShowcase = () => {
         <div className="flex flex-col lg:flex-row justify-between items-end mb-20 lg:mb-24 gap-12">
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-6">
-              <span className="text-[10px] uppercase tracking-[0.5em] text-[#9EFF00] font-medium">[ WORK ]</span>
-              <div className="h-[1px] w-16 bg-[#9EFF00]/30" />
+              <span className="text-[10px] uppercase tracking-[0.5em] text-[#E2E1DF] font-medium">[ WORK ]</span>
+              <div className="h-[1px] w-16 bg-[#E2E1DF]/30" />
             </div>
             <h2 className="text-5xl lg:text-7xl font-display uppercase leading-tight tracking-tighter">
               Selected <br /> <span className="opacity-30 italic">Showcase</span>
@@ -198,13 +198,13 @@ const WorkShowcase = () => {
           <div className="flex gap-4">
             <button
               onClick={() => setActiveTab("serious")}
-              className={`px-6 py-2 rounded-full border border-white/10 text-xs font-mono uppercase tracking-widest transition-all duration-300 ${activeTab === 'serious' ? 'bg-[#9EFF00] text-black border-[#9EFF00]' : 'hover:bg-white/5 text-white/60'}`}
+              className={`px-6 py-2 rounded-full border border-white/10 text-xs font-mono uppercase tracking-widest transition-all duration-300 ${activeTab === 'serious' ? 'bg-[#E2E1DF] text-black border-[#E2E1DF]' : 'hover:bg-white/5 text-white/60'}`}
             >
               Projects
             </button>
             <button
               onClick={() => setActiveTab("fun")}
-              className={`px-6 py-2 rounded-full border border-white/10 text-xs font-mono uppercase tracking-widest transition-all duration-300 ${activeTab === 'fun' ? 'bg-[#9EFF00] text-black border-[#9EFF00]' : 'hover:bg-white/5 text-white/60'}`}
+              className={`px-6 py-2 rounded-full border border-white/10 text-xs font-mono uppercase tracking-widest transition-all duration-300 ${activeTab === 'fun' ? 'bg-[#E2E1DF] text-black border-[#E2E1DF]' : 'hover:bg-white/5 text-white/60'}`}
             >
               Playground
             </button>
@@ -234,10 +234,10 @@ const WorkShowcase = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => window.open('https://github.com/davidobonyano', '_blank')}
-                  className="group relative px-12 py-5 border border-white/10 hover:border-[#9EFF00] transition-colors duration-500"
+                  className="group relative px-12 py-5 border border-white/10 hover:border-[#E2E1DF] transition-colors duration-500"
                 >
-                  <span className="relative z-10 text-[10px] uppercase tracking-[0.5em] font-mono group-hover:text-[#9EFF00] transition-colors">View Github Archive</span>
-                  <div className="absolute inset-0 bg-[#9EFF00] opacity-0 group-hover:opacity-[0.03] transition-opacity" />
+                  <span className="relative z-10 text-[10px] uppercase tracking-[0.5em] font-mono group-hover:text-black transition-colors">View Github Archive</span>
+                  <div className="absolute inset-0 bg-[#E2E1DF] opacity-0 group-hover:opacity-100 transition-opacity" />
                 </motion.button>
               </div>
             </motion.div>

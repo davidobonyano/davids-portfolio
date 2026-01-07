@@ -96,7 +96,7 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                                 href={item.href}
                                 onClick={onClose}
                                 variants={itemVariants}
-                                className="text-5xl font-display uppercase tracking-tighter text-[#E2E1DF] hover:text-[#9EFF00] transition-all duration-300"
+                                className="text-5xl font-display uppercase tracking-tighter text-[#E2E1DF] hover:text-white transition-all duration-300"
                             >
                                 {item.name}
                             </motion.a>
@@ -105,7 +105,7 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                             href="/david-cv.pdf"
                             target="_blank"
                             variants={itemVariants}
-                            className="text-5xl font-display uppercase tracking-tighter text-[#9EFF00] hover:text-white transition-all duration-300 mt-4"
+                            className="text-5xl font-display uppercase tracking-tighter text-[#E2E1DF] hover:text-white transition-all duration-300 mt-4"
                         >
                             View CV
                         </motion.a>
@@ -136,7 +136,7 @@ const NavLink = ({ item, href, active }: { item: string; href: string; active?: 
         >
             <span
                 className={`font-mono text-[14px] transition-all duration-300 ${active
-                    ? 'opacity-100 translate-x-0 text-[#9EFF00]'
+                    ? 'opacity-100 translate-x-0 text-[#E2E1DF]'
                     : 'opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 text-white/40'
                     }`}
             >
@@ -149,7 +149,7 @@ const NavLink = ({ item, href, active }: { item: string; href: string; active?: 
 
             <span
                 className={`font-mono text-[14px] transition-all duration-300 ${active
-                    ? 'opacity-100 translate-x-0 text-[#9EFF00]'
+                    ? 'opacity-100 translate-x-0 text-[#E2E1DF]'
                     : 'opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 text-white/40'
                     }`}
             >
@@ -203,8 +203,8 @@ const Navbar = () => {
                 <div className="max-w-[1400px] mx-auto px-6 lg:px-16 flex justify-between items-center">
                     <a href="/#home" className="hover:opacity-70 transition-opacity flex items-center gap-1">
                         <span className="font-display font-bold text-2xl tracking-tighter text-[#E2E1DF]">DAVID</span>
-                        <span className="font-display font-bold text-2xl tracking-tighter text-[#9EFF00]">WORKS</span>
-                        <div className="w-2 h-2 rounded-full bg-[#9EFF00] mt-1" />
+                        <span className="font-display font-bold text-2xl tracking-tighter text-[#888]">WORKS</span>
+                        <div className="w-2 h-2 rounded-full bg-[#E2E1DF] mt-1" />
                     </a>
 
                     {/* Desktop Nav */}
@@ -224,7 +224,7 @@ const Navbar = () => {
                         <a
                             href="/david-cv.pdf"
                             target="_blank"
-                            className="text-xs font-mono uppercase tracking-widest text-white/60 hover:text-[#9EFF00] transition-colors border border-white/10 px-4 py-2 rounded hover:border-[#9EFF00]"
+                            className="text-xs font-mono uppercase tracking-widest text-white/60 hover:text-black transition-colors border border-white/10 px-4 py-2 rounded hover:bg-[#E2E1DF] hover:border-[#E2E1DF]"
                         >
                             View CV
                         </a>

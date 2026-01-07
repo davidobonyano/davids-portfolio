@@ -43,7 +43,7 @@ export default function Testimonials() {
 
                 {/* Header */}
                 <div className="flex flex-col gap-6 mb-20 text-center">
-                    <span className="text-[10px] uppercase tracking-[0.5em] text-[#9EFF00] font-medium">[ REVIEWS ]</span>
+                    <span className="text-[10px] uppercase tracking-[0.5em] text-[#E2E1DF] font-medium">[ REVIEWS ]</span>
                     <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tighter">
                         Client <span className="opacity-30 italic">Stories</span>
                     </h2>
@@ -58,9 +58,9 @@ export default function Testimonials() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.1, duration: 0.5 }}
                             viewport={{ once: true }}
-                            className="p-8 border border-white/10 bg-[#050505] relative group hover:border-[#9EFF00]/30 transition-colors flex flex-col h-full"
+                            className="p-8 border border-white/10 bg-[#050505] relative group hover:border-[#E2E1DF]/30 transition-colors flex flex-col h-full"
                         >
-                            <FontAwesomeIcon icon={faQuoteLeft} className="text-3xl text-white/10 mb-6 group-hover:text-[#9EFF00] transition-colors" />
+                            <FontAwesomeIcon icon={faQuoteLeft} className="text-3xl text-white/10 mb-6 group-hover:text-[#E2E1DF] transition-colors" />
 
                             <p className="text-lg text-white/80 font-sans leading-relaxed mb-8 flex-grow">
                                 "{item.text}"
@@ -77,11 +77,11 @@ export default function Testimonials() {
                                 </div>
                                 <div className="flex flex-col gap-1">
                                     <span className="font-display text-lg uppercase tracking-wide text-white">{item.name}</span>
-                                    <span className="text-xs font-mono text-[#9EFF00] uppercase tracking-wider">{item.role}</span>
+                                    <span className="text-xs font-mono text-[#E2E1DF] uppercase tracking-wider">{item.role}</span>
                                 </div>
                             </div>
 
-                            <div className="absolute top-8 right-8 flex gap-1 text-[#9EFF00]/40">
+                            <div className="absolute top-8 right-8 flex gap-1 text-[#E2E1DF]/40">
                                 {[...Array(item.rating)].map((_, r) => (
                                     <FontAwesomeIcon key={r} icon={faStar} className="text-xs" />
                                 ))}

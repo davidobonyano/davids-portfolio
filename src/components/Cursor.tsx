@@ -42,12 +42,12 @@ export default function Cursor() {
     return (
         <>
             <motion.div
-                className="fixed top-0 left-0 w-8 h-8 border border-[#9EFF00] rounded-full pointer-events-none z-[9999] hidden lg:block mix-blend-difference"
+                className="fixed top-0 left-0 w-8 h-8 border border-[#E2E1DF] rounded-full pointer-events-none z-[9999] hidden lg:block mix-blend-difference"
                 animate={{
                     x: mousePosition.x - 16,
                     y: mousePosition.y - 16,
                     scale: isHovering ? 2.5 : 1,
-                    backgroundColor: isHovering ? "#9EFF00" : "transparent"
+                    backgroundColor: isHovering ? "#E2E1DF" : "transparent"
                 }}
                 transition={{
                     type: "spring",
@@ -57,7 +57,7 @@ export default function Cursor() {
                 }}
             />
             <motion.div
-                className="fixed top-0 left-0 w-2 h-2 bg-[#9EFF00] rounded-full pointer-events-none z-[9999] hidden lg:block"
+                className="fixed top-0 left-0 w-2 h-2 bg-[#E2E1DF] rounded-full pointer-events-none z-[9999] hidden lg:block"
                 animate={{
                     x: mousePosition.x - 4,
                     y: mousePosition.y - 4,

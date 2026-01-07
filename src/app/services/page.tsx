@@ -61,8 +61,8 @@ export default function ServicesPage() {
                 <section className="px-6 lg:px-16 max-w-[1400px] mx-auto mb-20 lg:mb-32">
                     <div className="flex flex-col gap-6">
                         <div className="flex items-center gap-6">
-                            <span className="text-[10px] uppercase tracking-[0.5em] text-[#9EFF00] font-medium">[ WHAT I DO ]</span>
-                            <div className="h-[1px] w-16 bg-[#9EFF00]/30" />
+                            <span className="text-[10px] uppercase tracking-[0.5em] text-[#E2E1DF] font-medium">[ WHAT I DO ]</span>
+                            <div className="h-[1px] w-16 bg-[#E2E1DF]/30" />
                         </div>
                         <h1 className="text-6xl lg:text-[7rem] font-display uppercase leading-[0.85] tracking-tighter">
                             My <br /> <span className="opacity-30 italic">Services</span>
@@ -79,9 +79,9 @@ export default function ServicesPage() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                                className="group p-8 border border-white/10 bg-[#050505] hover:border-[#9EFF00]/30 hover:bg-white/[0.02] transition-colors relative"
+                                className="group p-8 border border-white/10 bg-[#050505] hover:border-[#E2E1DF]/30 hover:bg-white/[0.02] transition-colors relative"
                             >
-                                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-white/5 text-white/40 mb-8 group-hover:text-[#9EFF00] group-hover:bg-[#9EFF00]/10 transition-colors">
+                                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-white/5 text-white/40 mb-8 group-hover:text-[#E2E1DF] group-hover:bg-[#E2E1DF]/10 transition-colors">
                                     <FontAwesomeIcon icon={service.icon} className="text-xl" />
                                 </div>
 
@@ -90,7 +90,7 @@ export default function ServicesPage() {
                                     {service.description}
                                 </p>
 
-                                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#9EFF00] opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-300">
+                                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#E2E1DF] opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-300">
                                     <span>Start Project</span>
                                     <FontAwesomeIcon icon={faArrowRight} />
                                 </div>

@@ -44,7 +44,7 @@ export default function ProjectDetail({ params }: { params: Promise<{ id: string
           animate={{ opacity: 1 }}
           className="mb-16 lg:mb-24"
         >
-          <Link href="/#projects" className="group inline-flex items-center gap-3 text-sm font-mono uppercase tracking-widest text-white/40 hover:text-[#9EFF00] transition-colors">
+          <Link href="/#projects" className="group inline-flex items-center gap-3 text-sm font-mono uppercase tracking-widest text-white/40 hover:text-[#E2E1DF] transition-colors">
             <FontAwesomeIcon icon={faArrowLeft} className="group-hover:-translate-x-1 transition-transform" />
             <span>All Projects</span>
           </Link>
@@ -64,7 +64,7 @@ export default function ProjectDetail({ params }: { params: Promise<{ id: string
                 animate="visible"
                 className="flex items-center gap-4"
               >
-                <span className="text-xs uppercase tracking-[0.3em] text-[#9EFF00] font-medium border border-[#9EFF00]/20 px-3 py-1 rounded-full">{project.category}</span>
+                <span className="text-xs uppercase tracking-[0.3em] text-[#E2E1DF] font-medium border border-[#E2E1DF]/20 px-3 py-1 rounded-full">{project.category}</span>
                 <span className="text-xs font-mono text-white/40">{project.year}</span>
               </motion.div>
 
@@ -93,7 +93,7 @@ export default function ProjectDetail({ params }: { params: Promise<{ id: string
 
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-4 mt-2">
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-[#E2E1DF] text-black font-display uppercase tracking-widest hover:bg-[#9EFF00] transition-colors">
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-[#E2E1DF] text-black font-display uppercase tracking-widest hover:bg-white transition-colors">
                   Visit Live Site
                 </a>
                 {project.github && (
@@ -113,13 +113,13 @@ export default function ProjectDetail({ params }: { params: Promise<{ id: string
               className="grid grid-cols-2 gap-y-8 pt-8 border-t border-white/10"
             >
               <div className="flex flex-col gap-2">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#9EFF00]">Services</span>
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#E2E1DF]">Services</span>
                 <span className="text-sm text-white/60">UI/UX Design</span>
                 <span className="text-sm text-white/60">Development</span>
                 <span className="text-sm text-white/60">Strategy</span>
               </div>
               <div className="flex flex-col gap-2">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#9EFF00]">Tech Stack</span>
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#E2E1DF]">Tech Stack</span>
                 {project.technologies.slice(0, 4).map(t => (
                   <span key={t} className="text-sm text-white/60">{t}</span>
                 ))}
@@ -187,7 +187,7 @@ export default function ProjectDetail({ params }: { params: Promise<{ id: string
               transition={{ duration: 0.8 }}
               className="flex flex-col gap-8"
             >
-              <h3 className="text-3xl lg:text-5xl font-display uppercase text-[#9EFF00]">The Solution</h3>
+              <h3 className="text-3xl lg:text-5xl font-display uppercase text-[#E2E1DF]">The Solution</h3>
               <p className="text-lg lg:text-xl text-white/60 leading-relaxed font-sans max-w-2xl">
                 {(project as any).solution || "We crafted a solution that merges style with substance. By leveraging modern frameworks and improved data architecture, we delivered a product that is fast, scalable, and a joy to use."}
               </p>
@@ -219,7 +219,7 @@ export default function ProjectDetail({ params }: { params: Promise<{ id: string
         <div className="border-t border-white/10 pt-24 text-center">
           <span className="text-xs font-mono uppercase tracking-widest text-white/40 mb-4 block">Next Case Study</span>
           {/* Simple logical next project could go here */}
-          <Link href="/#projects" className="text-4xl lg:text-6xl font-display uppercase hover:text-[#9EFF00] transition-colors">
+          <Link href="/#projects" className="text-4xl lg:text-6xl font-display uppercase hover:text-[#E2E1DF] transition-colors">
             View All Work
           </Link>
         </div>

@@ -104,15 +104,15 @@ export default function Contact() {
     <section id="contact" className="relative py-24 lg:py-32 bg-black text-[#E2E1DF] overflow-hidden">
 
       {/* Background Ambience */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#9EFF00]/5 blur-[120px] rounded-full pointer-events-none z-0" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#33373A]/10 blur-[120px] rounded-full pointer-events-none z-0" />
 
       <div className="max-w-[1400px] mx-auto px-6 lg:px-16 relative z-10">
 
         {/* Header */}
         <div className="flex flex-col gap-6 mb-20 lg:mb-32">
           <div className="flex items-center gap-6">
-            <span className="text-[10px] uppercase tracking-[0.5em] text-[#9EFF00] font-medium">[ CONTACT ]</span>
-            <div className="h-[1px] w-16 bg-[#9EFF00]/30" />
+            <span className="text-[10px] uppercase tracking-[0.5em] text-[#E2E1DF] font-medium">[ CONTACT ]</span>
+            <div className="h-[1px] w-16 bg-[#E2E1DF]/30" />
           </div>
           <h2 className="text-6xl lg:text-[7rem] font-display uppercase leading-[0.85] tracking-tighter">
             Let's <br /> <span className="opacity-30 italic">Connect</span>
@@ -134,13 +134,13 @@ export default function Contact() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-6 p-6 border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-[#9EFF00]/50 transition-all duration-500"
+                  className="group flex items-center gap-6 p-6 border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-[#E2E1DF]/50 transition-all duration-500"
                 >
-                  <div className="text-2xl text-white/40 group-hover:text-[#9EFF00] transition-colors">
+                  <div className="text-2xl text-white/40 group-hover:text-[#E2E1DF] transition-colors">
                     <FontAwesomeIcon icon={social.icon} />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-xs uppercase tracking-widest text-[#9EFF00] mb-1">{social.label}</span>
+                    <span className="text-xs uppercase tracking-widest text-[#E2E1DF] mb-1">{social.label}</span>
                     <span className="font-display text-xl uppercase tracking-wide text-white group-hover:tracking-wider transition-all">{social.handle}</span>
                   </div>
                 </a>
@@ -165,7 +165,7 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full bg-transparent border-b border-white/20 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#9EFF00] transition-colors font-sans text-lg rounded-none"
+                      className="w-full bg-transparent border-b border-white/20 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#E2E1DF] transition-colors font-sans text-lg rounded-none"
                       placeholder="Your full name"
                     />
                   </div>
@@ -178,7 +178,7 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full bg-transparent border-b border-white/20 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#9EFF00] transition-colors font-sans text-lg rounded-none"
+                      className="w-full bg-transparent border-b border-white/20 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#E2E1DF] transition-colors font-sans text-lg rounded-none"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -194,7 +194,7 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className="w-full bg-transparent border-b border-white/20 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#9EFF00] transition-colors font-sans text-lg rounded-none"
+                    className="w-full bg-transparent border-b border-white/20 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#E2E1DF] transition-colors font-sans text-lg rounded-none"
                     placeholder="What's this about?"
                   />
                 </div>
@@ -209,7 +209,7 @@ export default function Contact() {
                     onChange={handleInputChange}
                     required
                     rows={5}
-                    className="w-full bg-transparent border-b border-white/20 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#9EFF00] transition-colors font-sans text-lg resize-none rounded-none"
+                    className="w-full bg-transparent border-b border-white/20 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#E2E1DF] transition-colors font-sans text-lg resize-none rounded-none"
                     placeholder="Tell me about your project..."
                   />
                 </div>
@@ -233,7 +233,7 @@ export default function Contact() {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
-                      className="flex items-center gap-3 text-[#9EFF00] font-mono text-sm py-2"
+                      className="flex items-center gap-3 text-[#E2E1DF] font-mono text-sm py-2"
                     >
                       <FontAwesomeIcon icon={faCheckCircle} />
                       <span>Message sent successfully. I'll get back to you soon.</span>
@@ -247,7 +247,7 @@ export default function Contact() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="group relative px-10 py-5 bg-[#E2E1DF] text-black font-display uppercase tracking-widest text-sm hover:bg-[#9EFF00] transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="group relative px-10 py-5 bg-[#E2E1DF] text-black font-display uppercase tracking-widest text-sm hover:bg-[#33373A] hover:text-[#E2E1DF] transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <span className="relative z-10 flex items-center gap-3">
                         {isSubmitting ? 'Sending...' : 'Send Message'}

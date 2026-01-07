@@ -56,8 +56,8 @@ const About = () => {
                     <div className="lg:col-span-8 flex flex-col gap-12">
                         <div className="flex flex-col gap-6">
                             <div className="flex items-center gap-6">
-                                <span className="text-[10px] uppercase tracking-[0.5em] text-[#9EFF00] font-medium">[ STUDIO ]</span>
-                                <div className="h-[1px] w-16 bg-[#9EFF00]/30" />
+                                <span className="text-[10px] uppercase tracking-[0.5em] text-[#E2E1DF] font-medium">[ STUDIO ]</span>
+                                <div className="h-[1px] w-16 bg-[#E2E1DF]/30" />
                             </div>
                             <h2 className="text-5xl lg:text-7xl font-display uppercase leading-tight tracking-tighter">
                                 Engineering <br /> <span className="opacity-30 italic">Perspective</span>
@@ -77,7 +77,7 @@ const About = () => {
                                 <a
                                     href="/david-cv.pdf"
                                     target="_blank"
-                                    className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-widest text-[#9EFF00] hover:text-white transition-colors group cursor-pointer"
+                                    className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-widest text-[#E2E1DF] hover:text-white transition-colors group cursor-pointer"
                                 >
                                     <span>[ View CV ]</span>
                                     <span className="group-hover:translate-x-1 transition-transform">→</span>
@@ -112,7 +112,7 @@ const About = () => {
                                 { title: "Product Strategy", desc: "Technical Planning, MVP Development" }
                             ].map((item, i) => (
                                 <div key={i} className="group flex flex-col gap-2 cursor-default">
-                                    <h3 className="text-2xl font-display uppercase tracking-tight text-[#E2E1DF] group-hover:text-[#9EFF00] transition-colors">{item.title}</h3>
+                                    <h3 className="text-2xl font-display uppercase tracking-tight text-[#E2E1DF] group-hover:text-white transition-colors">{item.title}</h3>
                                     <span className="text-xs font-mono text-white/40 tracking-wider">{item.desc}</span>
                                 </div>
                             ))}

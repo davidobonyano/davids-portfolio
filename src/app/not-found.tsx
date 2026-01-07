@@ -8,7 +8,7 @@ export default function NotFound() {
     <div className="min-h-screen bg-black flex items-center justify-center px-4 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#9EFF00]/5 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#33373A]/10 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="text-center max-w-2xl mx-auto relative z-10">
         {/* Animated 404 */}
@@ -25,7 +25,7 @@ export default function NotFound() {
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="h-1 w-32 bg-[#9EFF00] mx-auto"
+            className="h-1 w-32 bg-[#E2E1DF] mx-auto"
           />
         </motion.div>
 
@@ -52,11 +52,11 @@ export default function NotFound() {
         >
           <Link
             href="/"
-            className="group inline-flex items-center gap-3 px-12 py-5 bg-[#E2E1DF] text-black font-display uppercase tracking-widest hover:bg-[#9EFF00] transition-all duration-500 relative overflow-hidden"
+            className="group inline-flex items-center gap-3 px-12 py-5 bg-[#E2E1DF] text-black font-display uppercase tracking-widest hover:text-[#E2E1DF] transition-all duration-500 relative overflow-hidden"
           >
             <span className="relative z-10">Return Home</span>
             <span className="relative z-10 group-hover:translate-x-1 transition-transform">→</span>
-            <div className="absolute inset-0 bg-[#9EFF00] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-[#33373A] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </Link>
         </motion.div>
 
@@ -67,11 +67,11 @@ export default function NotFound() {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="mt-12 flex flex-wrap justify-center gap-6 text-sm font-mono uppercase tracking-widest"
         >
-          <Link href="/#projects" className="text-white/40 hover:text-[#9EFF00] transition-colors">
+          <Link href="/#projects" className="text-white/40 hover:text-[#E2E1DF] transition-colors">
             View Projects
           </Link>
           <span className="text-white/20">•</span>
-          <Link href="/#contact" className="text-white/40 hover:text-[#9EFF00] transition-colors">
+          <Link href="/#contact" className="text-white/40 hover:text-[#E2E1DF] transition-colors">
             Get in Touch
           </Link>
         </motion.div>

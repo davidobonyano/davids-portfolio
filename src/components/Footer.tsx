@@ -66,7 +66,7 @@ export default function Footer() {
 
           <button
             onClick={scrollToTop}
-            className="flex items-center space-x-2 text-white/40 hover:text-[#9EFF00] transition-colors duration-300 group"
+            className="flex items-center space-x-2 text-white/40 hover:text-[#E2E1DF] transition-colors duration-300 group"
           >
             <span className="font-mono text-xs uppercase tracking-widest">{translate("backToTop")}</span>
             <FontAwesomeIcon icon={faArrowUp} className="group-hover:-translate-y-1 transition-transform" />
