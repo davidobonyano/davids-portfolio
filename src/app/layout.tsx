@@ -86,6 +86,7 @@ export default function RootLayout({
         style={{ fontFamily: "'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial", cursor: "none" }}
       >
         <Providers>
+          <div className="noise-overlay" />
           <Cursor />
           {children}
         </Providers>

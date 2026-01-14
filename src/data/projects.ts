@@ -19,7 +19,7 @@ export const seriousProjects = [
         category: "Government Portal",
         image: "/projects/nscdc.png",
         gallery: ["/projects/nscdc_1.png", "/projects/nscdc_2.png"],
-        year: "2023",
+        year: "2022",
         link: "https://www.nsdcnigeria.org/",
         github: "https://github.com/davidobonyano",
         technologies: ["PHP", "MySQL", "Bootstrap", "jQuery"],
@@ -50,7 +50,7 @@ export const seriousProjects = [
         year: "2025",
         link: "https://fixfinder-cyan.vercel.app/",
         github: "https://github.com/davidobonyano",
-        technologies: ["Socket.io", "Face API", "MERN Stack", "Redux"],
+        technologies: ["MERN Stack", "Socket.io", "Face API", "Redux"],
         description: "A dynamic service marketplace connecting users with verified local professionals across over 13 categories.",
         challenge: "Finding reliable local artisans (plumbers, electricians) is often a hassle filled with trust issues. Users needed a platform that not only listed services but verified provider identity and facilitated secure, real-time communication.",
         solution: "FixFinder leverages a MERN stack with Socket.io for instant messaging. We implemented Face API to verify provider identities against their profile photos. The location-based search allows users to find help within their immediate vicinity, fostering trust and community."

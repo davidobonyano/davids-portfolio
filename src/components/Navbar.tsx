@@ -127,17 +127,17 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
     );
 };
 
-const NavLink = ({ item, href, active }: { item: string; href: string; active?: boolean }) => {
+const NavLink = ({ item, href, active, isLight }: { item: string; href: string; active?: boolean; isLight?: boolean }) => {
     return (
         <a
             href={href}
-            className={`group flex items-center gap-2 transition-colors duration-300 ${active ? 'text-white' : 'text-white/40 hover:text-white'
+            className={`group flex items-center gap-2 transition-colors duration-300 ${active ? (isLight ? 'text-dark-text' : 'text-white') : (isLight ? 'text-dark-text/40 hover:text-dark-text' : 'text-white/40 hover:text-white')
                 }`}
         >
             <span
                 className={`font-mono text-[14px] transition-all duration-300 ${active
-                    ? 'opacity-100 translate-x-0 text-[#E2E1DF]'
-                    : 'opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 text-white/40'
+                    ? `opacity-100 translate-x-0 ${isLight ? 'text-dark-text' : 'text-[#E2E1DF]'}`
+                    : `opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 ${isLight ? 'text-dark-text/40' : 'text-white/40'}`
                     }`}
             >
                 [
@@ -149,8 +149,8 @@ const NavLink = ({ item, href, active }: { item: string; href: string; active?: 
 
             <span
                 className={`font-mono text-[14px] transition-all duration-300 ${active
-                    ? 'opacity-100 translate-x-0 text-[#E2E1DF]'
-                    : 'opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 text-white/40'
+                    ? `opacity-100 translate-x-0 ${isLight ? 'text-dark-text' : 'text-[#E2E1DF]'}`
+                    : `opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 ${isLight ? 'text-dark-text/40' : 'text-white/40'}`
                     }`}
             >
                 ]
@@ -163,18 +163,26 @@ const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState("Home");
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [navTheme, setNavTheme] = useState<"dark" | "light">("dark");
 
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
 
-            const sections = ["home", "about", "projects", "contact"];
+            const sections = ["home", "about", "projects", "testimonials", "contact"];
             const scrollPos = window.scrollY + 100;
 
             sections.forEach(id => {
                 const el = document.getElementById(id);
                 if (el && scrollPos >= el.offsetTop && scrollPos < el.offsetTop + el.offsetHeight) {
-                    setActiveSection(id.charAt(0).toUpperCase() + id.slice(1));
+                    const currentId = id.charAt(0).toUpperCase() + id.slice(1);
+                    setActiveSection(currentId);
+
+                    if (id === "about" || id === "projects" || id === "testimonials") {
+                        setNavTheme("light");
+                    } else {
+                        setNavTheme("dark");
+                    }
                 }
             });
         };
@@ -191,30 +199,36 @@ const Navbar = () => {
         { name: "Contact", href: "/#contact" }
     ];
 
+    const isLight = navTheme === "light";
+
     return (
         <>
             <motion.nav
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${isScrolled ? 'py-4 bg-black/80 backdrop-blur-xl border-b border-white/5' : 'py-8 bg-transparent'
+                className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${isScrolled
+                    ? `py-4 backdrop-blur-xl border-b ${isLight ? 'bg-medium-gray/80 border-dark-text/5' : 'bg-black/80 border-white/5'}`
+                    : 'py-8 bg-transparent'
                     }`}
             >
                 <div className="max-w-[1400px] mx-auto px-6 lg:px-16 flex justify-between items-center">
                     <a href="/#home" className="hover:opacity-70 transition-opacity flex items-center gap-1">
-                        <span className="font-display font-bold text-2xl tracking-tighter text-[#E2E1DF]">CAPTAIN</span>
-                        <span className="font-display font-bold text-2xl tracking-tighter text-[#888]">DAVE</span>
-                        <div className="w-2 h-2 rounded-full bg-[#E2E1DF] mt-1" />
+                        <span className={`font-display font-bold text-2xl tracking-tighter ${isLight ? 'text-dark-text' : 'text-[#E2E1DF]'}`}>CAPTAIN</span>
+                        <span className={`font-display font-bold text-2xl tracking-tighter ${isLight ? 'text-dark-text/40' : 'text-[#888]'}`}>DAVE</span>
+                        <div className={`w-2 h-2 rounded-full mt-1 ${isLight ? 'bg-dark-text' : 'bg-[#E2E1DF]'}`} />
                     </a>
 
                     {/* Desktop Nav */}
-                    <div className="hidden lg:flex items-center gap-10 bg-black/50 backdrop-blur-md px-8 py-3 rounded-full border border-white/5">
+                    <div className={`hidden lg:flex items-center gap-10 backdrop-blur-md px-8 py-3 rounded-full border transition-all duration-500 ${isLight ? 'bg-white/20 border-dark-text/10' : 'bg-black/50 border-white/5'
+                        }`}>
                         {desktopLinks.map((link) => (
                             <NavLink
                                 key={link.name}
                                 item={link.name}
                                 href={link.href}
                                 active={activeSection === link.name}
+                                isLight={isLight}
                             />
                         ))}
                     </div>
@@ -224,7 +238,10 @@ const Navbar = () => {
                         <a
                             href="/david-cv.pdf"
                             target="_blank"
-                            className="text-xs font-mono uppercase tracking-widest text-white/60 hover:text-black transition-colors border border-white/10 px-4 py-2 rounded hover:bg-[#E2E1DF] hover:border-[#E2E1DF]"
+                            className={`text-xs font-mono uppercase tracking-widest transition-all duration-500 border px-4 py-2 rounded ${isLight
+                                ? 'text-dark-text/60 border-dark-text/10 hover:bg-dark-text hover:text-white hover:border-dark-text'
+                                : 'text-white/60 border-white/10 hover:bg-[#E2E1DF] hover:text-black hover:border-[#E2E1DF]'
+                                }`}
                         >
                             View CV
                         </a>
@@ -235,9 +252,9 @@ const Navbar = () => {
                         onClick={() => setIsMobileMenuOpen(true)}
                         className="lg:hidden flex flex-col gap-1.5 p-2"
                     >
-                        <span className="w-8 h-0.5 bg-white opacity-80" />
-                        <span className="w-6 h-0.5 bg-white opacity-80 ml-auto" />
-                        <span className="w-8 h-0.5 bg-white opacity-80" />
+                        <span className={`w-8 h-0.5 opacity-80 ${isLight ? 'bg-dark-text' : 'bg-white'}`} />
+                        <span className={`w-6 h-0.5 opacity-80 ml-auto ${isLight ? 'bg-dark-text' : 'bg-white'}`} />
+                        <span className={`w-8 h-0.5 opacity-80 ${isLight ? 'bg-dark-text' : 'bg-white'}`} />
                     </button>
                 </div>
             </motion.nav>
@@ -249,5 +266,6 @@ const Navbar = () => {
         </>
     );
 };
+
 
 export default Navbar;

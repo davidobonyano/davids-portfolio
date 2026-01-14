@@ -38,13 +38,17 @@ const testimonials = [
 
 export default function Testimonials() {
     return (
-        <section className="py-24 bg-black text-[#E2E1DF] border-t border-white/5 overflow-hidden">
+        <section id="testimonials" className="py-24 lg:py-40 bg-black text-[#EFEEEC] border-t border-white/5 overflow-hidden">
             <div className="max-w-[1400px] mx-auto px-6 lg:px-16">
 
                 {/* Header */}
                 <div className="flex flex-col gap-6 mb-20 text-center">
-                    <span className="text-[10px] uppercase tracking-[0.5em] text-[#E2E1DF] font-medium">[ REVIEWS ]</span>
-                    <h2 className="text-4xl lg:text-6xl font-display uppercase tracking-tighter">
+                    <div className="flex items-center justify-center gap-6">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#EFEEEC]" />
+                        <span className="text-[10px] uppercase tracking-[0.5em] text-[#EFEEEC]/60 font-black">[ REVIEWS ]</span>
+                        <div className="h-[1px] w-16 bg-white/10" />
+                    </div>
+                    <h2 className="text-4xl lg:text-8xl font-display uppercase tracking-tighter">
                         Client <span className="opacity-30 italic">Stories</span>
                     </h2>
                 </div>
@@ -58,16 +62,16 @@ export default function Testimonials() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.1, duration: 0.5 }}
                             viewport={{ once: true }}
-                            className="p-8 border border-white/10 bg-[#050505] relative group hover:border-[#E2E1DF]/30 transition-colors flex flex-col h-full"
+                            className="p-10 border border-white/5 bg-white/[0.02] rounded-[32px] relative group hover:bg-white/[0.04] transition-all flex flex-col h-full"
                         >
-                            <FontAwesomeIcon icon={faQuoteLeft} className="text-3xl text-white/10 mb-6 group-hover:text-[#E2E1DF] transition-colors" />
+                            <FontAwesomeIcon icon={faQuoteLeft} className="text-3xl text-white/5 mb-6 group-hover:text-white/20 transition-colors" />
 
-                            <p className="text-lg text-white/80 font-sans leading-relaxed mb-8 flex-grow">
+                            <p className="text-xl text-[#EFEEEC]/80 leading-relaxed mb-8 flex-grow font-sans">
                                 "{item.text}"
                             </p>
 
                             <div className="flex items-center gap-4 mt-auto pt-8 border-t border-white/5">
-                                <div className="relative w-12 h-12 rounded-full overflow-hidden border border-white/10">
+                                <div className="relative w-14 h-14 rounded-full overflow-hidden border border-white/10">
                                     <Image
                                         src={item.image}
                                         alt={item.name}
@@ -76,14 +80,14 @@ export default function Testimonials() {
                                     />
                                 </div>
                                 <div className="flex flex-col gap-1">
-                                    <span className="font-display text-lg uppercase tracking-wide text-white">{item.name}</span>
-                                    <span className="text-xs font-mono text-[#E2E1DF] uppercase tracking-wider">{item.role}</span>
+                                    <span className="font-display text-xl uppercase tracking-wide text-white">{item.name}</span>
+                                    <span className="text-[10px] font-sans font-black text-white/40 uppercase tracking-widest">{item.role}</span>
                                 </div>
                             </div>
 
-                            <div className="absolute top-8 right-8 flex gap-1 text-[#E2E1DF]/40">
+                            <div className="absolute top-10 right-10 flex gap-1 text-dark-text/20">
                                 {[...Array(item.rating)].map((_, r) => (
-                                    <FontAwesomeIcon key={r} icon={faStar} className="text-xs" />
+                                    <FontAwesomeIcon key={r} icon={faStar} className="text-[10px]" />
                                 ))}
                             </div>
                         </motion.div>
