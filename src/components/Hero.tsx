@@ -68,7 +68,7 @@ const Hero = () => {
     const nameParts = ["DAVID", "OBONYANO"];
 
     return (
-        <section id="home" ref={containerRef} className="relative h-[250vh] bg-black text-[#E2E1DF] selection:bg-[#33373A] selection:text-[#E2E1DF] overflow-x-hidden">
+        <section id="home" ref={containerRef} className="relative h-[150vh] lg:h-[250vh] bg-black text-[#E2E1DF] selection:bg-[#33373A] selection:text-[#E2E1DF] overflow-x-hidden">
 
             {/* Background Animation Layer */}
             <HeroAnimation scrollYProgress={scrollYProgress} />
