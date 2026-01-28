@@ -28,6 +28,20 @@ export const seriousProjects = [
         solution: "I designed and deployed a robust portal that centralizes all industry data. The system features a custom CMS for easy updates, interactive data visualization for pricing trends, and a responsive design that ensures accessibility for all stakeholders across Nigeria."
     },
     {
+        id: 6,
+        title: "VerifyRent",
+        category: "PropTech Registry",
+        image: "/projects/verifyrent.png",
+        gallery: ["/projects/verifyrent_1.png", "/projects/verifyrent_2.png"],
+        year: "2026",
+        link: "https://verifyrent.vercel.app/",
+        github: "https://github.com/davidobonyano/verifyrent/",
+        technologies: ["Next.js", "Supabase", "Face API", "Framer Motion", "Tailwind CSS"],
+        description: "A high-integrity property verification registry designed to eliminate rental fraud through biometric auditing and formal discrepancy reporting.",
+        challenge: "Traditional rental platforms in Nigeria are plagued by phantom listings, fraudulent agents, and lack of verified ownership. Users need a 'Source of Truth' that guarantees the integrity of every asset listed.",
+        solution: "I built the VerifyRent 'Kiln of Trust' using Next.js and Face API for biometrically-verified identity audits. The platform features an industrial 'Forge' aesthetic, formal 'Report Protocols' for discrepancies, and a secure asset registry that provides a verified ID for every property."
+    },
+    {
         id: 4,
         title: "Exam Portal",
         category: "Assessment System",
@@ -43,7 +57,7 @@ export const seriousProjects = [
     },
     {
         id: 5,
-        title: "FixFinder",
+        title: "FindYourFixer",
         category: "Marketplace",
         image: "/projects/fixfinder.png",
         gallery: ["/projects/fixfinder_1.png", "/projects/fixfinder_2.png"],
@@ -53,7 +67,7 @@ export const seriousProjects = [
         technologies: ["MERN Stack", "Socket.io", "Face API", "Redux"],
         description: "A dynamic service marketplace connecting users with verified local professionals across over 13 categories.",
         challenge: "Finding reliable local artisans (plumbers, electricians) is often a hassle filled with trust issues. Users needed a platform that not only listed services but verified provider identity and facilitated secure, real-time communication.",
-        solution: "FixFinder leverages a MERN stack with Socket.io for instant messaging. We implemented Face API to verify provider identities against their profile photos. The location-based search allows users to find help within their immediate vicinity, fostering trust and community."
+        solution: "FindYourFixer leverages a MERN stack with Socket.io for instant messaging. We implemented Face API to verify provider identities against their profile photos. The location-based search allows users to find help within their immediate vicinity, fostering trust and community."
     },
     {
         id: 2,
