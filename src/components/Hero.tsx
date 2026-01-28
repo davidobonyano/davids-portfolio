@@ -9,21 +9,6 @@ const VerticalCharacterStack = ({ char, delay }: { char: string; delay: number }
         <div className="relative overflow-hidden h-full inline-flex flex-col">
             <motion.span
                 initial={{ y: "100%" }}
-                animate={{ y: "-100%" }}
-                transition={{
-                    duration: 1.2,
-                    ease: [0.76, 0, 0.24, 1],
-                    delay: delay,
-                    repeat: Infinity,
-                    repeatDelay: 5,
-                    repeatType: "loop"
-                }}
-                className="inline-block text-[#E2E1DF] absolute top-full leading-[0.85]"
-            >
-                {char}
-            </motion.span>
-            <motion.span
-                initial={{ y: "100%" }}
                 animate={{ y: "0%" }}
                 transition={{
                     duration: 1.2,
