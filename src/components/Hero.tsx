@@ -72,21 +72,43 @@ const Hero = () => {
                 <div className="relative z-30 w-full max-w-[1400px] mx-auto pointer-events-auto">
                     <div className="grid grid-cols-1 xl:grid-cols-4 gap-x-12 lg:gap-16 gap-y-12 lg:gap-y-16 pl-0 lg:pl-10">
 
-                        {/* 1. Branding */}
-                        <div className="xl:col-span-2 order-1 uppercase flex flex-col gap-2 tracking-tighter select-none w-full">
-                            <div className="flex flex-nowrap items-end gap-x-1 sm:gap-x-2 h-[12vw] sm:h-[11vw] lg:h-[4.5rem] w-full">
-                                {nameParts[0].split("").map((char, i) => (
-                                    <div key={`p1-${i}`} className="text-[12vw] sm:text-[11vw] lg:text-[5.5rem] font-display font-bold leading-[0.8] tracking-[-0.05em]">
-                                        <VerticalCharacterStack char={char} delay={0.1 + i * 0.04} />
-                                    </div>
-                                ))}
+                        {/* 1. Branding (Trepz style Anton, adjusted for longer name) */}
+                        <div className="xl:col-span-2 order-1 uppercase flex flex-col tracking-[-0.02em] select-none w-full gap-2 lg:gap-0">
+                            
+                            {/* Mobile Name: Stacked for space, but tight Trepz styling */}
+                            <div className="lg:hidden flex flex-col overflow-visible text-[#E2E1DF]">
+                                <div className="flex flex-nowrap items-end overflow-hidden h-[1.3em] text-[15vw] sm:text-[12vw] font-display font-normal leading-none uppercase">
+                                    {nameParts[0].split("").map((char, i) => (
+                                        <div key={`p1-${i}`} className="h-[1.2em]">
+                                            <VerticalCharacterStack char={char} delay={0.1 + i * 0.04} />
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="flex flex-nowrap items-end overflow-hidden h-[1.3em] text-[15vw] sm:text-[12vw] font-display font-normal leading-none uppercase -mt-[4vw]">
+                                    {nameParts[1].split("").map((char, i) => (
+                                        <div key={`p2-${i}`} className="h-[1.2em]">
+                                            <VerticalCharacterStack char={char} delay={0.4 + i * 0.04} />
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                            <div className="flex flex-nowrap items-end gap-x-1 sm:gap-x-2 h-[12vw] sm:h-[11vw] lg:h-[4.5rem] w-full">
-                                {nameParts[1].split("").map((char, i) => (
-                                    <div key={`p2-${i}`} className="text-[12vw] sm:text-[11vw] lg:text-[5.5rem] font-display font-bold leading-[0.8] tracking-[-0.05em]">
-                                        <VerticalCharacterStack key={`p2-${i}`} char={char} delay={0.4 + i * 0.04} />
-                                    </div>
-                                ))}
+
+                            {/* Desktop Name: Stacked & Massive but appropriately sized so OBONYANO fits */}
+                            <div className="hidden lg:flex flex-col overflow-visible text-[#E2E1DF]">
+                                <div className="flex flex-nowrap items-end overflow-hidden h-[1.3em] text-[9vw] xl:text-[8vw] 2xl:text-[7.5rem] font-display font-normal leading-none uppercase pb-2">
+                                    {nameParts[0].split("").map((char, i) => (
+                                        <div key={`p1-${i}`} className="h-[1.2em]">
+                                            <VerticalCharacterStack char={char} delay={0.1 + i * 0.04} />
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="flex flex-nowrap items-end overflow-hidden h-[1.3em] text-[9vw] xl:text-[8vw] 2xl:text-[7.5rem] font-display font-normal leading-none uppercase mt-[-3vw] xl:mt-[-2.5rem] pb-2">
+                                    {nameParts[1].split("").map((char, i) => (
+                                        <div key={`p2-${i}`} className="h-[1.2em]">
+                                            <VerticalCharacterStack char={char} delay={0.4 + i * 0.04} />
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
 
@@ -98,16 +120,25 @@ const Hero = () => {
                             className="xl:col-span-1 order-3 xl:order-2 mt-8 lg:mt-0 max-w-[480px]"
                         >
                             <p className="text-base sm:text-lg lg:text-[14px] font-sans leading-relaxed tracking-tight text-[#E2E1DF]/80">
-                                <ScrambleText
-                                    text="Full-stack engineer focused on performance, interactivity, and high-end aesthetics. I build digital experiences that are fast, accessible, and visually stunning."
-                                    delay={1500}
-                                    speed={30}
-                                />
+                                <span className="md:hidden">
+                                    <ScrambleText
+                                        text="Full-stack engineer building fast, accessible, and elegant digital experiences."
+                                        delay={1500}
+                                        speed={30}
+                                    />
+                                </span>
+                                <span className="hidden md:inline">
+                                    <ScrambleText
+                                        text="Full-stack engineer focused on performance, interactivity, and high-end aesthetics. I build digital experiences that are fast, accessible, and visually stunning."
+                                        delay={1500}
+                                        speed={30}
+                                    />
+                                </span>
                             </p>
                         </motion.div>
 
                         {/* 3. Awards & Info */}
-                        <div className="xl:col-span-1 order-2 xl:order-3 flex flex-row xl:flex-col gap-8 sm:gap-16 lg:gap-12 lg:mt-0 items-start xl:pl-4 w-full">
+                        <div className="hidden md:flex xl:col-span-1 order-2 xl:order-3 flex-row xl:flex-col gap-8 sm:gap-16 lg:gap-12 lg:mt-0 items-start xl:pl-4 w-full">
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}

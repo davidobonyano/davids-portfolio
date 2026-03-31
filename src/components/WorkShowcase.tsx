@@ -18,7 +18,7 @@ import {
 
 // --- SERIOUS Data (Trepz Showcase Style) ---
 import { seriousProjects } from '@/data/projects';
-import Link from 'next/link';
+
 
 // --- FUN Data (Phone Style) ---
 const funProjects = [
@@ -94,7 +94,7 @@ const funProjects = [
   },
 ];
 
-const ProjectCard = ({ project, index }: { project: typeof seriousProjects[0], index: number }) => {
+const ProjectCard = ({ project, index, onClick }: { project: typeof seriousProjects[0], index: number, onClick: () => void }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -104,15 +104,16 @@ const ProjectCard = ({ project, index }: { project: typeof seriousProjects[0], i
   const y = useTransform(scrollYProgress, [0, 1], [0, -40]);
 
   return (
-    <Link href={`/projects/${project.id}`}>
-      <motion.div
-        ref={containerRef}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className="group relative flex flex-col gap-6 cursor-pointer"
-      >
+    <motion.div
+      onClick={onClick}
+      ref={containerRef}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      className="group relative flex flex-col gap-6 cursor-pointer text-left w-full"
+    >
         {/* Image Container with Cool Frame */}
         <div className="relative aspect-[4/3] overflow-hidden bg-[#0a0a0a] p-2 rounded-lg border border-white/5">
           {/* Animated Corner Accents */}
@@ -166,13 +167,13 @@ const ProjectCard = ({ project, index }: { project: typeof seriousProjects[0], i
           </div>
         </div>
       </motion.div>
-    </Link>
   );
 };
 
 const WorkShowcase = () => {
   const [activeTab, setActiveTab] = useState<"serious" | "fun">("serious");
   const [selectedApp, setSelectedApp] = useState<{ id: number; name: string; url: string } | null>(null);
+  const [selectedProject, setSelectedProject] = useState<typeof seriousProjects[0] | null>(null);
 
   // Phone App Click Handler
   const handleAppClick = (app: typeof funProjects[0]) => {
@@ -227,7 +228,7 @@ const WorkShowcase = () => {
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
                   {seriousProjects.map((project, index) => (
-                    <ProjectCard key={project.title} project={project} index={index} />
+                    <ProjectCard key={project.title} project={project} index={index} onClick={() => setSelectedProject(project)} />
                   ))}
                 </div>
 
@@ -330,6 +331,109 @@ const WorkShowcase = () => {
           </AnimatePresence>
         </div>
       </div>
+
+      {/* Serious Project Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedProject(null)}
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-md"
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 30 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 30 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-4xl bg-[#111] border border-white/10 rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-black/50 hover:bg-white/10 text-white rounded-full transition-colors backdrop-blur-md border border-white/10"
+              >
+                ✕
+              </button>
+
+              {/* Scrollable Content */}
+              <div className="flex-1 overflow-y-auto min-h-0 w-full relative">
+                {/* Header Image */}
+                <div className="relative w-full h-[250px] sm:h-[400px] bg-black">
+                  <Image
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    fill
+                    className="object-cover object-top"
+                  />
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-[#111]/40 to-transparent" />
+                </div>
+
+                <div className="p-6 sm:p-10 -mt-20 relative z-10">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[#E2E1DF] font-medium drop-shadow-md">{selectedProject.category}</span>
+                  <h2 className="text-3xl sm:text-5xl font-display uppercase tracking-tight text-white mb-6 drop-shadow-lg">
+                    {selectedProject.title}
+                  </h2>
+
+                  <div className="flex flex-wrap items-center gap-y-2 mb-8">
+                    {selectedProject.technologies.map((t, index) => (
+                      <div key={t} className="flex items-center">
+                        <span className="text-[11px] sm:text-xs uppercase tracking-[0.2em] font-mono text-[#E2E1DF]/60">
+                          {t}
+                        </span>
+                        {index < selectedProject.technologies.length - 1 && (
+                          <span className="mx-3 text-white/20 text-xs font-mono">/</span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  <p className="text-base sm:text-lg text-white/90 font-sans mb-10 leading-relaxed max-w-3xl">
+                    {selectedProject.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-4 mb-10">
+                    {selectedProject.link && (
+                      <a
+                        href={selectedProject.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="px-8 py-3 bg-white text-black font-mono text-xs uppercase tracking-widest rounded transition-transform hover:scale-105"
+                      >
+                        Live Demo
+                      </a>
+                    )}
+                    {selectedProject.github && (
+                      <a
+                        href={selectedProject.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="px-8 py-3 bg-[#222] text-white font-mono text-xs uppercase tracking-widest border border-white/10 rounded hover:bg-[#333] transition-colors"
+                      >
+                        View Code
+                      </a>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-[#E2E1DF]/80 font-sans leading-relaxed text-sm sm:text-base pt-10 border-t border-white/10">
+                    <div className="bg-white/5 p-6 rounded-xl border border-white/5 h-full">
+                      <h4 className="text-white font-bold mb-3 uppercase tracking-widest text-[10px]">The Challenge</h4>
+                      <p className="text-sm opacity-80">{selectedProject.challenge}</p>
+                    </div>
+                    <div className="bg-white/5 p-6 rounded-xl border border-white/5 h-full">
+                      <h4 className="text-white font-bold mb-3 uppercase tracking-widest text-[10px]">The Solution</h4>
+                      <p className="text-sm opacity-80">{selectedProject.solution}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

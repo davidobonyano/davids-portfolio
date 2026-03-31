@@ -14,6 +14,20 @@ export const seriousProjects = [
         solution: "We developed a modular architecture using Next.js and Supabase. The interface prioritizes clarity, with distinct dashboards for each user role. Automated result compilation reduced teacher workload by 60%, and the integrated payment gateway streamlined fee collection for parents."
     },
     {
+        id: 7,
+        title: "ShopFeedMe",
+        category: "E-Commerce Platform",
+        image: "/projects/shopfeedme.png",
+        gallery: ["/projects/shopfeedme_1.png"],
+        year: "2025",
+        link: "https://www.shopfeedme.com/",
+        github: "",
+        technologies: ["Next.js 14", "React", "Tailwind CSS"],
+        description: "A high-performance e-commerce platform centered around gamification and interactive user experiences.",
+        challenge: "Many e-commerce sites suffer from poor user retention and high cart abandonment due to slow load times and lack of engaging features.",
+        solution: "Led the frontend development using Next.js 14. Engineered crucial performance optimizations, including code splitting and advanced image optimization. Designed and implemented interactive gamification features—such as a dynamic 'Spin the Wheel' reward system—that boosted user retention and session duration significantly."
+    },
+    {
         id: 3,
         title: "NSDC Nigeria",
         category: "Government Portal",

@@ -10,8 +10,17 @@
   --color-dark-text: #1C1C1A;
   --color-accent: #EFEEEC;
 
-  --font-display: var(--font-anton);
-  --font-sans: var(--font-inter);
+  --font-family-display: var(--font-anton);
+  --font-family-sans: var(--font-inter);
+}
+
+/* Explicit font utilities for Tailwind */
+.font-display {
+  font-family: var(--font-anton);
+}
+
+.font-sans {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
 }
 
 .noise-overlay {
