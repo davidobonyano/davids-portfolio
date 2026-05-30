@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -95,18 +95,9 @@ const funProjects = [
 ];
 
 const ProjectCard = ({ project, index, onClick }: { project: typeof seriousProjects[0], index: number, onClick: () => void }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, -40]);
-
   return (
     <motion.div
       onClick={onClick}
-      ref={containerRef}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -115,7 +106,7 @@ const ProjectCard = ({ project, index, onClick }: { project: typeof seriousProje
       className="group relative flex flex-col gap-6 cursor-pointer text-left w-full"
     >
         {/* Image Container with Cool Frame */}
-        <div className="relative aspect-[4/3] overflow-hidden bg-[#0a0a0a] p-2 rounded-lg border border-white/5">
+        <div className="relative aspect-video overflow-hidden bg-[#0a0a0a] p-2 rounded-lg border border-white/5">
           {/* Animated Corner Accents */}
           <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#E2E1DF] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#E2E1DF] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -127,21 +118,21 @@ const ProjectCard = ({ project, index, onClick }: { project: typeof seriousProje
 
           {/* Image Wrapper */}
           <div className="relative w-full h-full overflow-hidden rounded">
-            <motion.div style={{ y }} className="relative h-[115%] w-full -top-[7.5%]">
+            <div className="relative h-full w-full">
               {/* Fallback to gradient/icon if no image, but we expect images for these */}
               {project.image ? (
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  className="object-contain object-center"
                 />
               ) : (
                 <div className="w-full h-full bg-[#222] flex items-center justify-center">
                   <FontAwesomeIcon icon={faCode} className="text-4xl text-white/20" />
                 </div>
               )}
-            </motion.div>
+            </div>
 
             {/* Hover Overlay */}
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
@@ -188,12 +179,10 @@ const WorkShowcase = () => {
           <div className="flex flex-col lg:flex-row justify-between items-end mb-20 lg:mb-24 gap-12">
             <div className="flex flex-col gap-6">
               <div className="flex items-center gap-6">
-                <div className="w-1.5 h-1.5 rounded-full bg-foreground" />
                 <span className="text-[10px] uppercase tracking-[0.5em] text-[#EFEEEC] font-black opacity-80">[ WORK ]</span>
-                <div className="h-[1px] w-16 bg-foreground/10" />
               </div>
               <h2 className="text-4xl sm:text-5xl lg:text-7xl font-display uppercase leading-tight tracking-tighter text-[#EFEEEC]">
-                Selected <br /> <span className="opacity-30 italic text-[#EFEEEC]">Showcase</span>
+                Selected <br /> <span className="opacity-30 text-[#EFEEEC]">Showcase</span>
               </h2>
             </div>
 
@@ -226,7 +215,7 @@ const WorkShowcase = () => {
                 transition={{ duration: 0.5 }}
                 className="flex flex-col"
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
                   {seriousProjects.map((project, index) => (
                     <ProjectCard key={project.title} project={project} index={index} onClick={() => setSelectedProject(project)} />
                   ))}

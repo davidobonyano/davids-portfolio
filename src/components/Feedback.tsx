@@ -15,17 +15,17 @@ export default function Feedback() {
 
     useEffect(() => {
         const handleScroll = () => {
-            const testimonialSection = document.getElementById('testimonials');
-            if (testimonialSection) {
-                const rect = testimonialSection.getBoundingClientRect();
-                // Show when the bottom of testimonials section has passed (user is moving into contact)
-                const isPastTestimonials = rect.bottom < window.innerHeight;
+            const footerSection = document.getElementById('footer');
+            if (footerSection) {
+                const rect = footerSection.getBoundingClientRect();
+                // Show when the footer is visible in the viewport
+                const isFooterVisible = rect.top < window.innerHeight;
 
-                if (isPastTestimonials && !triggerRef.current && !hasVoted) {
+                if (isFooterVisible && !triggerRef.current && !hasVoted) {
                     triggerRef.current = true;
                     setIsVisible(true);
                     setTimeLeft(10);
-                } else if (!isPastTestimonials && triggerRef.current) {
+                } else if (!isFooterVisible && triggerRef.current) {
                     // Reset trigger when scrolling back up so it can re-appear when scrolling down again
                     triggerRef.current = false;
                     setIsVisible(false);

@@ -44,12 +44,10 @@ export default function Testimonials() {
                 {/* Header */}
                 <div className="flex flex-col gap-6 mb-20 text-center">
                     <div className="flex items-center justify-center gap-6">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#EFEEEC]" />
                         <span className="text-[10px] uppercase tracking-[0.5em] text-[#EFEEEC]/60 font-black">[ REVIEWS ]</span>
-                        <div className="h-[1px] w-16 bg-white/10" />
                     </div>
                     <h2 className="text-4xl lg:text-8xl font-display uppercase tracking-tighter">
-                        Client <span className="opacity-30 italic">Stories</span>
+                        Client <span className="opacity-30">Stories</span>
                     </h2>
                 </div>
 

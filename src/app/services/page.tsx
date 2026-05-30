@@ -62,10 +62,9 @@ export default function ServicesPage() {
                     <div className="flex flex-col gap-6">
                         <div className="flex items-center gap-6">
                             <span className="text-[10px] uppercase tracking-[0.5em] text-[#E2E1DF] font-medium">[ WHAT I DO ]</span>
-                            <div className="h-[1px] w-16 bg-[#E2E1DF]/30" />
                         </div>
                         <h1 className="text-6xl lg:text-[7rem] font-display uppercase leading-[0.85] tracking-tighter">
-                            My <br /> <span className="opacity-30 italic">Services</span>
+                            My <br /> <span className="opacity-30">Services</span>
                         </h1>
                     </div>
                 </section>

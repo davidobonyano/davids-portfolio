@@ -55,18 +55,18 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-black border-t border-white/5 pb-8 pt-4">
+    <footer id="footer" className="bg-black border-t border-white/5 pb-8 pt-4">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-16">
 
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-white/40 font-mono text-xs uppercase tracking-widest">
+          <div className="text-white/90 font-mono text-xs uppercase tracking-widest">
             <span>© {currentYear} David Obonyano. All rights reserved.</span>
           </div>
 
           <button
             onClick={scrollToTop}
-            className="flex items-center space-x-2 text-white/40 hover:text-[#E2E1DF] transition-colors duration-300 group"
+            className="flex items-center space-x-2 text-white/85 hover:text-[#E2E1DF] transition-colors duration-300 group"
           >
             <span className="font-mono text-xs uppercase tracking-widest">{translate("backToTop")}</span>
             <FontAwesomeIcon icon={faArrowUp} className="group-hover:-translate-y-1 transition-transform" />

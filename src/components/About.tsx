@@ -58,13 +58,11 @@ const About = () => {
                     <div className="lg:col-span-8 flex flex-col gap-12">
                         <div className="flex flex-col gap-6">
                             <div className="flex items-center gap-6">
-                                <div className="w-1.5 h-1.5 rounded-full bg-dark-text" />
                                 <span className="text-[10px] uppercase tracking-[0.5em] text-dark-text font-black">THE STUDIO</span>
-                                <div className="h-[1px] w-16 bg-dark-text/20" />
                             </div>
                             <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-[10vw] font-display uppercase leading-[0.8] tracking-tighter">
                                 <span className="block">Engineering</span>
-                                <span className="block opacity-30 italic">Perspective</span>
+                                <span className="block opacity-30">Perspective</span>
                             </h2>
                         </div>
 

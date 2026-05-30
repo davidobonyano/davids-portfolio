@@ -111,12 +111,10 @@ export default function Contact() {
         {/* Header */}
         <div className="flex flex-col gap-6 mb-20 lg:mb-32">
           <div className="flex items-center gap-6">
-            <div className="w-1.5 h-1.5 rounded-full bg-foreground" />
             <span className="text-[10px] uppercase tracking-[0.5em] text-[#EFEEEC] font-black opacity-80">[ CONTACT ]</span>
-            <div className="h-[1px] w-16 bg-[#EFEEEC]/10" />
           </div>
           <h2 className="text-5xl sm:text-6xl lg:text-8xl font-display uppercase leading-[0.85] tracking-tighter">
-            Let's <br /> <span className="opacity-30 italic">Connect</span>
+            Let's <br /> <span className="opacity-30">Connect</span>
           </h2>
         </div>
 

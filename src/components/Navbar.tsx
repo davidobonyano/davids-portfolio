@@ -219,7 +219,6 @@ const Navbar = () => {
                             <span className="sm:hidden">CD</span>
                         </span>
                         <span className={`hidden sm:inline font-display font-bold text-2xl tracking-tighter ${isLight ? 'text-dark-text/40' : 'text-[#888]'}`}>DAVE</span>
-                        <div className={`w-2 h-2 rounded-full mt-1 ${isLight ? 'bg-dark-text' : 'bg-[#E2E1DF]'}`} />
                     </a>
 
                     {/* Desktop Nav */}
